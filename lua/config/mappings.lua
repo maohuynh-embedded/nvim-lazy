@@ -16,7 +16,7 @@ M.general = {
 
         -- Save file
         ["<C-s>"] = {
-            "<ESC>:w <CR> silent lua require'notify'('Saving file ....', 'success', {title = 'System', timeout = 1000})<cr>",
+            "<ESC>:w | silent lua require'notify'('Saving file ....', 'success', {title = 'System', timeout = 1000})<cr>",
             "Save file in insert mode",
             opts = { silent = true },
         },
