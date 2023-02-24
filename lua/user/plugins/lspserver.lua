@@ -48,6 +48,7 @@ vim.notify = function(msg, log_level)
 end
 
 local servers = {
+    "pyright",
     "clangd",
     "cmake",
     "jsonls",

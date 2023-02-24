@@ -402,7 +402,7 @@ return {
     -- },
 
     -- BUG: Neovide haven't supported for this plugin
-    -- -- Show message popup, LSP progress, popup commandline
+    -- Show message popup, LSP progress, popup commandline
     -- {
     --     'folke/noice.nvim',
     --     event = "BufRead",

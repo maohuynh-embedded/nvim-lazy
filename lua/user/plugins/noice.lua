@@ -86,7 +86,7 @@ noice.setup({
         -- event is always "notify" and kind can be any log level as a string
         -- the default routes will forward notifications to nvim-notify
         -- benefit of using noice for this is the routing and consistent history view
-        enabled = false,
+        enabled = true,
         view = "notify",
     },
     lsp = {
@@ -108,12 +108,12 @@ noice.setup({
             ["cmp.entry.get_documentation"] = false,
         },
         hover = {
-            enabled = false,
+            enabled = true,
             view = nil, -- when nil, use defaults from documentation
             opts = {}, -- merged with defaults from documentation
         },
         signature = {
-            enabled = false,
+            enabled = true,
             auto_open = {
                 enabled = true,
                 trigger = true, -- automatically show signature help when typing a trigger character from the lsp
@@ -156,7 +156,7 @@ noice.setup({
 		},
 	}, ]]
     health = {
-        checker = true, -- disable if you don't want health checks to run
+        checker = false, -- disable if you don't want health checks to run
     },
     smart_move = {
         -- noice tries to move out of the way of existing floating windows.

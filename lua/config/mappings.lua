@@ -143,7 +143,7 @@ M.general = {
 
     c = {
         ["<C-v>"] = { "<C-R>*", "Set paste as Win OS in command line" },
-    }
+    },
 }
 
 M.lazygit = {
@@ -377,16 +377,16 @@ M.lspconfig = {
 M.telescope = {
     n = {
         -- find
-        ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "find files" },
-        ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "find all" },
-        ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "live grep" },
-        ["<leader>ft"] = { "<cmd> Telescope help_tags <CR>", "help page" },
-        ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "find oldfiles" },
-        ["<leader>fk"] = { "<cmd> Telescope keymaps <CR>", "show keys" },
-        ["<leader>fp"] = { "<cmd> Telescope project <CR>", "project" },
-        ["<leader>fs"] = { "<cmd> Telescope menu Sessions <CR>", "Sessions" },
-        ["<leader>fb"] = { "<cmd> Telescope file_browser <CR>", "File on directory" },
-        ["<leader>fh"] = { "<cmd> Telescope highlights <CR>", "File on directory" },
+        ["<leader>ff"]     = { "<cmd> Telescope find_files <CR>", "find files" },
+        ["<leader>fa"]     = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "find all" },
+        ["<leader>fw"]     = { "<cmd> Telescope live_grep <CR>", "live grep" },
+        ["<leader>ft"]     = { "<cmd> Telescope help_tags <CR>", "help page" },
+        ["<leader>fo"]     = { "<cmd> Telescope oldfiles <CR>", "find oldfiles" },
+        ["<leader>fk"]     = { "<cmd> Telescope keymaps <CR>", "show keys" },
+        ["<leader>fp"]     = { "<cmd> Telescope project <CR>", "project" },
+        ["<leader>fs"]     = { "<cmd> Telescope menu Sessions <CR>", "Sessions" },
+        ["<leader>fb"]     = { "<cmd> Telescope file_browser <CR>", "File on directory" },
+        ["<leader>fh"]     = { "<cmd> Telescope highlights <CR>", "File on directory" },
         ["<leader>f<Tab>"] = { "<cmd> Telescope buffers <CR>", "find buffers" },
 
         -- git
