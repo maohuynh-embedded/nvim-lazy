@@ -38,6 +38,7 @@ return {
     -- File explorer
     {
         'nvim-tree/nvim-tree.lua',
+        tag = 'nightly',
         config = function()
             require("user.plugins.nvimtree")
         end,

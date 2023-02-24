@@ -3,6 +3,9 @@ if not status_ok then
     return
 end
 
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 nvim_tree.setup {
     -- BEGIN_DEFAULT_OPTS
     auto_reload_on_write = true,
@@ -10,7 +13,7 @@ nvim_tree.setup {
     disable_netrw = false,
     hijack_cursor = true,
     hijack_netrw = true,
-    hijack_unnamed_buffer_when_opening = true,
+    hijack_unnamed_buffer_when_opening = false,
     ignore_buffer_on_setup = false,
     open_on_setup = false,
     open_on_setup_file = false,
@@ -21,7 +24,7 @@ nvim_tree.setup {
     prefer_startup_root = false,
     sync_root_with_cwd = true,
     reload_on_bufenter = true,
-    respect_buf_cwd = false,
+    respect_buf_cwd = true,
     on_attach = "disable", -- function(bufnr). If nil, will use the deprecated mapping strategy
     remove_keymaps = false, -- boolean (disable totally or not) or list of key (lhs)
     view = {
@@ -31,7 +34,7 @@ nvim_tree.setup {
         -- height = 30,
         hide_root_folder = false,
         side = "left",
-        preserve_window_proportions = true,
+        preserve_window_proportions = false,
         number = false,
         relativenumber = false,
         signcolumn = "yes",
@@ -40,32 +43,32 @@ nvim_tree.setup {
             custom_only = true,
             list = {
                 -- user mappings go here
-                { key = "<S-k>", action = "toggle_file_info" },
-                { key = { "<CR>", "o", "<2-LeftMouse>" }, action = "edit" },
-                { key = { "<C-]>", "<2-RightMouse>" }, action = "cd" },
-                { key = "<C-v>", action = "vsplit" },
-                { key = "<C-x>", action = "split" },
-                { key = "<C-t>", action = "tabnew" },
-                { key = "<", action = "prev_sibling" },
-                { key = ">", action = "next_sibling" },
-                { key = "P", action = "parent_node" },
-                { key = "<BS>", action = "close_node" },
-                { key = "<Tab>", action = "preview" },
-                { key = "R", action = "refresh" },
-                { key = "a", action = "create" },
-                { key = "d", action = "remove" },
-                { key = "D", action = "trash" },
-                { key = "r", action = "rename" },
-                { key = "<C-r>", action = "full_rename" },
-                { key = "x", action = "cut" },
-                { key = "c", action = "copy" },
-                { key = "p", action = "paste" },
-                { key = "y", action = "copy_name" },
-                { key = "Y", action = "copy_path" },
-                { key = "gy", action = "copy_absolute_path" },
-                { key = "f", action = "live_filter" },
-                { key = "F", action = "clear_live_filter" },
-                { key = "q", action = "close" },
+                { key = { "<CR>"  , "o", "<2-LeftMouse>" }, action = "edit" },
+                { key = { "<C-]>" , "<2-RightMouse>" }, action = "cd" },
+                { key = "<S-k>"   , action = "toggle_file_info" },
+                { key = "<C-v>"   , action = "vsplit" },
+                { key = "<C-x>"   , action = "split" },
+                { key = "<C-t>"   , action = "tabnew" },
+                { key = "<"       , action = "prev_sibling" },
+                { key = ">"       , action = "next_sibling" },
+                { key = "P"       , action = "parent_node" },
+                { key = "<BS>"    , action = "close_node" },
+                { key = "<Tab>"   , action = "preview" },
+                { key = "R"       , action = "refresh" },
+                { key = "a"       , action = "create" },
+                { key = "d"       , action = "remove" },
+                { key = "D"       , action = "trash" },
+                { key = "r"       , action = "rename" },
+                { key = "<C-r>"   , action = "full_rename" },
+                { key = "x"       , action = "cut" },
+                { key = "c"       , action = "copy" },
+                { key = "p"       , action = "paste" },
+                { key = "y"       , action = "copy_name" },
+                { key = "Y"       , action = "copy_path" },
+                { key = "gy"      , action = "copy_absolute_path" },
+                { key = "f"       , action = "live_filter" },
+                { key = "F"       , action = "clear_live_filter" },
+                { key = "q"       , action = "close" },
             },
         },
         float = {
@@ -101,7 +104,7 @@ nvim_tree.setup {
         },
         icons = {
             webdev_colors = true,
-            git_placement = "before",
+            git_placement = "signcolumn",
             padding = " ",
             symlink_arrow = " ➛ ",
             show = {
@@ -157,10 +160,10 @@ nvim_tree.setup {
         show_on_dirs = true,
         debounce_delay = 50,
         icons = {
-            hint = "",
-            info = "",
+            hint = "",
+            info = "",
             warning = "",
-            error = "",
+            error = "",
         },
     },
     filters = {
@@ -174,9 +177,9 @@ nvim_tree.setup {
     },
     git = {
         enable = true,
-        ignore = true,
+        ignore = false,
         show_on_dirs = true,
-        timeout = 300,
+        timeout = 700,
     },
     actions = {
         use_system_clipboard = true,
