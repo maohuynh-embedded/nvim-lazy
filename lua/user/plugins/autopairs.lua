@@ -2,7 +2,7 @@ local present1, autopairs = pcall(require, "nvim-autopairs")
 local present2, cmp = pcall(require, "cmp")
 
 if not (present1 and present2) then
-return
+    return
 end
 
 local options = {
@@ -12,7 +12,7 @@ local options = {
         javascript = { "string", "template_string" },
         java = false,
     },
-    disable_filetype = { "TelescopePrompt", "spectre_panel" ,"vim"},
+    disable_filetype = { "TelescopePrompt", "spectre_panel", "vim" },
     fast_wrap = {
         map = "<M-e>",
         chars = { "{", "[", "(", '"', "'" },

@@ -76,7 +76,7 @@ M.general = {
         ["<space>O"] = { "O<ESC>", "Insert abow blank line" },
 
         -- Manage to split window
-        ["<leader>co"] = { "<C-W>co<CR>", "Close all split window" },
+        ["<leader>co"] = { "<C-W>o<CR>", "Close all split window" },
         ["<leader>vs"] = { "<cmd>vs<CR>", "Veritical split window" },
         ["<leader>hs"] = { "<cmd>hs<CR>", "Horizontal split window" },
         ["<leader>cs"] = { "<cmd>close<CR>", "Horizontal split window" },
@@ -500,13 +500,15 @@ M.floaterm = {
     },
 
     t = {
-        ["<leader>to"] = { "<C-\\><C-n>:FloatermNew bash.exe<cr>", "open new terminal" },
-        ["<leader>tk"] = { "<C-\\><C-n>:FloatermKill<cr>:FloatermPrev<cr>", "kill current terminal" },
-        ["<leader>tn"] = { "<C-\\><C-n>:FloatermNext<cr>", "next terminal" },
-        ["<leader>tp"] = { "<C-\\><C-n>:FloatermPrev<cr>", "previous terminal" },
-        ["<leader>tt"] = { "<C-\\><C-n>:FloatermToggle<cr>", "toggle terminal" },
-        ["<leader>ts"] = { "<C-\\><C-n>:FloatermShow<cr>", "show terminal" },
-    }
+        ["<leader>to"] = { "<C-\\><C-n>:FloatermNew bash.exe<CR>", "open new terminal" },
+        ["<leader>tk"] = { "<C-\\><C-n>:FloatermKill<CR>:FloatermPrev<cr>", "kill current terminal" },
+        ["<leader>tn"] = { "<C-\\><C-n>:FloatermNext<CR>", "next terminal" },
+        ["<leader>tp"] = { "<C-\\><C-n>:FloatermPrev<CR>", "previous terminal" },
+        ["<leader>tt"] = { "<C-\\><C-n>:FloatermToggle<CR>", "toggle terminal" },
+        ["<leader>ts"] = { "<C-\\><C-n>:FloatermShow<CR>", "show terminal" },
+        ["<C-v>"]      = { "<C-\\><C-n>pi", "Paste in terminal" },
+        ["<C-q>"]      = { "<C-\\><C-n>:FloatermToggle<CR>", "Quit terminal" },
+    },
 }
 
 M.align = {

@@ -4,7 +4,7 @@ if not status_ok then
     return
 end
 
-jabs.setup({
+local options = {
     -- Options for the main window
     position = 'corner', -- center, corner. Default corner
     width = 55, -- default 50
@@ -25,6 +25,10 @@ jabs.setup({
         height = 30, -- default 30
         border = 'rounded', -- none, single, double, rounded, solid, shadow, (or an array or chars). Default double
     },
+
+    sort_mru = true, -- Sort buffers by most recently used (true or false). Default false
+    split_filename = true, -- Split filename into separate components for name and path. Default false
+    split_filename_path_width = 20, -- If split_filename is true, how wide the column for the path is supposed 
 
     -- Default highlights (must be a valid :highlight)
     highlight = {
@@ -50,7 +54,7 @@ jabs.setup({
     -- Keymaps
     keymap = {
         close = "d", -- Close buffer. Default D
-        jump = "<cr>", -- Jump to buffer. Default <cr>
+        jump = "<CR>", -- Jump to buffer. Default <cr>
         h_split = "h", -- Horizontally split buffer. Default s
         v_split = "v", -- Vertically split buffer. Default v
         preview = "<space>", -- Open buffer preview. Default P
@@ -58,6 +62,7 @@ jabs.setup({
 
     -- Whether to use nvim-web-devicons next to filenames
     use_devicons = true -- true or false. Default true
-})
+}
 
+jabs.setup(options)
 -- vim.keymap.set("n", "t", ":JABSOpen<CR>", { noremap = true, silent = true })

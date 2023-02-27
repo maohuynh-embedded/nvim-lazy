@@ -48,7 +48,7 @@ vim.notify = function(msg, log_level)
 end
 
 local servers = {
-    "pyright",
+    "pylsp",
     "clangd",
     "cmake",
     "jsonls",
@@ -56,7 +56,7 @@ local servers = {
     "bashls",
     "vimls",
     "lua_ls",
-    "diagnosticls"
+    "diagnosticls",
 }
 
 local lsp_flags = {

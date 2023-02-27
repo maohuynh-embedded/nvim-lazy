@@ -67,7 +67,6 @@ return {
     -- Tab explorer
     {
         'matbme/JABS.nvim',
-        cmd = { "JABSOpen" },
         config = function()
             require("user.plugins.jabs")
         end,

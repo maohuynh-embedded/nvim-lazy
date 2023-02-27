@@ -31,7 +31,7 @@ local options = {
 
     -- Time to update nvim, delay between multi shortcut
     updatetime = 250,
-    timeoutlen = 1000,
+    timeoutlen = 800,
 
     -- Wrap text
     wrap = false,

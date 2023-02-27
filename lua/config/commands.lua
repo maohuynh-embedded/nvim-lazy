@@ -107,3 +107,13 @@ autocmd("CmdlineLeave, CmdlineChanged, CmdlineEnter, InsertLeave, InsertChange",
 --     pattern = "*",
 --     command = "call repeat#set('\\<Plug>MyWonderfulMap', v:count)",
 -- })
+
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'sh',
+    callback = function()
+        vim.lsp.start({
+            name = 'bash-language-server',
+            cmd = { 'bash-language-server', 'start' },
+        })
+    end,
+})
