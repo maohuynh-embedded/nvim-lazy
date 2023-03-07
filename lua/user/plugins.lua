@@ -67,6 +67,7 @@ return {
     -- Tab explorer
     {
         'matbme/JABS.nvim',
+        event = "BufRead",
         config = function()
             require("user.plugins.jabs")
         end,
@@ -268,12 +269,12 @@ return {
     },
 
     {
-        "kevinhwang91/nvim-bqf",
-        event = { "BufRead", "BufNew" },
-        dependencies = { 'nvim-treesitter/nvim-treesitter' },
-        config = function()
-            require("user.plugins.bqf")
-        end
+        -- "kevinhwang91/nvim-bqf",
+        -- event = { "BufRead", "BufNew" },
+        -- dependencies = { 'nvim-treesitter/nvim-treesitter' },
+        -- config = function()
+        --     require("user.plugins.bqf")
+        -- end
     },
 
     -- Align lines

@@ -69,6 +69,8 @@ nvim_tree.setup {
                 { key = "f"       , action = "live_filter" },
                 { key = "F"       , action = "clear_live_filter" },
                 { key = "q"       , action = "close" },
+                { key = "U"       , action = "first_sibling" },
+                { key = "D"       , action = "last_sibling" },
             },
         },
         float = {

@@ -31,6 +31,10 @@ M.general = {
         ["<C-e>"] = { "<C-\\><C-O>e<C-O><Right>", "forword to end of word" },
         ["<C-z>"] = { "<Left><C-\\><C-O>ge<Right>", "backward to end of word" },
 
+        -- New line
+        -- TODO: Add insert new line abow cursor
+        ["<C-o>"] = { "<C-\\><C-O>o", "insert new line below cursor" },
+
         -- navigate within insert mode
         ["<A-h>"] = { "<Left>", "move left" },
         ["<A-l>"] = { "<Right>", "move right" },
@@ -491,22 +495,23 @@ M.gitsigns = {
 
 M.floaterm = {
     n = {
-        ["<leader>to"] = { ":FloatermNew bash.exe<cr>", "open new terminal" },
-        ["<leader>tk"] = { ":FloatermKill<cr>:floatermprev<cr>", "kill current terminal" },
-        ["<leader>tn"] = { ":FloatermNext<cr>", "next terminal" },
-        ["<leader>tp"] = { ":FloatermPrev<cr>", "previous terminal" },
-        ["<leader>tt"] = { ":FloatermToggle<cr>", "toggle terminal" },
-        ["<leader>ts"] = { ":FloatermShow<cr>", "show terminal" },
+        ["<leader>to"] = { "<cmd>FloatermNew bash.exe<CR>", "open new terminal" },
+        ["<leader>tk"] = { "<cmd>FloatermKill<CR>:floatermprev<cr>", "kill current terminal" },
+        ["<leader>tn"] = { "<cmd>FloatermNext<CR>", "next terminal" },
+        ["<leader>tp"] = { "<cmd>FloatermPrev<CR>", "previous terminal" },
+        ["<leader>tt"] = { "<cmd>FloatermToggle<CR>", "toggle terminal" },
+        ["<leader>ts"] = { "<cmd>FloatermShow<CR>", "show terminal" },
     },
 
     t = {
-        ["<leader>to"] = { "<C-\\><C-n>:FloatermNew bash.exe<CR>", "open new terminal" },
-        ["<leader>tk"] = { "<C-\\><C-n>:FloatermKill<CR>:FloatermPrev<cr>", "kill current terminal" },
-        ["<leader>tn"] = { "<C-\\><C-n>:FloatermNext<CR>", "next terminal" },
-        ["<leader>tp"] = { "<C-\\><C-n>:FloatermPrev<CR>", "previous terminal" },
-        ["<leader>tt"] = { "<C-\\><C-n>:FloatermToggle<CR>", "toggle terminal" },
-        ["<leader>ts"] = { "<C-\\><C-n>:FloatermShow<CR>", "show terminal" },
+        ["<leader>to"] = { "<C-\\><C-n><cmd>FloatermNew bash.exe<CR>", "open new terminal" },
+        ["<leader>tk"] = { "<C-\\><C-n><cmd>FloatermKill<CR>:FloatermPrev<cr>", "kill current terminal" },
+        ["<leader>tn"] = { "<C-\\><C-n><cmd>FloatermNext<CR>", "next terminal" },
+        ["<leader>tp"] = { "<C-\\><C-n><cmd>FloatermPrev<CR>", "previous terminal" },
+        ["<leader>tt"] = { "<C-\\><C-n><cmd>FloatermToggle<CR>", "toggle terminal" },
+        ["<leader>ts"] = { "<C-\\><C-n><cmd>FloatermShow<CR>", "show terminal" },
         ["<C-v>"]      = { "<C-\\><C-n>pi", "Paste in terminal" },
+        ["<C-BS>"]     = { "<C-\\><C-n>bdw", "Delete word in terminal" },
         ["<C-q>"]      = { "<C-\\><C-n>:FloatermToggle<CR>", "Quit terminal" },
     },
 }

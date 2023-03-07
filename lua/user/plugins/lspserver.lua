@@ -83,6 +83,13 @@ for _, lsp in ipairs(servers) do
                     globals = { "vim" },
                 },
             },
+            pylsp = {
+                plugins = {
+                    pyflakes = { enabled = false },
+                    pylint = { enabled = false },
+                    pycodestyle = { enabled = true },
+                }
+            }
         },
     })
 
