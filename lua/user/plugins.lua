@@ -19,6 +19,11 @@ return {
         end,
     },
     {
+        'tpope/vim-fugitive',
+        'rbong/vim-flog',
+        cmd = {"Flog", "Flogsplit"}
+    },
+    {
         -- Colorscheme manager
         'folke/tokyonight.nvim',
         config = function()
@@ -267,6 +272,13 @@ return {
         'p00f/nvim-ts-rainbow',
         dependencies = { 'nvim-treesitter/nvim-treesitter' },
     },
+
+    -- {
+    --     'Pocco81/auto-save.nvim',
+    --     config = function ()
+    --         require("user.plugins.autosave")
+    --     end
+    -- },
 
     {
         -- "kevinhwang91/nvim-bqf",

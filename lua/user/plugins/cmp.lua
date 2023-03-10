@@ -123,9 +123,9 @@ local options = {
     },
     sources = {
         { name = "luasnip", priority = 90, max_item_count = 8 },
-        { name = "nvim_lsp", priority = 100, keyword_length = 2, max_item_count = 8 },
+        { name = "nvim_lsp", priority = 100, keyword_length = 1, max_item_count = 8 },
         { name = "path", priority = 20 },
-        { name = "buffer", priority = 10, keyword_length = 2, max_item_count = 8 },
+        { name = "buffer", priority = 10, keyword_length = 1, max_item_count = 8 },
         { name = "nvim_lua" },
         { name = "nvim_lsp_signature_help" },
     },
