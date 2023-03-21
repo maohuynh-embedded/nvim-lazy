@@ -14,8 +14,8 @@ hlargs.setup {
     paint_arg_declarations = true,
     paint_arg_usages = true,
     paint_catch_blocks = {
-        declarations = true,
-        usages       = true
+        declarations = false,
+        usages       = false,
     },
     extras = {
         named_parameters = true,

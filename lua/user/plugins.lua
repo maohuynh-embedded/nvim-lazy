@@ -18,11 +18,11 @@ return {
             require("user.plugins.impatient")
         end,
     },
-    {
-        'tpope/vim-fugitive',
-        'rbong/vim-flog',
-        cmd = {"Flog", "Flogsplit"}
-    },
+    -- {
+    --     'tpope/vim-fugitive',
+    --     'rbong/vim-flog',
+    --     cmd = {"Flog", "Flogsplit"}
+    -- },
     {
         -- Colorscheme manager
         'folke/tokyonight.nvim',
@@ -244,6 +244,14 @@ return {
         end,
     },
 
+    -- {
+    --     'akinsho/toggleterm.nvim',
+    --     version = "*",
+    --     config = function ()
+    --         require("user.plugins.toggleterm")
+    --     end
+    -- },
+
     -- Search box
     {
         'VonHeikemen/searchbox.nvim',
@@ -269,8 +277,25 @@ return {
 
     -- Bracket color
     {
-        'p00f/nvim-ts-rainbow',
-        dependencies = { 'nvim-treesitter/nvim-treesitter' },
+        -- 'p00f/nvim-ts-rainbow',
+        -- dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    },
+
+    {
+        -- 'HiPhish/nvim-ts-rainbow2',
+        -- dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    },
+
+    {
+        "jackMort/ChatGPT.nvim",
+        config = function()
+            require("user.plugins.gpt")
+        end,
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+            "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope.nvim"
+        }
     },
 
     -- {
@@ -295,16 +320,6 @@ return {
         event = "BufRead",
     },
 
-    -- Highlight argument
-    {
-        event = "BufRead",
-        dependencies = 'nvim-treesitter/nvim-treesitter',
-        ft = { "c" },
-        'm-demare/hlargs.nvim',
-        config = function()
-            require("user.plugins.hlargs")
-        end
-    },
     -- Quick highlight word
     {
         'RRethy/vim-illuminate',
@@ -399,7 +414,7 @@ return {
     {
         "j-hui/fidget.nvim", -- Display LSP status messages in a floating window
         event = "BufRead",
-        config = function ()
+        config = function()
             require("user.plugins.fidget")
         end
     },
