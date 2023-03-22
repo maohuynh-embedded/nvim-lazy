@@ -490,4 +490,13 @@ return {
         'lukas-reineke/cmp-under-comparator',
         dependencies = "cmp_luasnip",
     },
+
+    -- Debug
+    {
+        'rcarriga/nvim-dap-ui',
+        dependencies = {
+            'ldelossa/nvim-dap-projects',
+            'mfussenegger/nvim-dap',
+        }
+    }
 }

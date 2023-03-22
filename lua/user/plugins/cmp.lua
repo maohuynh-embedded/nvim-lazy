@@ -75,12 +75,12 @@ local options = {
     sorting = {
         comparators = {
             require("cmp-under-comparator").under,
+            cmp.config.compare.recently_used,
+            cmp.config.compare.score,
             cmp.config.compare.offset,
             cmp.config.compare.exact,
-            cmp.config.compare.score,
-            cmp.config.compare.recently_used,
-            cmp.config.compare.kind,
             cmp.config.compare.sort_text,
+            cmp.config.compare.kind,
             cmp.config.compare.length,
             cmp.config.compare.order,
         },
@@ -123,9 +123,9 @@ local options = {
     },
     sources = {
         { name = "luasnip", priority = 90, max_item_count = 8 },
-        { name = "nvim_lsp", priority = 100, keyword_length = 1, max_item_count = 8 },
+        { name = "nvim_lsp", priority = 100, keyword_length = 2, max_item_count = 8 },
         { name = "path", priority = 20 },
-        { name = "buffer", priority = 10, keyword_length = 1, max_item_count = 8 },
+        { name = "buffer", priority = 10, keyword_length = 2, max_item_count = 8 },
         { name = "nvim_lua" },
         { name = "nvim_lsp_signature_help" },
     },
