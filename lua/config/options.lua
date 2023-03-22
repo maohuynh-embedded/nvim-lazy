@@ -81,7 +81,6 @@ if vim.g.neovide then
     -- vim.g.neovide_cursor_unfocused_outline_width = 0.125
     -- global.neovide_cursor_vfx_particle_lifetime = 1.2
 
-    -- vim.g.neovide_refresh_rate = 120
     -- global.neovide_cursor_vfx_particle_curl = 1.0
     -- global.neovide_cursor_vfx_particle_density = 7.0
     -- global.neovide_cursor_vfx_particle_speed = 10.0

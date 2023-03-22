@@ -275,6 +275,14 @@ return {
         end,
     },
 
+    {
+        'nvim-treesitter/nvim-treesitter-textobjects',
+        dependencies = 'nvim-treesitter/nvim-treesitter',
+        config = function ()
+            require("user.plugins.nvim-treesitter-textobjects")
+        end
+    },
+
     -- Bracket color
     {
         -- 'p00f/nvim-ts-rainbow',
@@ -495,8 +503,26 @@ return {
     {
         'rcarriga/nvim-dap-ui',
         dependencies = {
-            'ldelossa/nvim-dap-projects',
+            'mfussenegger/nvim-dap',
+        },
+        config = function()
+            require("user.plugins.dapui")
+        end
+    },
+
+    {
+        'ldelossa/nvim-dap-projects',
+        dependencies = {
             'mfussenegger/nvim-dap',
         }
-    }
+    },
+
+    -- Nvim IDE layout
+    -- {
+    --     'ldelossa/nvim-ide',
+    --     event = "BufRead",
+    --     config = function ()
+    --         require("user.plugins.ide")
+    --     end
+    -- },
 }
