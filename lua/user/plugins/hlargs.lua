@@ -20,7 +20,7 @@ hlargs.setup {
     extras = {
         named_parameters = true,
     },
-    hl_priority = 10000,
+    hl_priority = 20,
     excluded_argnames = {
         declarations = {},
         usages = {

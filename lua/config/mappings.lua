@@ -402,6 +402,14 @@ M.telescope = {
 
         -- theme switcher
         ["<leader>th"] = { "<cmd> Telescope themes <CR>", "nvchad themes" },
+
+        -- command
+        ["<leader>cm"] = {
+            function()
+                require('telescope.builtin').commands(require('telescope.themes').get_dropdown())
+            end,
+        }
+
     },
 }
 
@@ -530,25 +538,25 @@ M.align = {
     },
 
     x = {
-        ["aa"] = {
+        ["<leader>aa"] = {
             function()
                 require 'align'.align_to_char(1, true)
             end,
             "Aligns to 1 character, looking left"
         },
-        ["as"] = {
+        ["<leader>as"] = {
             function()
                 require 'align'.align_to_char(2, true, true)
             end,
             "Aligns to 2 characters, looking left and with previews"
         },
-        ["aw"] = {
+        ["<leader>aw"] = {
             function()
                 require 'align'.align_to_string(false, true, true)
             end,
             "Aligns to a string, looking left and with previews"
         },
-        ["ar"] = {
+        ["<leader>ar"] = {
             function()
                 require 'align'.align_to_string(true, true, true)
             end,
@@ -603,6 +611,37 @@ M.iconpicker = {
 M.searchbox = {
     n = {
         ["<leader>ry"] = { "<cmd>SearchBoxReplace confirm=menu<CR>", "Replace with confirm" },
+    },
+}
+
+local ts_repeat_move = require "nvim-treesitter.textobjects.repeatable_move"
+M.treesitter = {
+    n = {
+        [";"] = { ts_repeat_move.repeat_last_move_next, "goes forward" },
+        ["<A-;>"] = { ts_repeat_move.repeat_last_move_previous, "goes previous" },
+    },
+    x = {
+        [";"] = { ts_repeat_move.repeat_last_move_next, "goes forward" },
+        ["<A-;>"] = { ts_repeat_move.repeat_last_move_previous, "goes previous" },
+    },
+    v = {
+        [";"] = { ts_repeat_move.repeat_last_move_next, "goes forward" },
+        ["<A-;>"] = { ts_repeat_move.repeat_last_move_previous, "goes previous" },
+    },
+}
+
+M.vimspector = {
+    n = {
+        ["<F1>"] = { "<cmd>call vimspector#Launch()<CR>", "Launch"},
+        ["<F2>"] = { "<cmd>call vimspector#Reset()<CR>", "Reset"},
+        ["<F8>"] = { "<cmd>call vimspector#Continue()<CR>", "Continue"},
+        ["<F6>"] = { "<cmd>call vimspector#ToggleBreakpoint()<CR>", "ToggleBreakpoint"},
+        ["<F7>"] = { "<cmd>call vimspector#ClearBreakpoints()<CR>", "ClearBreakpoints"},
+
+        ["<F3>"] = { "<Plug>VimspectorRestart", "restart"},
+        ["<F9>"] = { "<Plug>VimspectorStepOut", "stepout"},
+        ["<F10>"] = { "<Plug>VimspectorStepInto", "step into"},
+        ["<F11>"] = { "<Plug>VimspectorStepOver", "step over"},
     },
 }
 

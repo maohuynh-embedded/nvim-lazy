@@ -278,7 +278,7 @@ return {
     {
         'nvim-treesitter/nvim-treesitter-textobjects',
         dependencies = 'nvim-treesitter/nvim-treesitter',
-        config = function ()
+        config = function()
             require("user.plugins.nvim-treesitter-textobjects")
         end
     },
@@ -290,8 +290,8 @@ return {
     },
 
     {
-        -- 'HiPhish/nvim-ts-rainbow2',
-        -- dependencies = { 'nvim-treesitter/nvim-treesitter' },
+        'HiPhish/nvim-ts-rainbow2',
+        dependencies = { 'nvim-treesitter/nvim-treesitter' },
     },
 
     {
@@ -499,23 +499,24 @@ return {
         dependencies = "cmp_luasnip",
     },
 
+    -- FIX: Investigate to usage plugin debug with UI
     -- Debug
-    {
-        'rcarriga/nvim-dap-ui',
-        dependencies = {
-            'mfussenegger/nvim-dap',
-        },
-        config = function()
-            require("user.plugins.dapui")
-        end
-    },
-
-    {
-        'ldelossa/nvim-dap-projects',
-        dependencies = {
-            'mfussenegger/nvim-dap',
-        }
-    },
+    -- {
+    --     'rcarriga/nvim-dap-ui',
+    --     dependencies = {
+    --         'mfussenegger/nvim-dap',
+    --     },
+    --     config = function()
+    --         require("user.plugins.dapui")
+    --     end
+    -- },
+    --
+    -- {
+    --     'ldelossa/nvim-dap-projects',
+    --     dependencies = {
+    --         'mfussenegger/nvim-dap',
+    --     }
+    -- },
 
     -- Nvim IDE layout
     -- {
@@ -525,4 +526,8 @@ return {
     --         require("user.plugins.ide")
     --     end
     -- },
+    {
+        'puremourning/vimspector',
+        event = "BufRead",
+    }
 }
