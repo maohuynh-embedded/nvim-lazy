@@ -632,17 +632,100 @@ M.treesitter = {
 
 M.vimspector = {
     n = {
-        ["<F1>"] = { "<cmd>call vimspector#Launch()<CR>", "Launch"},
-        ["<F2>"] = { "<cmd>call vimspector#Reset()<CR>", "Reset"},
-        ["<F8>"] = { "<cmd>call vimspector#Continue()<CR>", "Continue"},
-        ["<F6>"] = { "<cmd>call vimspector#ToggleBreakpoint()<CR>", "ToggleBreakpoint"},
-        ["<F7>"] = { "<cmd>call vimspector#ClearBreakpoints()<CR>", "ClearBreakpoints"},
+        ["<F1>"] = { "<cmd>call vimspector#Launch()<CR>", "Launch" },
+        ["<F2>"] = { "<cmd>call vimspector#Reset()<CR>", "Reset" },
+        ["<F8>"] = { "<cmd>call vimspector#Continue()<CR>", "Continue" },
+        ["<F6>"] = { "<cmd>call vimspector#ToggleBreakpoint()<CR>", "ToggleBreakpoint" },
+        ["<F7>"] = { "<cmd>call vimspector#ClearBreakpoints()<CR>", "ClearBreakpoints" },
 
-        ["<F3>"] = { "<Plug>VimspectorRestart", "restart"},
-        ["<F9>"] = { "<Plug>VimspectorStepOut", "stepout"},
-        ["<F10>"] = { "<Plug>VimspectorStepInto", "step into"},
-        ["<F11>"] = { "<Plug>VimspectorStepOver", "step over"},
+        ["<F3>"] = { "<Plug>VimspectorRestart", "restart" },
+        ["<F9>"] = { "<Plug>VimspectorStepOut", "stepout" },
+        ["<F10>"] = { "<Plug>VimspectorStepInto", "step into" },
+        ["<F11>"] = { "<Plug>VimspectorStepOver", "step over" },
     },
+}
+
+M.spider = {
+    n = {
+        ["w"] = {
+            function()
+                require("spider").motion("w")
+            end,
+            " spider w"
+        },
+        ["e"] = {
+            function()
+                require("spider").motion("e")
+            end,
+            " spider e"
+        },
+        ["b"] = {
+            function()
+                require("spider").motion("b")
+            end,
+            " spider b"
+        },
+        ["ge"] = {
+            function()
+                require("spider").motion("ge")
+            end,
+            " spider ge"
+        },
+    },
+    o = {
+        ["w"] = {
+            function()
+                require("spider").motion("w")
+            end,
+            " spider w"
+        },
+        ["e"] = {
+            function()
+                require("spider").motion("e")
+            end,
+            " spider e"
+        },
+        ["b"] = {
+            function()
+                require("spider").motion("b")
+            end,
+            " spider b"
+        },
+        ["ge"] = {
+            function()
+                require("spider").motion("ge")
+            end,
+            " spider ge"
+        },
+    },
+
+    x = {
+        ["w"] = {
+            function()
+                require("spider").motion("w")
+            end,
+            " spider w"
+        },
+        ["e"] = {
+            function()
+                require("spider").motion("e")
+            end,
+            " spider e"
+        },
+        ["b"] = {
+            function()
+                require("spider").motion("b")
+            end,
+            " spider b"
+        },
+        ["ge"] = {
+            function()
+                require("spider").motion("ge")
+            end,
+            " spider ge"
+        },
+    }
+
 }
 
 return M
