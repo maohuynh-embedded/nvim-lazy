@@ -34,7 +34,7 @@ return {
     -- Change font size
     {
         'tenxsoydev/size-matters.nvim',
-        cmd = { "FontSizeUp 1", "FontSizeDown 1" },
+        cmd = { "FontSizeUp", "FontSizeDown" },
         config = function()
             require("user.plugins.scalefont")
         end,
@@ -161,6 +161,14 @@ return {
         event = "BufRead",
     },
 
+    {
+        "chrisgrieser/nvim-spider",
+        event = "BufRead",
+        config = function ()
+            require('user.plugins.spider')
+        end
+    },
+
     -- Quick scope move word
     {
         'phaazon/hop.nvim',
@@ -284,13 +292,14 @@ return {
     },
 
     -- Bracket color
-    {
-        -- 'p00f/nvim-ts-rainbow',
-        -- dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    },
+    -- {
+    --     'p00f/nvim-ts-rainbow',
+    --     dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    -- },
 
     {
         'HiPhish/nvim-ts-rainbow2',
+        event = "BufRead",
         dependencies = { 'nvim-treesitter/nvim-treesitter' },
     },
 

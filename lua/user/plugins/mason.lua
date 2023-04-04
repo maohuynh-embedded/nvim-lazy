@@ -5,7 +5,7 @@ end
 
 local options = {
     ensure_installed = { "lua-language-server" }, -- not an option from mason.nvim
-
+    PATH = "prepend", -- "skip" seems to cause the spawning error
     ui = {
         icons = {
             package_pending = " ",
