@@ -26,7 +26,7 @@ local options = {
     cursorline = true,
 
     -- Limited height box suggestion
-    pumheight = 12,
+    pumheight = 15,
     cmdheight = 1,
 
     -- Time to update nvim, delay between multi shortcut
