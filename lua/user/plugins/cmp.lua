@@ -53,22 +53,22 @@ local options = {
                 luasnip = 1,
             }
             vim_item.kind = string.format("%s %s", icons[vim_item.kind], vim_item.kind)
-            -- vim_item.menu = ({
-            --     nvim_lsp = "[🌈] LSP",
-            --     emoji = "[🤡] Emoji",
-            --     path = "[🔗] Path",
-            --     calc = "[🖥️] CALC",
-            --
-            --     cmp_tabnine = "[🤖] TabNine",
-            --     vsnip = "[🚀] Snippet",
-            --     luasnip = "[💡] Snippet",
-            --     buffer = "[👾] Buffer",
-            --     treesitter = "[🌳] Treesitter",
-            -- })[_.source.name]
+            vim_item.menu = ({
+                nvim_lsp = "[🌈] LSP",
+                emoji = "[🤡] Emoji",
+                path = "[🔗] Path",
+                calc = "[🖥️] CALC",
 
-            -- if _.source.name == "vsnip" or _.source.name == "nvim_lsp" or _.source.name == "luasnip" then
-            vim_item.dup = duplicates[_.source.name] or 0
-            -- end
+                cmp_tabnine = "[🤖] TabNine",
+                vsnip = "[🚀] Snippet",
+                luasnip = "[💡] Snippet",
+                buffer = "[👾] Buffer",
+                treesitter = "[🌳] Treesitter",
+            })[_.source.name]
+
+            if _.source.name == "vsnip" or _.source.name == "nvim_lsp" or _.source.name == "luasnip" then
+                vim_item.dup = duplicates[_.source.name] or 0
+            end
             return vim_item
         end,
     },
@@ -122,10 +122,10 @@ local options = {
         }),
     },
     sources = {
-        { name = "luasnip", priority = 90, max_item_count = 8 },
-        { name = "nvim_lsp", priority = 100, keyword_length = 2, max_item_count = 8 },
+        { name = "luasnip", priority = 90, max_item_count = 12},
+        { name = "nvim_lsp", priority = 100, keyword_length = 2, max_item_count = 12 },
         { name = "path", priority = 20 },
-        { name = "buffer", priority = 10, keyword_length = 2, max_item_count = 8 },
+        { name = "buffer", priority = 10, keyword_length = 2, max_item_count = 12 },
         { name = "nvim_lua" },
         { name = "nvim_lsp_signature_help" },
     },
