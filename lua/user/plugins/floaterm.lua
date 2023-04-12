@@ -13,3 +13,4 @@ local floaterm = {
 for k, v in pairs(floaterm) do
     vim.g[k] = v
 end
+

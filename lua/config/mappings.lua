@@ -728,4 +728,21 @@ M.spider = {
 
 }
 
+-- M.commentbox = {
+--     n = {
+--         ["<leader>bb"] = { "<Cmd>lua require('comment-box').lbox()<CR>", "left box" },
+--         ["<leader>bc"] = { "<Cmd>lua require('comment-box').accbox()<CR>", "centered box" },
+--         ["<leader>bl"] = { "<Cmd>lua require('comment-box').cline()<CR>", "centered line" },
+--     },
+--
+--     i = {
+--         ["<M-b>"] = { "<Cmd>lua require('comment-box').cline()<CR>", "centered line" }
+--     },
+--
+--     v = {
+--         ["<leader>bb"] = { "<Cmd>lua require('comment-box').lbox()<CR>", "left box" },
+--         ["<leader>bc"] = { "<Cmd>lua require('comment-box').accbox()<CR>", "centered box" },
+--     },
+-- }
+
 return M

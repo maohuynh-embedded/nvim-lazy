@@ -164,7 +164,7 @@ return {
     {
         "chrisgrieser/nvim-spider",
         event = "BufRead",
-        config = function ()
+        config = function()
             require('user.plugins.spider')
         end
     },
@@ -191,6 +191,15 @@ return {
         config = function()
             require("user.plugins.comment")
         end,
+    },
+
+    -- Comment box
+    {
+        'LudoPinelli/comment-box.nvim',
+        event = "BufRead",
+        config = function()
+            require("user.plugins.comment-box")
+        end
     },
 
     -- Smart column
@@ -252,6 +261,14 @@ return {
         end,
     },
 
+    -- INFO: Float term hardcore config
+    -- {
+    --     'rebelot/terminal.nvim',
+    --     config = function ()
+    --         require("user.plugins.terminal")
+    --     end
+    -- },
+
     -- {
     --     'akinsho/toggleterm.nvim',
     --     version = "*",
@@ -261,16 +278,28 @@ return {
     -- },
 
     -- Search box
-    {
-        'VonHeikemen/searchbox.nvim',
-        dependencies = {
-            'MunifTanjim/nui.nvim',
-        },
-        event = "BufRead",
-        config = function()
-            require("user.plugins.searchbox")
-        end,
-    },
+    -- {
+    --     'VonHeikemen/searchbox.nvim',
+    --     dependencies = {
+    --         'MunifTanjim/nui.nvim',
+    --     },
+    --     event = "BufRead",
+    --     config = function()
+    --         require("user.plugins.searchbox")
+    --     end,
+    -- },
+    -- Replace
+    -- {
+    --     'ray-x/sad.nvim',
+    --     -- event = "BufRead",
+    --     dependencies = {
+    --         "ray-x/guihua.lua",
+    --         build = "cd lua/fzy && make"
+    --     },
+    --     config = function()
+    --         require("user.plugins.sad")
+    --     end
+    -- },
 
     -- Code highlight
     {
@@ -292,29 +321,32 @@ return {
     },
 
     -- Bracket color
-    -- {
-    --     'p00f/nvim-ts-rainbow',
-    --     dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    -- },
-
     {
-        'HiPhish/nvim-ts-rainbow2',
+        'p00f/nvim-ts-rainbow',
         event = "BufRead",
         dependencies = { 'nvim-treesitter/nvim-treesitter' },
     },
 
-    {
-        "jackMort/ChatGPT.nvim",
-        config = function()
-            require("user.plugins.gpt")
-        end,
-        dependencies = {
-            "MunifTanjim/nui.nvim",
-            "nvim-lua/plenary.nvim",
-            "nvim-telescope/telescope.nvim"
-        }
-    },
+    -- {
+    --     'HiPhish/nvim-ts-rainbow2',
+    --     event = "BufRead",
+    --     dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    -- },
 
+    -- TODO: Investigate to using and setup for ChatGPT
+    -- {
+    --     "jackMort/ChatGPT.nvim",
+    --     config = function()
+    --         require("user.plugins.gpt")
+    --     end,
+    --     dependencies = {
+    --         "MunifTanjim/nui.nvim",
+    --         "nvim-lua/plenary.nvim",
+    --         "nvim-telescope/telescope.nvim"
+    --     }
+    -- },
+
+    -- TODO: Add feature autosave after changing current workspace
     -- {
     --     'Pocco81/auto-save.nvim',
     --     config = function ()
@@ -322,6 +354,8 @@ return {
     --     end
     -- },
 
+    -- BUG: This plugin is conflicted configurations with JABS
+    -- INFO: The JABS will be error, if enable this plugin
     {
         -- "kevinhwang91/nvim-bqf",
         -- event = { "BufRead", "BufNew" },
@@ -462,7 +496,7 @@ return {
 
     -- load luasnips + cmp related in insert mode only
     {
-        'rafamadriz/friendly-snippets',
+        'hungnguyen1503/friendly-snippets',
         event = "InsertEnter",
     },
     {
@@ -527,6 +561,7 @@ return {
     --     }
     -- },
 
+    -- TODO: Check this plugin runs with debug dap or vimspector
     -- Nvim IDE layout
     -- {
     --     'ldelossa/nvim-ide',
@@ -535,8 +570,10 @@ return {
     --         require("user.plugins.ide")
     --     end
     -- },
-    {
-        'puremourning/vimspector',
-        event = "BufRead",
-    }
+
+    -- TODO: More investigation for debugging
+    -- {
+    --     'puremourning/vimspector',
+    --     event = "BufRead",
+    -- }
 }

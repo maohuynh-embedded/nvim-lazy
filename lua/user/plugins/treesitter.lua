@@ -33,12 +33,12 @@ local options = {
     rainbow = {
         enable = true,
         -- Which query to use for finding delimiters
-        query = 'rainbow-parens',
+        -- query = 'rainbow-parens',
         -- Highlight the entire buffer all at once
-        strategy = require 'ts-rainbow.strategy.global',
+        -- strategy = require 'ts-rainbow.strategy.global',
 
-        -- extended_mode = true,
-        -- max_file_lines = nil,
+        extended_mode = true,
+        max_file_lines = nil,
         colors = {
             '#458588',
             '#b16286',
@@ -76,9 +76,9 @@ local options = {
             'red',
         },
     },
-    -- matchup = {
-    --     enable = false,
-    -- },
+    matchup = {
+        enable = true,
+    },
 }
 
 treesitter.setup(options)
