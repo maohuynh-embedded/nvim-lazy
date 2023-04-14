@@ -43,7 +43,7 @@ lspsaga.setup({
         },
     },
     lightbulb = {
-        enable = true,
+        enable = false,
         enable_in_insert = false,
         sign = true,
         sign_priority = 40,
@@ -65,7 +65,6 @@ lspsaga.setup({
         mark = 'x',
         confirm = '<CR>',
         in_select = true,
-        whole_project = true,
     },
     outline = {
         win_position = 'right',

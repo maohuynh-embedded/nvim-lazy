@@ -301,6 +301,15 @@ return {
     --     end
     -- },
 
+
+    -- Vim easy replace
+    {
+        'kqito/vim-easy-replace',
+        config = function ()
+            require("user.plugins.replace")
+        end
+    },
+
     -- Code highlight
     {
         'nvim-treesitter/nvim-treesitter',

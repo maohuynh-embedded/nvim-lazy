@@ -292,12 +292,12 @@ M.lspconfig = {
             "lsp definition type",
         },
 
-        -- ["<leader>ra"] = {
-        --   function()
-        --     vim.lsp.buf.rename()
-        --   end,
-        --   "lsp rename",
-        -- },
+        ["<leader>ra"] = {
+            function()
+                vim.lsp.buf.rename()
+            end,
+            "lsp rename",
+        },
 
         -- ["<leader>ca"] = {
         --   function()
@@ -415,15 +415,15 @@ M.telescope = {
 
 M.lspsaga = {
     n = {
-        ["gpd"]        = { "<cmd>Lspsaga peek_definition<CR>", "goto peek definition" },
-        ["gf"]         = { "<cmd>Lspsaga lsp_finder<CR>", "lsp finder" },
+        ["gpd"]        = { "zt<cmd>Lspsaga peek_definition<CR>", "goto peek definition" },
+        ["gf"]         = { "zt<cmd>Lspsaga lsp_finder<CR>", "lsp finder" },
         ["K"]          = { "<cmd>Lspsaga hover_doc<CR>", "Hover doc" },
         ["<leader>go"] = { "<cmd>Lspsaga show_line_diagnostics<CR>", "show line diagnostic" },
         ["<leader>gc"] = { "<cmd>Lspsaga show_cursor_diagnostics<CR>", "show cursor diagnostic" },
         ["<leader>gb"] = { "<cmd>Lspsaga show_buf_diagnostics<CR>", "show buffer diagnostic" },
         ["<leader>gj"] = { "<cmd>Lspsaga diagnostic_jump_next<CR>", "diagnostic jump next" },
         ["<leader>gk"] = { "<cmd>Lspsaga diagnostic_jump_prev<CR>", "diagnostic jump previous" },
-        ["<leader>ra"] = { "<cmd>Lspsaga rename<CR>", "lsp rename" },
+        -- ["<leader>ra"] = { "<cmd>Lspsaga rename<CR>", "lsp rename" },
         ["<leader>ca"] = { "<cmd>Lspsaga code_action<CR>", "lsp code_action" },
         ["<leader>o"]  = { "<cmd>Lspsaga outline<CR>", "Lspsaga outline" },
     },
@@ -726,6 +726,18 @@ M.spider = {
         },
     }
 
+}
+
+M.replace = {
+    n = {
+        ["<leader>rw"] = { "<cmd>EasyReplaceWord<CR>", "Replace word"},
+        ["<leader>rc"] = { "<cmd>EasyReplaceCword<CR>", "Replace cursor word"},
+    },
+
+    x = {
+        ["<leader>rw"] = { "<cmd>EasyReplaceWordInVisual<CR>", "Replace word"},
+        ["<leader>rc"] = { "<cmd>EasyReplaceCwordInVisual<CR>", "Replace cursor word"},
+    }
 }
 
 -- M.commentbox = {
