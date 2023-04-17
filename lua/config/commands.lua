@@ -98,10 +98,10 @@ autocmd("TextYankPost", {
 })
 
 -- Update rainbow
--- autocmd("CmdlineLeave, CmdlineChanged, CmdlineEnter, InsertLeave, InsertChange", {
---     pattern = "*",
---     command = "TSToggle rainbow | TSToggle rainbow",
--- })
+autocmd("CmdlineLeave, CmdlineChanged, CmdlineEnter, InsertLeave, InsertChange", {
+    pattern = "*",
+    command = "TSToggle rainbow | TSToggle rainbow",
+})
 
 -- autocmd("BufRead", {
 --     pattern = "*",

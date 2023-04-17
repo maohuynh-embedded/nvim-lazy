@@ -69,7 +69,7 @@ barbar.setup {
 
         -- Configure the icons on the bufferline based on the visibility of a buffer.
         -- Supports all the base icon options, plus `modified` and `pinned`.
-        alternate = { filetype = { enabled = false } },
+        alternate = { filetype = { enabled = true } },
         current = { buffer_index = true },
         inactive = { button = '' },
         visible = { modified = { buffer_number = false } },
