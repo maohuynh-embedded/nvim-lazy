@@ -82,6 +82,6 @@ local options = {
 }
 
 treesitter.setup(options)
-install.compilers = { "x86_64-w64-mingw32-clang", "gcc", "g++" }
+install.compilers = { "x86_64-w64-mingw32-clang"}
 
 vim.api.nvim_set_hl(0, "@punctuation.bracket", { link = "" })
