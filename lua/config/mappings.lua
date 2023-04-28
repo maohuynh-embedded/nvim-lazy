@@ -13,10 +13,11 @@ M.general = {
 
         -- Delete
         ["<C-BS>"] = { "<C-o>b<C-o>dw", "Delete by Ctrl Backspace" },
+        ["<C-Del>"] = { "<C-o>dw", "Delete by Ctrl Backspace" },
 
         -- Save file
         ["<C-s>"] = {
-            "<ESC>:w | silent lua require'notify'('Saving file ....', 'success', {title = 'System', timeout = 1000})<cr>",
+            "<ESC>:w | silent lua require'notify'('Saving file ....', 'success', {title = 'System', timeout = 1000})<cr>a",
             "Save file in insert mode",
             opts = { silent = true },
         },
