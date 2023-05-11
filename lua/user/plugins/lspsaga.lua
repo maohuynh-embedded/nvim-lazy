@@ -122,6 +122,13 @@ lspsaga.setup({
             white = '#d1d4cf',
             black = '#1c1c19',
         },
-        kind = {},
+        kind = {
+            -- ['Function'] = { ' ', 'Function' },
+            -- ['Array'] = { '[] ', 'Array' },
+            -- ['String'] = { ' ', 'String' },
+            -- ['Number'] = { ' ', 'Number' },
+            -- ['Text'] = { ' ', 'Text' },
+            -- ['Unit'] = { ' ', 'Number' },
+        },
     },
 })

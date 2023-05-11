@@ -141,20 +141,20 @@ noice.setup({
             },
         },
     },
-    --[[ markdown = {
-		hover = {
-			["|(%s-)|"] = vim.cmd.help, -- vim help links
-			["%[.-%]%((%s-)%)"] = require("noice.util").open, -- markdown links
-		},
-		highlights = {
-			["|%s-|"] = "@text.reference",
-			["@%s+"] = "@parameter",
-			["^%s*(parameters:)"] = "@text.title",
-			["^%s*(return:)"] = "@text.title",
-			["^%s*(see also:)"] = "@text.title",
-			["{%s-}"] = "@parameter",
-		},
-	}, ]]
+    markdown = {
+        hover = {
+            ["|(%s-)|"] = vim.cmd.help, -- vim help links
+            ["%[.-%]%((%s-)%)"] = require("noice.util").open, -- markdown links
+        },
+        highlights = {
+            ["|%s-|"] = "@text.reference",
+            ["@%s+"] = "@parameter",
+            ["^%s*(parameters:)"] = "@text.title",
+            ["^%s*(return:)"] = "@text.title",
+            ["^%s*(see also:)"] = "@text.title",
+            ["{%s-}"] = "@parameter",
+        },
+    },
     health = {
         checker = false, -- disable if you don't want health checks to run
     },

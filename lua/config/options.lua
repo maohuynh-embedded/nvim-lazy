@@ -55,8 +55,9 @@ local options = {
 
     -- Color and font
     termguicolors = true,
-    guifont = "CaskaydiaCove NF:h13",
-    -- guifont = "JetBrainsMono NFM:h13",
+    guifont = "CaskaydiaCove Nerd Font Propo:h13.5",
+    -- guifont = "CaskaydiaCove NF:h13",
+    -- guifont = "Hack Nerd Font Propo:h13",
     -- wildmenu = true,
 }
 

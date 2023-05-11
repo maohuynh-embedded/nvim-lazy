@@ -66,14 +66,14 @@ local options = {
         type = "group",
         val = {
             button("f", "  Find File  ", ":Telescope find_files<CR>"),
-            button("o", "  Recent File  ", ":Telescope oldfiles<CR>"),
-            button("w", "  Find Word  ", ":Telescope live_grep<CR>"),
+            button("o", "  Recent File  ", ":Telescope oldfiles<CR>"),
+            button("w", "  Find Word  ", ":Telescope live_grep<CR>"),
             button("p", "  Find Project  ", ":Telescope project<CR>"),
-            button("m", "  Sessions", ":Telescope menu Sessions<CR>"),
+            button("m", "  Sessions", ":Telescope menu Sessions<CR>"),
             button("b", "  Bookmarks  ", ":Telescope marks<CR>"),
             button("t", "  Themes  ", ":Telescope themes<CR>"),
             button("s", "  Settings", ":e $MYVIMRC | :cd %:p:h <CR>"),
-            button("q", "  Quit NVIM", ":qa<CR>"),
+            button("q", "  Quit NVIM", ":qa<CR>"),
         },
         opts = {
             spacing = 1,

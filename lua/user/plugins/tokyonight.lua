@@ -16,7 +16,6 @@ tokyonight.setup({
     comments = { italic = true, fg = '#5c6370' },
     keywords = { italic = true, fg = '#FFB86C' },
     functions = { fg = '#ff79c6' },
-    -- variables = { fg = '#eae7d7' },
     variables = { fg = '#f9f2eb' },
     -- Background styles. Can be "dark", "transparent" or "normal"
     sidebars = "moon", -- style for sidebars, see below

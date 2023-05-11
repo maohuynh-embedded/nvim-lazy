@@ -17,6 +17,8 @@ lspSymbol("Info", "")
 lspSymbol("Hint", "")
 lspSymbol("Warn", "")
 
+capabilities.offsetEncoding = { "utf-16" }
+
 vim.diagnostic.config {
     virtual_text = {
         prefix = "",

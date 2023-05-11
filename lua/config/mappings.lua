@@ -599,8 +599,8 @@ M.hop = {
 
 M.iconpicker = {
     n = {
-        ["<leader><leader>i"] = { "<cmd>IconPickerNormal<CR>", "Icon picker in normal mode" },
-        ["<leader><leader>y"] = { "<cmd>IconPickerYank<CR>", " Yank the selected icon into register" },
+        ["<leader>ip"] = { "<cmd>IconPickerNormal<CR>", "Icon picker in normal mode" },
+        ["<leader>ii"] = { "<cmd>IconPickerInsert<CR>", " Yank the selected icon into register" },
     },
 
     i = {
@@ -609,11 +609,11 @@ M.iconpicker = {
 }
 
 -- BUG: Mapping for search box is invalid
-M.searchbox = {
-    n = {
-        ["<leader>ry"] = { "<cmd>SearchBoxReplace confirm=menu<CR>", "Replace with confirm" },
-    },
-}
+-- M.searchbox = {
+--     n = {
+--         ["<leader>ry"] = { "<cmd>SearchBoxReplace confirm=menu<CR>", "Replace with confirm" },
+--     },
+-- }
 
 local ts_repeat_move = require "nvim-treesitter.textobjects.repeatable_move"
 M.treesitter = {

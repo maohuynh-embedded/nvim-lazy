@@ -1,7 +1,7 @@
 return {
     -- Icon source (need to be placed at the end) --------------
     {
-        'ryanoasis/vim-devicons',
+        -- 'ryanoasis/vim-devicons',
         'nvim-tree/nvim-web-devicons',
     },
     {
@@ -18,11 +18,6 @@ return {
             require("user.plugins.impatient")
         end,
     },
-    -- {
-    --     'tpope/vim-fugitive',
-    --     'rbong/vim-flog',
-    --     cmd = {"Flog", "Flogsplit"}
-    -- },
     {
         -- Colorscheme manager
         'folke/tokyonight.nvim',
@@ -47,7 +42,6 @@ return {
         config = function()
             require("user.plugins.nvimtree")
         end,
-        --  cmd = 'NvimTreeToogle',
         cmd = { "NvimTreeToggle", "NvimTreeFocus" },
     },
 
@@ -202,16 +196,6 @@ return {
         end
     },
 
-    -- Smart column
-    -- {
-    --     enable = false,
-    --     "m4xshen/smartcolumn.nvim",
-    --     event = "BufRead",
-    --     config = function ()
-    --         require("user.plugins.smartcolumn")
-    --     end
-    -- },
-
     -- Telescope
     {
         'nvim-telescope/telescope.nvim',
@@ -237,7 +221,13 @@ return {
     -- Icon picker
     {
         'ziontee113/icon-picker.nvim',
-        cmd = { "PickEverything", "IconPickerNormal", "PickEverythingInsert" },
+        cmd = {
+            "PickEverything",
+            "IconPickerNormal",
+            "PickEverythingInsert",
+            'IconPickerInsert',
+            'IconPickerYank',
+        },
         config = function()
             require("user.plugins.icon-picker")
         end
@@ -261,51 +251,20 @@ return {
         end,
     },
 
-    -- INFO: Float term hardcore config
-    -- {
-    --     'rebelot/terminal.nvim',
-    --     config = function ()
-    --         require("user.plugins.terminal")
-    --     end
-    -- },
-
-    -- {
-    --     'akinsho/toggleterm.nvim',
-    --     version = "*",
-    --     config = function ()
-    --         require("user.plugins.toggleterm")
-    --     end
-    -- },
-
-    -- Search box
-    -- {
-    --     'VonHeikemen/searchbox.nvim',
-    --     dependencies = {
-    --         'MunifTanjim/nui.nvim',
-    --     },
-    --     event = "BufRead",
-    --     config = function()
-    --         require("user.plugins.searchbox")
-    --     end,
-    -- },
     -- Replace
-    -- {
-    --     'ray-x/sad.nvim',
-    --     -- event = "BufRead",
-    --     dependencies = {
-    --         "ray-x/guihua.lua",
-    --         build = "cd lua/fzy && make"
-    --     },
-    --     config = function()
-    --         require("user.plugins.sad")
-    --     end
-    -- },
-
+    {
+        'AckslD/muren.nvim',
+        commit = '7ea7023cfb67f9094570888bfa8e02c420c43371',
+        cmd = { "MurenToggle", "MurenOpen", "MurenFresh", "MurenUnique" },
+        config = function()
+            require("user.plugins.muren")
+        end
+    };
 
     -- Vim easy replace
     {
         'kqito/vim-easy-replace',
-        config = function ()
+        config = function()
             require("user.plugins.replace")
         end
     },
@@ -323,6 +282,7 @@ return {
 
     {
         'nvim-treesitter/nvim-treesitter-textobjects',
+        commit = 'b6c0cc7f343c981a1aa8cd1d2e264acc2939a586',
         dependencies = 'nvim-treesitter/nvim-treesitter',
         config = function()
             require("user.plugins.nvim-treesitter-textobjects")
@@ -336,25 +296,6 @@ return {
         dependencies = { 'nvim-treesitter/nvim-treesitter' },
     },
 
-    -- {
-    --     'HiPhish/nvim-ts-rainbow2',
-    --     event = "BufRead",
-    --     dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    -- },
-
-    -- TODO: Investigate to using and setup for ChatGPT
-    -- {
-    --     "jackMort/ChatGPT.nvim",
-    --     config = function()
-    --         require("user.plugins.gpt")
-    --     end,
-    --     dependencies = {
-    --         "MunifTanjim/nui.nvim",
-    --         "nvim-lua/plenary.nvim",
-    --         "nvim-telescope/telescope.nvim"
-    --     }
-    -- },
-
     -- TODO: Add feature autosave after changing current workspace
     -- {
     --     'Pocco81/auto-save.nvim',
@@ -362,17 +303,6 @@ return {
     --         require("user.plugins.autosave")
     --     end
     -- },
-
-    -- BUG: This plugin is conflicted configurations with JABS
-    -- INFO: The JABS will be error, if enable this plugin
-    {
-        -- "kevinhwang91/nvim-bqf",
-        -- event = { "BufRead", "BufNew" },
-        -- dependencies = { 'nvim-treesitter/nvim-treesitter' },
-        -- config = function()
-        --     require("user.plugins.bqf")
-        -- end
-    },
 
     -- Align lines
     {
@@ -493,7 +423,6 @@ return {
     -- Show message popup, LSP progress, popup commandline
     -- {
     --     'folke/noice.nvim',
-    --     event = "BufRead",
     --     dependencies = {
     --         "MunifTanjim/nui.nvim",
     --         "rcarriga/nvim-notify",
