@@ -107,7 +107,6 @@ lspsaga.setup({
         outgoing = ' ',
         colors = {
             --float window normal background color
-            -- normal_bg = '#1d1536',
             normal_bg = '#16161E',
             --title background color
             title_bg = '#afd700',
@@ -123,12 +122,6 @@ lspsaga.setup({
             black = '#1c1c19',
         },
         kind = {
-            -- ['Function'] = { ' ', 'Function' },
-            -- ['Array'] = { '[] ', 'Array' },
-            -- ['String'] = { ' ', 'String' },
-            -- ['Number'] = { ' ', 'Number' },
-            -- ['Text'] = { ' ', 'Text' },
-            -- ['Unit'] = { ' ', 'Number' },
         },
     },
 })
