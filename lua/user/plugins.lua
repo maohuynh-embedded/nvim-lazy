@@ -29,6 +29,7 @@ return {
     -- Change font size
     {
         'tenxsoydev/size-matters.nvim',
+        event = "WinScrolled",
         cmd = { "FontSizeUp", "FontSizeDown" },
         config = function()
             require("user.plugins.scalefont")

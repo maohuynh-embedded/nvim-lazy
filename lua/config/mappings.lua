@@ -208,8 +208,8 @@ M.move = {
 
 M.fontsize = {
     n = {
-        ['<leader>if'] = { "<cmd>FontSizeUp 1<CR>", "Increase font 1 size" },
-        ['<leader>df'] = { "<cmd>FontSizeDown 1<CR>", "Decrease font 1 size" },
+        ['<leader>if'] = { "<cmd>FontSizeUp 0.5<CR>", "Increase font 0.5 size" },
+        ['<leader>df'] = { "<cmd>FontSizeDown 0.5<CR>", "Decrease font 0.5 size" },
     }
 }
 
@@ -731,13 +731,13 @@ M.spider = {
 
 M.replace = {
     n = {
-        ["<leader>rw"] = { "<cmd>EasyReplaceWord<CR>", "Replace word"},
-        ["<leader>rc"] = { "<cmd>EasyReplaceCword<CR>", "Replace cursor word"},
+        ["<leader>rw"] = { "<cmd>EasyReplaceWord<CR>", "Replace word" },
+        ["<leader>rc"] = { "<cmd>EasyReplaceCword<CR>", "Replace cursor word" },
     },
 
     x = {
-        ["<leader>rw"] = { "<cmd>EasyReplaceWordInVisual<CR>", "Replace word"},
-        ["<leader>rc"] = { "<cmd>EasyReplaceCwordInVisual<CR>", "Replace cursor word"},
+        ["<leader>rw"] = { "<cmd>EasyReplaceWordInVisual<CR>", "Replace word" },
+        ["<leader>rc"] = { "<cmd>EasyReplaceCwordInVisual<CR>", "Replace cursor word" },
     }
 }
 
