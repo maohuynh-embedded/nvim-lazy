@@ -255,7 +255,6 @@ return {
     -- Replace
     {
         'AckslD/muren.nvim',
-        commit = '7ea7023cfb67f9094570888bfa8e02c420c43371',
         cmd = { "MurenToggle", "MurenOpen", "MurenFresh", "MurenUnique" },
         config = function()
             require("user.plugins.muren")

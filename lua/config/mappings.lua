@@ -758,4 +758,13 @@ M.replace = {
 --     },
 -- }
 
+M.muren = {
+    n = {
+        ["<leader>mr"] = { "<cmd>MurenToggle", "Replace word" },
+    },
+    v = {
+        ["<leader>mr"] = { "<cmd>MurenToggle", "Replace word in range visual mode" },
+    },
+}
+
 return M
