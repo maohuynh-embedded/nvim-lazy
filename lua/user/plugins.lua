@@ -111,11 +111,15 @@ return {
     {
         'sindrets/diffview.nvim',
         pin = true,
+        cmd = {
+            "DiffviewOpen",
+            "DiffviewToggleFiles",
+            "DiffviewFocusFiles"
+        },
         dependencies = { 'nvim-lua/plenary.nvim' },
         config = function()
             require("user.plugins.diffview")
         end,
-        cmd = { "DiffviewOpen", "DiffviewToggleFiles", "DiffviewFocusFiles" },
     },
 
     -- Quick edit parentheses
@@ -246,7 +250,11 @@ return {
     -- Float terminal
     {
         'voldikss/vim-floaterm',
-        cmd = { "FloatermToggle", "FloatermNew", "FloatermShow" },
+        cmd = {
+            "FloatermToggle",
+            "FloatermNew",
+            "FloatermShow"
+        },
         config = function()
             require("user.plugins.floaterm")
         end,
@@ -255,7 +263,12 @@ return {
     -- Replace
     {
         'AckslD/muren.nvim',
-        cmd = { "MurenToggle", "MurenOpen", "MurenFresh", "MurenUnique" },
+        cmd = {
+            "MurenToggle",
+            "MurenOpen",
+            "MurenFresh",
+            "MurenUnique"
+        },
         config = function()
             require("user.plugins.muren")
         end
