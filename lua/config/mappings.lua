@@ -121,6 +121,7 @@ M.general = {
         ["<Down>"]   = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
         -- Format range
         ["<space>f"] = { "<cmd>lua require'lsp-range-format'.format()<CR>", "format range" },
+        ["y"] = { "mcy`c", "copy not move cursor" },
     },
 
     x = {
