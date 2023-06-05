@@ -121,7 +121,7 @@ M.general = {
         ["<Down>"]   = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
         -- Format range
         ["<space>f"] = { "<cmd>lua require'lsp-range-format'.format()<CR>", "format range" },
-        ["y"] = { "mcy`c", "copy not move cursor" },
+        ["y"]        = { "mcy`c", "copy not move cursor" },
     },
 
     x = {
@@ -211,6 +211,10 @@ M.fontsize = {
     n = {
         ['<leader>if'] = { "<cmd>FontSizeUp 0.5<CR>", "Increase font 0.5 size" },
         ['<leader>df'] = { "<cmd>FontSizeDown 0.5<CR>", "Decrease font 0.5 size" },
+    },
+    i = {
+        ['<leader>if'] = { "<cmd>FontSizeUp 0.5<CR>", "Increase font 0.5 size" },
+        ['<leader>df'] = { "<cmd>FontSizeDown 0.5<CR>", "Decrease font 0.5 size" },
     }
 }
 
@@ -266,12 +270,12 @@ M.lspconfig = {
             "lsp definition",
         },
 
-        -- ["K"] = {
-        --     function()
-        --         vim.lsp.buf.hover()
-        --     end,
-        --     "lsp hover",
-        -- },
+        ["K"] = {
+            function()
+                vim.lsp.buf.hover()
+            end,
+            "lsp hover",
+        },
 
         ["gi"] = {
             function()
@@ -417,9 +421,9 @@ M.telescope = {
 
 M.lspsaga = {
     n = {
-        ["gpd"]        = { "zt<cmd>Lspsaga peek_definition<CR>", "goto peek definition" },
-        ["gf"]         = { "zt<cmd>Lspsaga lsp_finder<CR>", "lsp finder" },
-        ["K"]          = { "<cmd>Lspsaga hover_doc<CR>", "Hover doc" },
+        ["gpd"]        = { "<cmd>Lspsaga peek_definition<CR>", "goto peek definition" },
+        ["gf"]         = { "<cmd>Lspsaga lsp_finder<CR>", "lsp finder" },
+        -- ["K"]          = { "<cmd>Lspsaga hover_doc<CR>", "Hover doc" },
         ["<leader>go"] = { "<cmd>Lspsaga show_line_diagnostics<CR>", "show line diagnostic" },
         ["<leader>gc"] = { "<cmd>Lspsaga show_cursor_diagnostics<CR>", "show cursor diagnostic" },
         ["<leader>gb"] = { "<cmd>Lspsaga show_buf_diagnostics<CR>", "show buffer diagnostic" },

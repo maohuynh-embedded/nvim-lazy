@@ -55,12 +55,16 @@ local options = {
 
     -- Color and font
     termguicolors = true,
-    guifont = "CaskaydiaCove Nerd Font Propo:h13.5",
+    guifont       = "CaskaydiaCove Nerd Font Propo:h13.5",
     -- guifont = "CaskaydiaCove NF:h13",
     -- guifont = "Hack Nerd Font Propo:h13.5",
     -- guifont = "Hack Nerd Font Mono:h13.5",
-    -- wildmenu = true,
+    wildmenu      = true,
+    synmaxcol     = 300,
 }
+
+vim.opt.syntax.minlines = 200
+vim.opt.syntax.maxlines = 500
 
 vim.g.mapleader = ","
 for k, v in pairs(options) do
@@ -82,6 +86,7 @@ if vim.g.neovide then
     vim.g.neovide_cursor_animate_in_insert_mode = true
     vim.g.neovide_cursor_animate_command_line = true
     vim.g.neovide_cursor_unfocused_outline_width = 0.125
+    vim.g.neovide_fullscreen = false
 
     -- vim.g.neovide_floating_blur_amount_x = 5.0
     -- vim.g.neovide_floating_blur_amount_y = 5.0

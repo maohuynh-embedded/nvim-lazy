@@ -73,7 +73,7 @@ lspsaga.setup({
         show_detail = true,
         auto_preview = true,
         auto_refresh = true,
-        auto_close = true,
+        auto_close = false,
         custom_sort = nil,
         keys = {
             jump = 'o',
@@ -87,7 +87,7 @@ lspsaga.setup({
         hide_keyword = true,
         show_file = true,
         folder_level = 2,
-        respect_root = false,
+        respect_root = true,
         color_mode = true,
     },
     ui = {

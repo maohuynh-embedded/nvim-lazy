@@ -527,4 +527,33 @@ return {
     --     'puremourning/vimspector',
     --     event = "BufRead",
     -- }
+
+    {
+        "nvim-neorg/neorg",
+        -- build = ":Neorg sync-parsers", -- It should be enable after frist installation.
+        dependencies = { "nvim-lua/plenary.nvim" },
+        opts = {
+            load = {
+                ["core.defaults"] = {}, -- Loads default behaviour
+                ["core.concealer"] = {}, -- Adds pretty icons to your documents
+                ["core.dirman"] = { -- Manages Neorg workspaces
+                    config = {
+                        workspaces = {
+                            notes = "~/notes",
+                        },
+                    },
+                },
+            },
+        },
+    },
+
+    {
+        'stevearc/aerial.nvim',
+        opts = {},
+        -- Optional dependencies
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+            "nvim-tree/nvim-web-devicons"
+        },
+    }
 }
