@@ -58,7 +58,7 @@ return {
     -- Barbar manage buffer
     {
         'romgrk/barbar.nvim',
-        event = "BufRead",
+        event = "VeryLazy",
         config = function()
             require("user.plugins.bufferline")
         end,
@@ -67,7 +67,7 @@ return {
     -- Tab explorer
     {
         'matbme/JABS.nvim',
-        event = "BufRead",
+        event = "VeryLazy",
         config = function()
             require("user.plugins.jabs")
         end,
@@ -76,7 +76,7 @@ return {
     {
         -- Git icon
         'lewis6991/gitsigns.nvim',
-        event = "BufRead",
+        event = "VeryLazy",
         config = function()
             require("user.plugins.gitsigns")
         end,
@@ -92,7 +92,7 @@ return {
 
     {
         'rcarriga/nvim-notify',
-        event = "BufRead",
+        event = "VeryLazy",
         config = function()
             require("user.plugins.notify")
         end
@@ -101,7 +101,7 @@ return {
     {
         -- Smooth scrolling
         'karb94/neoscroll.nvim',
-        event = "BufRead",
+        event = "VeryLazy",
         config = function()
             require("user.plugins.neoscroll")
         end,
@@ -157,12 +157,12 @@ return {
     -- Quick move
     {
         'fedepujol/move.nvim',
-        event = "BufRead",
+        event = "VeryLazy",
     },
 
     {
         "chrisgrieser/nvim-spider",
-        event = "BufRead",
+        event = "VeryLazy",
         config = function()
             require('user.plugins.spider')
         end
@@ -171,22 +171,28 @@ return {
     -- Quick scope move word
     {
         'phaazon/hop.nvim',
-        event = "BufRead",
+        event = "VeryLazy",
         config = function()
             require("hop").setup {}
         end
     },
-
     -- Extract argument in bracket
     {
         'foosoft/vim-argwrap',
         cmd = { "ArgWrap" },
     },
 
+    {
+        'tzachar/highlight-undo.nvim',
+        config = function()
+            require("user.plugins.undo")
+        end
+    },
+
     -- Quick comment
     {
         'numToStr/Comment.nvim',
-        event = "BufRead",
+        event = "VeryLazy",
         config = function()
             require("user.plugins.comment")
         end,
@@ -195,7 +201,7 @@ return {
     -- Comment box
     {
         'LudoPinelli/comment-box.nvim',
-        event = "BufRead",
+        event = "VeryLazy",
         config = function()
             require("user.plugins.comment-box")
         end
@@ -241,7 +247,9 @@ return {
     -- Session manager
     {
         'Shatur/neovim-session-manager',
-        dependencies = { 'nvim-telescope/telescope.nvim' },
+        dependencies = {
+            'nvim-telescope/telescope.nvim'
+        },
         config = function()
             require("user.plugins.session")
         end
@@ -286,7 +294,7 @@ return {
     {
         'nvim-treesitter/nvim-treesitter',
         pin = true,
-        event = "BufRead",
+        event = "VeryLazy",
         build = ":TSUpdate",
         config = function()
             require("user.plugins.treesitter")
@@ -295,7 +303,6 @@ return {
 
     {
         'nvim-treesitter/nvim-treesitter-textobjects',
-        commit = 'b6c0cc7f343c981a1aa8cd1d2e264acc2939a586',
         dependencies = 'nvim-treesitter/nvim-treesitter',
         config = function()
             require("user.plugins.nvim-treesitter-textobjects")
@@ -305,7 +312,7 @@ return {
     -- Bracket color
     {
         'p00f/nvim-ts-rainbow',
-        event = "BufRead",
+        event = "VeryLazy",
         dependencies = { 'nvim-treesitter/nvim-treesitter' },
     },
 
@@ -320,13 +327,13 @@ return {
     -- Align lines
     {
         'Vonr/align.nvim',
-        event = "BufRead",
+        event = "VeryLazy",
     },
 
     -- Quick highlight word
     {
         'RRethy/vim-illuminate',
-        event = "BufRead",
+        event = "VeryLazy",
         config = function()
             require("user.plugins.illuminate")
         end
@@ -335,7 +342,7 @@ return {
     -- Highlight color into hex color
     {
         'NvChad/nvim-colorizer.lua',
-        event = "BufRead",
+        event = "VeryLazy",
         config = function()
             require("user.plugins.colorizer")
         end
@@ -353,7 +360,7 @@ return {
     -- Todo comment
     {
         'folke/todo-comments.nvim',
-        event = "BufRead",
+        event = "VeryLazy",
         config = function()
             require("user.plugins.todo")
         end,
@@ -388,7 +395,7 @@ return {
 
     {
         'Djancyp/lsp-range-format',
-        event = "BufRead",
+        event = "VeryLazy",
     },
 
     -- LSP Neodev
@@ -416,7 +423,8 @@ return {
     -- Display lsp progress loading
     {
         "j-hui/fidget.nvim", -- Display LSP status messages in a floating window
-        event = "BufRead",
+        tag = "legacy",
+        event = "VeryLazy",
         config = function()
             require("user.plugins.fidget")
         end
@@ -424,13 +432,13 @@ return {
 
     -- BUG: Neovide haven't supported for disable blur background
     -- Drop snow in dashboard
-    -- {
-    --     "folke/drop.nvim",
-    --     event = "VimEnter",
-    --     config = function()
-    --         require("user.plugins.drop")
-    --     end,
-    -- },
+    {
+        "folke/drop.nvim",
+        event = "VimEnter",
+        config = function()
+            require("user.plugins.drop")
+        end,
+    },
 
     -- BUG: Neovide haven't supported for this plugin
     -- Show message popup, LSP progress, popup commandline
@@ -516,7 +524,7 @@ return {
     -- Nvim IDE layout
     -- {
     --     'ldelossa/nvim-ide',
-    --     event = "BufRead",
+    --     event = "VeryLazy",
     --     config = function ()
     --         require("user.plugins.ide")
     --     end
@@ -525,7 +533,7 @@ return {
     -- TODO: More investigation for debugging
     -- {
     --     'puremourning/vimspector',
-    --     event = "BufRead",
+    --     event = "VeryLazy",
     -- }
 
     {
@@ -555,5 +563,15 @@ return {
             "nvim-treesitter/nvim-treesitter",
             "nvim-tree/nvim-web-devicons"
         },
-    }
+    },
+
+    -- {
+    --     'Bekaboo/dropbar.nvim',
+    --     event = "BufRead",
+    --     config = function()
+    --         require("user.plugins.dropbar")
+    --     end,
+    -- },
 }
+
+-- Nguyen Quang Hung Tran Vinh Nghi

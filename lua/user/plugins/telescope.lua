@@ -35,8 +35,8 @@ local options = {
             vertical = {
                 mirror = false,
             },
-            width = 0.87,
-            height = 0.80,
+            width = 0.90,
+            height = 0.90,
             preview_cutoff = 120,
         },
         file_sorter = require("telescope.sorters").get_fuzzy_file,
@@ -71,11 +71,11 @@ local options = {
         file_browser = {
             layout_config = {
                 prompt_position = 'top',
-                preview_width = 0.5
+                preview_width = 0.55
             },
         },
         project = {
-            display_type = "minimal",
+            display_type = "full",
             theme = 'dropdown',
             order_by = "asc",
             search_by = "title",

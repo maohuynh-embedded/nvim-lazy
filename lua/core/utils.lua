@@ -146,4 +146,16 @@ M.load_override = function(options_table, name)
     return merge_tb("force", options_table, plugin_options)
 end
 
+M.load_highlights = function()
+    local highlights = require("core.utils").load_config().highlights
+
+    if type(highlights) == "table" then
+        for _, options_table in pairs(highlights) do
+            for name, options in pairs(options_table) do
+                vim.api.nvim_set_hl(0, name, options)
+            end
+        end
+    end
+end
+
 return M

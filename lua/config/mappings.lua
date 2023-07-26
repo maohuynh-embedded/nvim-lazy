@@ -270,12 +270,12 @@ M.lspconfig = {
             "lsp definition",
         },
 
-        ["K"] = {
-            function()
-                vim.lsp.buf.hover()
-            end,
-            "lsp hover",
-        },
+        -- ["K"] = {
+        --     function()
+        --         vim.lsp.buf.hover()
+        --     end,
+        --     "lsp hover",
+        -- },
 
         ["gi"] = {
             function()
@@ -422,8 +422,8 @@ M.telescope = {
 M.lspsaga = {
     n = {
         ["gpd"]        = { "<cmd>Lspsaga peek_definition<CR>", "goto peek definition" },
-        ["gf"]         = { "<cmd>Lspsaga lsp_finder<CR>", "lsp finder" },
-        -- ["K"]          = { "<cmd>Lspsaga hover_doc<CR>", "Hover doc" },
+        ["gf"]         = { "<cmd>Lspsaga finder<CR>", "lsp finder" },
+        ["K"]          = { "<cmd>Lspsaga hover_doc<CR>", "Hover doc" },
         ["<leader>go"] = { "<cmd>Lspsaga show_line_diagnostics<CR>", "show line diagnostic" },
         ["<leader>gc"] = { "<cmd>Lspsaga show_cursor_diagnostics<CR>", "show cursor diagnostic" },
         ["<leader>gb"] = { "<cmd>Lspsaga show_buf_diagnostics<CR>", "show buffer diagnostic" },
@@ -599,6 +599,32 @@ M.hop = {
             end,
             "hop move backward before cursor"
         }
+    },
+    x = {
+        ["f"] = {
+            function()
+                hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
+            end,
+            "hop move forward"
+        },
+        ["F"] = {
+            function()
+                hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true })
+            end,
+            "hop move backward"
+        },
+        ['t'] = {
+            function()
+                hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })
+            end,
+            "hop move forward before cursor"
+        },
+        ['T'] = {
+            function()
+                hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = -1 })
+            end,
+            "hop move backward before cursor"
+        }
     }
 }
 
@@ -612,13 +638,6 @@ M.iconpicker = {
         ["<A-i>"] = { "<cmd>IconPickerInsert<CR>", "Icon picker in insert mode" },
     }
 }
-
--- BUG: Mapping for search box is invalid
--- M.searchbox = {
---     n = {
---         ["<leader>ry"] = { "<cmd>SearchBoxReplace confirm=menu<CR>", "Replace with confirm" },
---     },
--- }
 
 local ts_repeat_move = require "nvim-treesitter.textobjects.repeatable_move"
 M.treesitter = {
@@ -770,6 +789,19 @@ M.muren = {
     v = {
         ["<leader>mr"] = { "<cmd>MurenToggle", "Replace word in range visual mode" },
     },
+}
+
+M.dropbar = {
+    plugin = true,
+    n = {
+        ["<space>ww"] = {
+            function()
+                require("dropbar.api").pick()
+            end,
+            "pick winbar element",
+            opts = { silent = true }
+        },
+    }
 }
 
 return M

@@ -36,7 +36,7 @@ opt.timeoutlen = 400
 opt.undofile = true
 opt.iskeyword = ";,-"
 opt.syntax = "off"
-opt.filetype = "off"
+opt.filetype = "on"
 
 -- interval for writing swap file to disk, also used by gitsigns
 opt.updatetime = 250
