@@ -85,6 +85,7 @@ return {
         -- Git quick command
         'kdheepak/lazygit.nvim',
         cmd = "LazyGit",
+        -- event = "VeryLazy",
         config = function()
             require("user.plugins.lazygit")
         end,
@@ -145,7 +146,9 @@ return {
 
     },
 
+    -- NOTE: Check the new plugin to automate pair
     -- Auto pair
+    -- https://github.com/altermo/ultimate-autopair.nvim
     {
         'windwp/nvim-autopairs',
         config = function()
@@ -179,11 +182,13 @@ return {
     -- Extract argument in bracket
     {
         'foosoft/vim-argwrap',
+        event = "VeryLazy",
         cmd = { "ArgWrap" },
     },
 
     {
         'tzachar/highlight-undo.nvim',
+        event = "VeryLazy",
         config = function()
             require("user.plugins.undo")
         end
@@ -210,6 +215,7 @@ return {
     -- Telescope
     {
         'nvim-telescope/telescope.nvim',
+        -- event = "VeryLazy",
         dependencies = {
             'nvim-lua/plenary.nvim',
             -- File browser
@@ -232,6 +238,7 @@ return {
     -- Icon picker
     {
         'ziontee113/icon-picker.nvim',
+        event = "VeryLazy",
         cmd = {
             "PickEverything",
             "IconPickerNormal",
@@ -247,6 +254,7 @@ return {
     -- Session manager
     {
         'Shatur/neovim-session-manager',
+        -- event = "VeryLazy",
         dependencies = {
             'nvim-telescope/telescope.nvim'
         },
@@ -258,6 +266,8 @@ return {
     -- Float terminal
     {
         'voldikss/vim-floaterm',
+        event = "VeryLazy",
+        commit = 'bcaeabf89a92a924031d471395054d84bd88ce2f',
         cmd = {
             "FloatermToggle",
             "FloatermNew",
@@ -268,9 +278,10 @@ return {
         end,
     },
 
-    -- Replace
+    -- Replace multiple different words in a file or multiple files
     {
         'AckslD/muren.nvim',
+        event = "VeryLazy",
         cmd = {
             "MurenToggle",
             "MurenOpen",
@@ -282,9 +293,24 @@ return {
         end
     };
 
+    -- Search and replace single or visual words/lines
+    {
+        "roobert/search-replace.nvim",
+        event = "VeryLazy",
+        config = function()
+            require("search-replace").setup({
+                -- optionally override defaults
+                default_replace_single_buffer_options = "gcI",
+                default_replace_multi_buffer_options = "egcI",
+            })
+        end,
+    },
+
+    -- NOTE: It should be replace by another plugin
     -- Vim easy replace
     {
         'kqito/vim-easy-replace',
+        event = "VeryLazy",
         config = function()
             require("user.plugins.replace")
         end
@@ -303,6 +329,7 @@ return {
 
     {
         'nvim-treesitter/nvim-treesitter-textobjects',
+        event = 'VeryLazy',
         dependencies = 'nvim-treesitter/nvim-treesitter',
         config = function()
             require("user.plugins.nvim-treesitter-textobjects")
@@ -317,12 +344,12 @@ return {
     },
 
     -- TODO: Add feature autosave after changing current workspace
-    -- {
-    --     'Pocco81/auto-save.nvim',
-    --     config = function ()
-    --         require("user.plugins.autosave")
-    --     end
-    -- },
+    {
+        'okuuva/auto-save.nvim',
+        config = function ()
+            require("user.plugins.autosave")
+        end
+    },
 
     -- Align lines
     {
@@ -369,6 +396,7 @@ return {
     {
         'folke/trouble.nvim',
         cmd = "TroubleToggle",
+        event = 'VeryLazy',
         dependencies = "nvim-tree/nvim-web-devicons",
         config = function()
             require("user.plugins.trouble")
@@ -430,17 +458,18 @@ return {
         end
     },
 
-    -- BUG: Neovide haven't supported for disable blur background
-    -- Drop snow in dashboard
-    {
-        "folke/drop.nvim",
-        event = "VimEnter",
-        config = function()
-            require("user.plugins.drop")
-        end,
-    },
+    -- NOTE: Drop snow in dashboard
+    -- This plugin is being disabled because of decreasing performance
+    -- {
+    --     "folke/drop.nvim",
+    --     event = "VimEnter",
+    --     config = function()
+    --         require("user.plugins.drop")
+    --     end,
+    -- },
 
     -- BUG: Neovide haven't supported for this plugin
+    -- NOTE: This plugin can be supportted for neovide
     -- Show message popup, LSP progress, popup commandline
     -- {
     --     'folke/noice.nvim',
@@ -455,8 +484,8 @@ return {
 
     -- load luasnips + cmp related in insert mode only
     {
-        'hungnguyen1503/friendly-snippets',
-        event = "InsertEnter",
+        'rafamadriz/friendly-snippets',
+        event = "VeryLazy",
     },
     {
         'hrsh7th/nvim-cmp',
@@ -503,15 +532,51 @@ return {
 
     -- FIX: Investigate to usage plugin debug with UI
     -- Debug
-    -- {
-    --     'rcarriga/nvim-dap-ui',
-    --     dependencies = {
-    --         'mfussenegger/nvim-dap',
-    --     },
-    --     config = function()
-    --         require("user.plugins.dapui")
-    --     end
-    -- },
+    {
+        'jay-babu/mason-nvim-dap.nvim',
+        dependencies = {
+            'williamboman/mason.nvim',
+            'mfussenegger/nvim-dap',
+        },
+        -- opts = {
+        --     handlers = {
+        --     },
+        -- },
+        config = function ()
+            require("user.plugins.dapmason")
+        end,
+    },
+
+    {
+        'rcarriga/nvim-dap-ui',
+        event = "VeryLazy",
+        dependencies = {
+            'mfussenegger/nvim-dap',
+        },
+        config = function()
+            -- require("user.plugins.dapui")
+            local dap, dapui = require("dap"), require("dapui")
+            dapui.setup()
+            dap.listeners.after.event_initialized["dapui_config"] = function ()
+                dapui.open()
+            end
+            dap.listeners.before.event_terminated["dapui_config"] = function ()
+                dapui.close()
+            end
+            dap.listeners.before.event_exited["dapui_config"] = function ()
+                dapui.close()
+            end
+        end
+    },
+
+    {
+        'mfussenegger/nvim-dap',
+        config = function (_, _)
+            require("core.utils").load_mappings("dap")
+            -- require("user.plugins.dap_config.c")
+        end
+    },
+
     --
     -- {
     --     'ldelossa/nvim-dap-projects',

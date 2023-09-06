@@ -30,8 +30,8 @@ local options = {
     cmdheight = 1,
 
     -- Time to update nvim, delay between multi shortcut
-    updatetime = 250,
-    timeoutlen = 800,
+    updatetime = 200,
+    timeoutlen = 750,
 
     -- Wrap text
     wrap = false,
@@ -60,12 +60,14 @@ local options = {
     -- guifont = "CaskaydiaCove NF:h13",
     -- guifont = "Hack Nerd Font Propo:h13.5",
     -- guifont = "Hack Nerd Font Mono:h13.5",
-    wildmenu      = true,
-    synmaxcol     = 300,
+    wildmenu      = false,
+    synmaxcol     = 200,
 }
 
-vim.opt.syntax.minlines = 200
-vim.opt.syntax.maxlines = 500
+vim.opt.syntax.minlines = 100
+vim.opt.syntax.maxlines = 200
+
+vim.o.inccommand = "split" -- show the effects of a search / replace in a live preview window
 
 vim.g.mapleader = ","
 for k, v in pairs(options) do
@@ -80,13 +82,13 @@ if vim.g.neovide then
     vim.g.neovide_refresh_rate_idle = 60
     vim.g.neovide_confirm_quit = true
     vim.g.neovide_touch_drag_timeout = 0.17
-    vim.g.neovide_cursor_antialiasing = true
+    vim.g.neovide_cursor_antialiasing = false
     vim.g.neovide_scroll_animation_length = 0.3
     vim.g.neovide_cursor_vfx_particle_density = 0.2
     vim.g.neovide_hide_mouse_when_typing = true
     vim.g.neovide_cursor_animate_in_insert_mode = false
-    vim.g.neovide_cursor_animate_command_line = true
-    vim.g.neovide_cursor_unfocused_outline_width = 0.125
+    vim.g.neovide_cursor_animate_command_line = false
+    -- vim.g.neovide_cursor_unfocused_outline_width = 0.125
     vim.g.neovide_fullscreen = false
 
     vim.g.neovide_floating_blur_amount_x = 0.0

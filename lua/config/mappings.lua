@@ -16,8 +16,13 @@ M.general = {
         ["<C-Del>"] = { "<C-o>dw", "Delete by Ctrl Backspace" },
 
         -- Save file
+        -- ["<C-s>"] = {
+        --     "<ESC>:w | silent lua require'notify'('Saving file ....', 'success', {title = 'System', timeout = 1000})<cr>a",
+        --     "Save file in insert mode",
+        --     opts = { silent = true },
+        -- },
         ["<C-s>"] = {
-            "<ESC>:w | silent lua require'notify'('Saving file ....', 'success', {title = 'System', timeout = 1000})<cr>a",
+            "<ESC>:w<CR>",
             "Save file in insert mode",
             opts = { silent = true },
         },
@@ -91,9 +96,14 @@ M.general = {
         ["N"] = { "<cmd>set hlsearch<CR>N", "previou search" },
 
         -- Source file and save file
+        -- ["<C-s>"] = {
+        --     "<ESC>:w | silent lua require'notify'('Saving file  ', 'success', {title = 'System', timeout = 1000})<cr>",
+        --     "Save file in normal mode",
+        --     opts = { silent = true },
+        -- },
         ["<C-s>"] = {
-            "<ESC>:w | silent lua require'notify'('Saving file  ', 'success', {title = 'System', timeout = 1000})<cr>",
-            "Save file in normal mode",
+            "<ESC>:w<CR>",
+            "Save file in insert mode",
             opts = { silent = true },
         },
 
@@ -625,6 +635,32 @@ M.hop = {
             end,
             "hop move backward before cursor"
         }
+    },
+    o = {
+        ["f"] = {
+            function()
+                hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
+            end,
+            "hop move forward"
+        },
+        ["F"] = {
+            function()
+                hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true })
+            end,
+            "hop move backward"
+        },
+        ['t'] = {
+            function()
+                hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })
+            end,
+            "hop move forward before cursor"
+        },
+        ['T'] = {
+            function()
+                hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = -1 })
+            end,
+            "hop move backward before cursor"
+        }
     }
 }
 
@@ -655,20 +691,22 @@ M.treesitter = {
     },
 }
 
-M.vimspector = {
-    n = {
-        ["<F1>"] = { "<cmd>call vimspector#Launch()<CR>", "Launch" },
-        ["<F2>"] = { "<cmd>call vimspector#Reset()<CR>", "Reset" },
-        ["<F8>"] = { "<cmd>call vimspector#Continue()<CR>", "Continue" },
-        ["<F6>"] = { "<cmd>call vimspector#ToggleBreakpoint()<CR>", "ToggleBreakpoint" },
-        ["<F7>"] = { "<cmd>call vimspector#ClearBreakpoints()<CR>", "ClearBreakpoints" },
-
-        ["<F3>"] = { "<Plug>VimspectorRestart", "restart" },
-        ["<F9>"] = { "<Plug>VimspectorStepOut", "stepout" },
-        ["<F10>"] = { "<Plug>VimspectorStepInto", "step into" },
-        ["<F11>"] = { "<Plug>VimspectorStepOver", "step over" },
-    },
-}
+-- TODO: investigate to use vimspector or dapui 
+--
+-- M.vimspector = {
+--     n = {
+--         ["<F1>"] = { "<cmd>call vimspector#Launch()<CR>", "Launch" },
+--         ["<F2>"] = { "<cmd>call vimspector#Reset()<CR>", "Reset" },
+--         ["<F8>"] = { "<cmd>call vimspector#Continue()<CR>", "Continue" },
+--         ["<F6>"] = { "<cmd>call vimspector#ToggleBreakpoint()<CR>", "ToggleBreakpoint" },
+--         ["<F7>"] = { "<cmd>call vimspector#ClearBreakpoints()<CR>", "ClearBreakpoints" },
+--
+--         ["<F3>"] = { "<Plug>VimspectorRestart", "restart" },
+--         ["<F9>"] = { "<Plug>VimspectorStepOut", "stepout" },
+--         ["<F10>"] = { "<Plug>VimspectorStepInto", "step into" },
+--         ["<F11>"] = { "<Plug>VimspectorStepOver", "step over" },
+--     },
+-- }
 
 M.spider = {
     n = {
@@ -784,22 +822,36 @@ M.replace = {
 
 M.muren = {
     n = {
-        ["<leader>mr"] = { "<cmd>MurenToggle", "Replace word" },
+        ["<leader>mr"] = { "<cmd>MurenToggle<CR>", "Replace word" },
     },
     v = {
-        ["<leader>mr"] = { "<cmd>MurenToggle", "Replace word in range visual mode" },
+        ["<leader>mr"] = { "<cmd>MurenToggle<CR>", "Replace word in range visual mode" },
     },
 }
 
-M.dropbar = {
+-- M.dropbar = {
+--     plugin = true,
+--     n = {
+--         ["<space>ww"] = {
+--             function()
+--                 require("dropbar.api").pick()
+--             end,
+--             "pick winbar element",
+--             opts = { silent = true }
+--         },
+--     }
+-- }
+
+M.dap = {
     plugin = true,
     n = {
-        ["<space>ww"] = {
-            function()
-                require("dropbar.api").pick()
-            end,
-            "pick winbar element",
-            opts = { silent = true }
+        ["<leader>db"] = {
+            "<cmd>DapToggleBreakpoint<CR>",
+            "Add breakpoint at line",
+        },
+        ["<leader>dr"] = {
+            "<cmd>DapContinue<CR>",
+            "Start or continue the debugger",
         },
     }
 }

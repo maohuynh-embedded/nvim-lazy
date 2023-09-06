@@ -79,13 +79,13 @@ lspsaga.setup({
     outline = {
         win_position = "right",
         win_with = "",
-        win_width = 30,
-        preview_width = 0.4,
+        win_width = 50,
+        preview_width = 0.5,
         show_detail = true,
         auto_preview = true,
         auto_refresh = true,
         auto_close = true,
-        auto_resize = false,
+        auto_resize = true,
         custom_sort = nil,
         keys = {
             expand_or_jump = 'o',
@@ -93,7 +93,7 @@ lspsaga.setup({
         },
     },
     symbol_in_winbar = {
-        enable = true,
+        enable = false,
         separator = " ",
         ignore_patterns = {},
         hide_keyword = true,
@@ -137,3 +137,4 @@ lspsaga.setup({
         },
     },
 })
+

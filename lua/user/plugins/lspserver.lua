@@ -4,6 +4,8 @@ if not present then
     return
 end
 
+local a
+
 local on_attach = require("user.plugins.lspconfig").on_attach
 local capabilities = require("user.plugins.lspconfig").capabilities
 
@@ -12,15 +14,16 @@ local function lspSymbol(name, icon)
     vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
 end
 
-lspSymbol("Error" , "")
-lspSymbol("Info"  , "")
-lspSymbol("Hint"  , "")
-lspSymbol("Warn"  , "")
+lspSymbol("Error", "")
+lspSymbol("Info", "")
+lspSymbol("Hint", "")
+lspSymbol("Warn", "")
 
 capabilities.offsetEncoding = { "utf-16" }
 
 vim.diagnostic.config {
     virtual_text = {
+        enabled = false,
         prefix = "",
     },
     signs = true,
@@ -83,6 +86,7 @@ for _, lsp in ipairs(servers) do
                 diagnostics = {
                     -- Get the language server to recognize the `vim` global
                     globals = { "vim" },
+                    virtual_text = false,
                 },
             },
             pylsp = {
@@ -94,5 +98,4 @@ for _, lsp in ipairs(servers) do
             }
         },
     })
-
 end

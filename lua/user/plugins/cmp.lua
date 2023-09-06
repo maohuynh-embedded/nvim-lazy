@@ -122,10 +122,10 @@ local options = {
         }),
     },
     sources = {
-        { name = "luasnip", priority = 90, max_item_count = 12},
-        { name = "nvim_lsp", priority = 100, keyword_length = 2, max_item_count = 12 },
-        { name = "path", priority = 20 },
-        { name = "buffer", priority = 10, keyword_length = 2, max_item_count = 12 },
+        { name = "luasnip",                priority = 90,  max_item_count = 12 },
+        { name = "nvim_lsp",               priority = 100, max_item_count = 12 },
+        { name = "path",                   priority = 20 },
+        { name = "buffer",                 priority = 10,  keyword_length = 2, max_item_count = 12 },
         { name = "nvim_lua" },
         { name = "nvim_lsp_signature_help" },
     },
@@ -137,7 +137,7 @@ cmp.setup.cmdline(':', {
     mapping = require("cmp").mapping.preset.cmdline(),
     sources = require("cmp").config.sources({
         { name = 'cmdline', priority = 3 },
-        { name = 'path', priority = 2 },
+        { name = 'path',    priority = 2 },
         {
             name = 'cmdline_history',
             priority = 1,
