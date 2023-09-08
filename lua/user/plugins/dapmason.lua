@@ -7,6 +7,7 @@ local option = {
     ensure_installed = {
         "codelldb",
         "cppdbg",
+        "bash",
     },
     automatic_installation = false,
     handlers = {
@@ -21,23 +22,38 @@ local option = {
             config.adapters = {
                 id = 'cppdbg',
                 type = 'executable',
-                command = vim.fn.exepath('OpenDebugAD7'),
+                -- command = vim.fn.exepath('OpenDebugAD7'),
+                command = 'C:\\Users\\hungquangnguyen\\.vscode\\extensions\\ms-vscode.cpptools-1.17.5-win32-x64\\debugAdapters\\bin\\OpenDebugAD7.exe',
                 options = {
                     detached = false,
                 },
             }
             config.configurations = {
                 {
-                    name = 'Launch GDB',
+                    name = 'C++ Launch GDB',
                     type = 'cppdbg',
                     request = 'launch',
-                    program = function()
-                        return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '\\', 'file')
-                    end,
+                    -- program = function()
+                    --     return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '\\', 'file')
+                    -- end,
+                    program = "D:\\CodeTest\\TestC\\src\\main.exe",
                     cwd = '${workspaceFolder}',
                     stopAtEntry = false,
-                    -- MIMode = "lldb",
-                    -- miDebuggerPath = "C:\\Users\\hungquangnguyen\\AppData\\Local\\nvim-data\\mason\\packages\\codelldb\\extension\\lldb\\bin\\lldb.exe"
+                    windows = {
+                        MIMode = 'gdb',
+                        miDebuggerPath = 'C:\\Renesas\\rcar-xos\\v3.8.0\\tools\\toolchains\\mingw64\\bin\\gdb.exe',
+                    }
+                },
+
+                {
+                    name = "Launch file",
+                    type = "cppdbg",
+                    request = "launch",
+                    program = function()
+                        return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+                    end,
+                    cwd = '${workspaceFolder}',
+                    stopAtEntry = true,
                 },
 
                 {
@@ -45,9 +61,7 @@ local option = {
                     type = 'cppdbg',
                     request = 'launch',
                     MIMode = 'gdb',
-                    -- miDebuggerServerAddress = 'localhost:1234',
-                    miDebuggerPath = vim.fn.exepath('gdb'),
-                    -- miDebuggerPath = 'C:\\MinGW\\bin\\gdb.exe',
+                    miDebuggerPath = 'C:\\Renesas\\rcar-xos\\v3.8.0\\tools\\toolchains\\mingw64\\bin\\gdb.exe',
                     cwd = '${workspaceFolder}',
                     program = function()
                         return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '\\', 'file')
@@ -72,7 +86,7 @@ local option = {
                 },
 
                 {
-                    name = 'LLDB: Launch remote',
+                    name = 'LLDB: Launch remote test',
                     type = 'codelldb',
                     request = 'launch',
                     program = function()
@@ -81,10 +95,39 @@ local option = {
                     cwd = '${workspaceFolder}',
                     stopOnEntry = false,
                     args = {},
+                    windows = {
+                        MIMode = 'gdb',
+                        miDebuggerPath = 'C:\\Renesas\\rcar-xos\\v3.8.0\\tools\\toolchains\\mingw64\\bin\\gdb.exe',
+                    }
                 },
             }
             masondap.default_setup(config)
-        end
+        end,
+
+        -- bash = function(config)
+        --     config.configurations = {
+        --         {
+        --             type = 'bash';
+        --             request = 'launch';
+        --             name = "Launch file";
+        --             showDebugOutput = true;
+        --             pathBashdb = vim.fn.stdpath("data") .. '/mason/packages/bash-debug-adapter/extension/bashdb_dir/bashdb';
+        --             pathBashdbLib = vim.fn.stdpath("data") .. '/mason/packages/bash-debug-adapter/extension/bashdb_dir';
+        --             trace = true;
+        --             file = "${file}";
+        --             program = "${file}";
+        --             cwd = '${workspaceFolder}';
+        --             pathCat = "cat";
+        --             pathBash = "C:\\'Program Files'\\Git\\bin\\bash.exe";
+        --             pathMkfifo = "mkfifo";
+        --             pathPkill = "pkill";
+        --             args = {};
+        --             env = {};
+        --             terminalKind = "integrated";
+        --         }
+        --     }
+        --     masondap.default_setup(config)
+        -- end
     }
 }
 

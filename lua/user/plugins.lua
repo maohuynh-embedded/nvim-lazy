@@ -81,11 +81,12 @@ return {
             require("user.plugins.gitsigns")
         end,
     },
+
+    -- Git quick command
     {
-        -- Git quick command
         'kdheepak/lazygit.nvim',
         cmd = "LazyGit",
-        -- event = "VeryLazy",
+        event = "VeryLazy",
         config = function()
             require("user.plugins.lazygit")
         end,
@@ -143,7 +144,6 @@ return {
         config = function()
             require("user.plugins.tabout")
         end
-
     },
 
     -- NOTE: Check the new plugin to automate pair
