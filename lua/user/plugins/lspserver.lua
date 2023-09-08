@@ -4,8 +4,6 @@ if not present then
     return
 end
 
-local a
-
 local on_attach = require("user.plugins.lspconfig").on_attach
 local capabilities = require("user.plugins.lspconfig").capabilities
 
@@ -16,7 +14,7 @@ end
 
 lspSymbol("Error", "")
 lspSymbol("Info", "")
-lspSymbol("Hint", "")
+lspSymbol("Hint", "")
 lspSymbol("Warn", "")
 
 capabilities.offsetEncoding = { "utf-16" }

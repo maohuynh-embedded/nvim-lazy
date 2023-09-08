@@ -48,6 +48,13 @@ saga.setup({
             close = '<Esc>',
         },
     },
+    lightbulb = {
+        enable = false,
+        enable_in_insert = false,
+        sign = true,
+        sign_priority = 40,
+        virtual_text = true,
+    },
     diagnostic = {
         show_code_action = false,
         show_layout = 'float',
@@ -114,7 +121,7 @@ saga.setup({
         },
     },
     symbol_in_winbar = {
-        enable = false,
+        enable = true,
         separator = '  ',
     },
     beacon = {
@@ -135,4 +142,3 @@ saga.setup({
         },
     },
 })
-
