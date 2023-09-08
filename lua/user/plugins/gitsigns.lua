@@ -10,13 +10,21 @@ gitsigns.setup {
         change       = { hl = "GitSignsChange", text = '▌', numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
         delete       = { hl = "GitSignsDelete", text = '▁', numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
         topdelete    = { hl = "GitSignsDelete", text = '▔', numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
-        changedelete = { hl = "GitSignsChangeDelete", text = "▁", numhl = "GitSignsChangeDeleteNr",
-            linehl = "GitSignsChangeDeleteLn" },
-        untracked    = { hl = "GitSignsUntracked", text = "▌", numhl = "GitSignsUntrackedNr",
-            linehl = "GitSignsUntrackedLn" },
+        changedelete = {
+            hl = "GitSignsChangeDelete",
+            text = "▁",
+            numhl = "GitSignsChangeDeleteNr",
+            linehl = "GitSignsChangeDeleteLn"
+        },
+        untracked    = {
+            hl = "GitSignsUntracked",
+            text = "▌",
+            numhl = "GitSignsUntrackedNr",
+            linehl = "GitSignsUntrackedLn"
+        },
     },
-    signcolumn                   = true, -- Toggle with `:Gitsigns toggle_signs`
-    numhl                        = true, -- Toggle with `:Gitsigns toggle_numhl`
+    signcolumn                   = true,  -- Toggle with `:Gitsigns toggle_signs`
+    numhl                        = true,  -- Toggle with `:Gitsigns toggle_numhl`
     linehl                       = false, -- Toggle with `:Gitsigns toggle_linehl`
     word_diff                    = false, -- Toggle with `:Gitsigns toggle_word_diff`
     watch_gitdir                 = {

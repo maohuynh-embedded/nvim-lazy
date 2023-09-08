@@ -60,8 +60,8 @@ local options = {
     synmaxcol     = 200,
 }
 
-vim.opt.syntax.minlines = 100
-vim.opt.syntax.maxlines = 200
+vim.opt.syntax.minlines = 60
+vim.opt.syntax.maxlines = 120
 
 vim.o.inccommand = "split" -- show the effects of a search / replace in a live preview window
 
