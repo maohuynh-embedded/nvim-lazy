@@ -41,7 +41,7 @@ local function footer()
     local version = vim.version()
     local nvim_version_info = "  Neovim v" .. version.major .. "." .. version.minor .. "." .. version.patch
 
-    return " " .. total_plugins .. " plugins" .. nvim_version_info
+    return " " .. total_plugins .. " plugins" .. nvim_version_info
 end
 
 local options = {
