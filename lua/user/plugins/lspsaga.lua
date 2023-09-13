@@ -1,4 +1,3 @@
-local keymap = vim.keymap.set
 local saga = require('lspsaga')
 
 saga.setup({
@@ -56,7 +55,7 @@ saga.setup({
         virtual_text = true,
     },
     diagnostic = {
-        show_code_action = false,
+        show_code_action = true,
         show_layout = 'float',
         show_normal_height = 10,
         jump_num_shortcut = true,

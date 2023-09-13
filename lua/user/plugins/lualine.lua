@@ -3,20 +3,6 @@ if not status_ok then
     return
 end
 
-local colors = {
-    bg = "#00000000",
-    fg = "#bbc2cf",
-    yellow = "#ECBE7B",
-    cyan = "#008080",
-    darkblue = "#081633",
-    green = "#98be65",
-    orange = "#FF8800",
-    violet = "#a9a1e1",
-    magenta = "#c678dd",
-    blue = "#51afef",
-    red = "#ec5f67",
-}
-
 local hide_in_width = function()
     return vim.fn.winwidth(0) > 80
 end

@@ -16,16 +16,16 @@ M.general = {
         ["<C-Del>"] = { "<C-o>dw", "Delete by Ctrl Backspace" },
 
         -- Save file
-        -- ["<C-s>"] = {
-        --     "<ESC>:w | silent lua require'notify'('Saving file ....', 'success', {title = 'System', timeout = 1000})<cr>a",
-        --     "Save file in insert mode",
-        --     opts = { silent = true },
-        -- },
         ["<C-s>"] = {
-            "<ESC>:w<CR>",
+            "<ESC>:w | silent lua require'notify'('Saving file ....', 'success', {title = 'System', timeout = 1000})<cr>a",
             "Save file in insert mode",
             opts = { silent = true },
         },
+        -- ["<C-s>"] = {
+        --     "<ESC>:w<CR>",
+        --     "Save file in insert mode",
+        --     opts = { silent = true },
+        -- },
 
         -- go to  beginning and end
         ["<C-h>"] = { "<ESC>^i", "beginning of line" },
@@ -52,38 +52,38 @@ M.general = {
     },
 
     n = {
-        ["<ESC>"] = { "<cmd> noh <CR>", "no highlight" },
+        ["<ESC>"]      = { "<cmd> noh <CR>", "no highlight" },
 
         -- Change argument wrapping
         ["<leader>ar"] = { "<cmd>ArgWrap<CR>", "Change argument wrapping" },
 
         -- Set cursor move begin and end line
-        ["<S-h>"] = { "^", "cursor left" },
-        ["<S-l>"] = { "$", "cursor right" },
+        ["<S-h>"]      = { "^", "cursor left" },
+        ["<S-l>"]      = { "$", "cursor right" },
 
         -- switch between windows
-        ["<C-h>"] = { "<C-w>h", "window left" },
-        ["<C-l>"] = { "<C-w>l", "window right" },
-        ["<space>h"] = { "<C-w>h", "window left" },
-        ["<space>l"] = { "<C-w>l", "window right" },
-        ["<space>j"] = { "<C-w>j", "window down" },
-        ["<space>k"] = { "<C-w>k", "window up" },
+        ["<C-h>"]      = { "<C-w>h", "window left" },
+        ["<C-l>"]      = { "<C-w>l", "window right" },
+        ["<space>h"]   = { "<C-w>h", "window left" },
+        ["<space>l"]   = { "<C-w>l", "window right" },
+        ["<space>j"]   = { "<C-w>j", "window down" },
+        ["<space>k"]   = { "<C-w>k", "window up" },
 
         -- Copy all
-        ["<C-c>"] = { "<cmd> %y+ <CR>", "copy whole file" },
+        ["<C-c>"]      = { "<cmd> %y+ <CR>", "copy whole file" },
 
         -- line relative numbers
-        ["<F12>"] = { "<cmd>set relativenumber!<CR>", "toggle line relative number" },
+        ["<F12>"]      = { "<cmd>set relativenumber!<CR>", "toggle line relative number" },
 
         -- Wrap text
-        ["<A-r>"] = { "<cmd>set wrap!<CR>", "Enable wrap text" },
+        ["<A-r>"]      = { "<cmd>set wrap!<CR>", "Enable wrap text" },
 
         -- Delete
-        ["<C-BS>"] = { "bdw", "Delete by Ctrl Backspace" },
+        ["<C-BS>"]     = { "bdw", "Delete by Ctrl Backspace" },
 
         -- Insert blank line
-        ["<space>o"] = { "o<ESC>", "Insert blow blank line" },
-        ["<space>O"] = { "O<ESC>", "Insert abow blank line" },
+        ["<space>o"]   = { "o<ESC>", "Insert blow blank line" },
+        ["<space>O"]   = { "O<ESC>", "Insert abow blank line" },
 
         -- Manage to split window
         ["<leader>co"] = { "<C-W>o<CR>", "Close all split window" },
@@ -92,22 +92,22 @@ M.general = {
         ["<leader>cs"] = { "<cmd>close<CR>", "Horizontal split window" },
 
         -- Unhightlight after search
-        ["n"] = { "<cmd>set hlsearch<CR>n", "next search" },
-        ["N"] = { "<cmd>set hlsearch<CR>N", "previou search" },
+        ["n"]          = { "<cmd>set hlsearch<CR>n", "next search" },
+        ["N"]          = { "<cmd>set hlsearch<CR>N", "previou search" },
 
         -- Source file and save file
-        -- ["<C-s>"] = {
-        --     "<ESC>:w | silent lua require'notify'('Saving file  ', 'success', {title = 'System', timeout = 1000})<cr>",
-        --     "Save file in normal mode",
-        --     opts = { silent = true },
-        -- },
         ["<C-s>"] = {
-            "<ESC>:w<CR>",
-            "Save file in insert mode",
+            "<ESC>:w | silent lua require'notify'('Saving file  ', 'success', {title = 'System', timeout = 1000})<cr>",
+            "Save file in normal mode",
             opts = { silent = true },
         },
+        -- ["<C-s>"]      = {
+        --     "<ESC>:w<CR>",
+        --     "Save file in insert mode",
+        --     opts = { silent = true },
+        -- },
 
-        ["<leader>s"] = {
+        ["<leader>s"]  = {
             "<ESC>:w<CR>:source% | silent lua require'notify'('Reload successfull ', 'success', {title = 'System', timeout = 1000})<cr>",
             "Save file and source file in normal mode",
             opts = { silent = true },
@@ -117,10 +117,10 @@ M.general = {
         -- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
         -- empty mode is same as using <cmd> :map
         -- also don't use g[j|k] when in operator pending mode, so it doesn't alter d, y or c behaviour
-        ["j"]      = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
-        ["k"]      = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
-        ["<Up>"]   = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
-        ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
+        ["j"]          = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
+        ["k"]          = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
+        ["<Up>"]       = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
+        ["<Down>"]     = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
     },
 
     v = {
@@ -168,35 +168,41 @@ M.lazygit = {
     }
 }
 
-M.barbar = {
+M.bufferline = {
+    -- plugin = true,
     n = {
         -- Move to previous/next
-        ["<A-.>"] = { "<cmd>BufferNext<CR>", "Next Buffer" },
-        ["<A-,>"] = { "<cmd>BufferPrevious<CR>", "Previous Buffer" },
+        ["<A-.>"]         = { "<cmd>BufferLineCycleNext<CR>", "Next Buffer" },
+        ["<A-,>"]         = { "<cmd>BufferLineCyclePrev<CR>", "Previous Buffer" },
 
         -- Go to buffer in position
-        ["<A-1>"] = { "<cmd>BufferGoto 1<CR>", "Goto buffer 1" },
-        ["<A-2>"] = { "<cmd>BufferGoto 2<CR>", "Goto buffer 2" },
-        ["<A-3>"] = { "<cmd>BufferGoto 3<CR>", "Goto buffer 3" },
-        ["<A-4>"] = { "<cmd>BufferGoto 4<CR>", "Goto buffer 4" },
-        ["<A-5>"] = { "<cmd>BufferGoto 5<CR>", "Goto buffer 5" },
-        ["<A-6>"] = { "<cmd>BufferGoto 6<CR>", "Goto buffer 6" },
-        ["<A-7>"] = { "<cmd>BufferGoto 7<CR>", "Goto buffer 7" },
-        ["<A-8>"] = { "<cmd>BufferGoto 8<CR>", "Goto buffer 8" },
-        ["<A-9>"] = { "<cmd>BufferGoto 9<CR>", "Goto buffer 9" },
-        ["<A-0>"] = { "<cmd>BufferLast<CR>", "Goto last buffer" },
-        -- ["<leader>p"] = { "<cmd>BufferPick<CR>", "Goto pick buffer" },
+        ["<A-1>"]         = { "<cmd>BufferLineGoToBuffer 1<CR>", "Goto buffer 1" },
+        ["<A-2>"]         = { "<cmd>BufferLineGoToBuffer 2<CR>", "Goto buffer 2" },
+        ["<A-3>"]         = { "<cmd>BufferLineGoToBuffer 3<CR>", "Goto buffer 3" },
+        ["<A-4>"]         = { "<cmd>BufferLineGoToBuffer 4<CR>", "Goto buffer 4" },
+        ["<A-5>"]         = { "<cmd>BufferLineGoToBuffer 5<CR>", "Goto buffer 5" },
+        ["<A-6>"]         = { "<cmd>BufferLineGoToBuffer 6<CR>", "Goto buffer 6" },
+        ["<A-7>"]         = { "<cmd>BufferLineGoToBuffer 7<CR>", "Goto buffer 7" },
+        ["<A-8>"]         = { "<cmd>BufferLineGoToBuffer 8<CR>", "Goto buffer 8" },
+        ["<A-9>"]         = { "<cmd>BufferLineGoToBuffer 9<CR>", "Goto buffer 9" },
 
         -- Re-order to previous/next
-        ["<space>,"] = { "<cmd>BufferMovePrevious<CR>", "Re-order previous" },
-        ["<space>."] = { "<cmd>BufferMoveNext<CR>", "Re-order next" },
+        ["<space>."]      = { "<cmd>BufferLineMoveNext<CR>", "Next Buffer" },
+        ["<space>,"]      = { "<cmd>BufferLineMovePrev<CR>", "Previous Buffer" },
 
         -- Pin/unpin buffer
-        ["<space>p"] = { "<cmd>BufferPin<CR>", "Pin/Unpin buffer" },
+        ["<space>p"]      = { "<cmd>BufferLineTogglePin<CR>", "Pin/Unpin buffer" },
 
         -- Close buffer
-        ["<space><Tab>"]   = { "<cmd>BufferClose<CR>", "Close current buffer" },
-        ["<leader>c<Tab>"] = { "<cmd>BufferCloseAllButCurrentOrPinned<CR>", "Close all but keep current or pinned" },
+        ["<space><Tab>"]  = {
+            function ()
+                require('bufdelete').bufdelete(0, true)
+            end,
+            "Close current buffer"
+        },
+        ["<space>a<Tab>"] = { "<cmd>BufferLineCloseOthers<CR>", "Close all but keep current or pinned" },
+        ["<space>h<Tab>"] = { "<cmd>BufferLineCloseLeft<CR>", "Close all but keep current or pinned" },
+        ["<space>l<Tab>"] = { "<cmd>BufferLineCloseRight<CR>", "Close all but keep current or pinned" },
     },
 }
 
@@ -414,13 +420,13 @@ M.telescope = {
         -- ["<leader>st"] = { "<cmd> Telescope git_status <CR>", "git status" },
 
         -- pick a hidden term
-        ["<leader>pt"] = { "<cmd> Telescope terms <CR>", "pick hidden term" },
+        ["<leader>pt"]     = { "<cmd> Telescope terms <CR>", "pick hidden term" },
 
         -- theme switcher
-        ["<leader>th"] = { "<cmd> Telescope themes <CR>", "nvchad themes" },
+        ["<leader>th"]     = { "<cmd> Telescope themes <CR>", "nvchad themes" },
 
         -- command
-        ["<leader>cm"] = {
+        ["<leader>cm"]     = {
             function()
                 require('telescope.builtin').commands(require('telescope.themes').get_dropdown())
             end,
@@ -691,7 +697,7 @@ M.treesitter = {
     },
 }
 
--- TODO: investigate to use vimspector or dapui 
+-- TODO: investigate to use vimspector or dapui
 --
 -- M.vimspector = {
 --     n = {

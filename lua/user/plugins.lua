@@ -56,12 +56,26 @@ return {
     },
 
     -- Barbar manage buffer
+    -- {
+    --     'romgrk/barbar.nvim',
+    --     event = "VeryLazy",
+    --     config = function()
+    --         require("user.plugins.bufferline")
+    --     end,
+    -- },
     {
-        'romgrk/barbar.nvim',
+        'akinsho/bufferline.nvim',
+        version = "*",
         event = "VeryLazy",
-        config = function()
+        dependencies = 'nvim-tree/nvim-web-devicons',
+        config = function ()
             require("user.plugins.bufferline")
-        end,
+        end
+    },
+
+    {
+        'famiu/bufdelete.nvim',
+        event = "VeryLazy",
     },
 
     -- Tab explorer
@@ -291,7 +305,7 @@ return {
         config = function()
             require("user.plugins.muren")
         end
-    };
+    },
 
     -- Search and replace single or visual words/lines
     {
@@ -346,7 +360,7 @@ return {
     -- TODO: Add feature autosave after changing current workspace
     {
         'okuuva/auto-save.nvim',
-        config = function ()
+        config = function()
             require("user.plugins.autosave")
         end
     },
@@ -542,7 +556,7 @@ return {
         --     handlers = {
         --     },
         -- },
-        config = function ()
+        config = function()
             require("user.plugins.dapmason")
         end,
     },
@@ -557,13 +571,13 @@ return {
             -- require("user.plugins.dapui")
             local dap, dapui = require("dap"), require("dapui")
             dapui.setup()
-            dap.listeners.after.event_initialized["dapui_config"] = function ()
+            dap.listeners.after.event_initialized["dapui_config"] = function()
                 dapui.open()
             end
-            dap.listeners.before.event_terminated["dapui_config"] = function ()
+            dap.listeners.before.event_terminated["dapui_config"] = function()
                 dapui.close()
             end
-            dap.listeners.before.event_exited["dapui_config"] = function ()
+            dap.listeners.before.event_exited["dapui_config"] = function()
                 dapui.close()
             end
         end
@@ -571,7 +585,7 @@ return {
 
     {
         'mfussenegger/nvim-dap',
-        config = function (_, _)
+        config = function(_, _)
             require("core.utils").load_mappings("dap")
             -- require("user.plugins.dap_config.c")
         end
@@ -607,9 +621,9 @@ return {
         dependencies = { "nvim-lua/plenary.nvim" },
         opts = {
             load = {
-                ["core.defaults"] = {}, -- Loads default behaviour
+                ["core.defaults"] = {},  -- Loads default behaviour
                 ["core.concealer"] = {}, -- Adds pretty icons to your documents
-                ["core.dirman"] = { -- Manages Neorg workspaces
+                ["core.dirman"] = {      -- Manages Neorg workspaces
                     config = {
                         workspaces = {
                             notes = "~/notes",
