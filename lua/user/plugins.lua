@@ -55,27 +55,14 @@ return {
         end,
     },
 
-    -- Barbar manage buffer
-    -- {
-    --     'romgrk/barbar.nvim',
-    --     event = "VeryLazy",
-    --     config = function()
-    --         require("user.plugins.bufferline")
-    --     end,
-    -- },
     {
         'akinsho/bufferline.nvim',
         version = "*",
         event = "VeryLazy",
         dependencies = 'nvim-tree/nvim-web-devicons',
-        config = function ()
+        config = function()
             require("user.plugins.bufferline")
         end
-    },
-
-    {
-        'famiu/bufdelete.nvim',
-        event = "VeryLazy",
     },
 
     -- Tab explorer
@@ -351,10 +338,18 @@ return {
     },
 
     -- Bracket color
+    -- {
+    --     'lincheney/nvim-ts-rainbow',
+    --     event = "VeryLazy",
+    --     dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    -- },
     {
-        'p00f/nvim-ts-rainbow',
+        'HiPhish/rainbow-delimiters.nvim',
         event = "VeryLazy",
         dependencies = { 'nvim-treesitter/nvim-treesitter' },
+        config = function ()
+            require("user.plugins.rainbow")
+        end
     },
 
     -- TODO: Add feature autosave after changing current workspace
@@ -552,10 +547,6 @@ return {
             'williamboman/mason.nvim',
             'mfussenegger/nvim-dap',
         },
-        -- opts = {
-        --     handlers = {
-        --     },
-        -- },
         config = function()
             require("user.plugins.dapmason")
         end,
@@ -580,6 +571,9 @@ return {
             dap.listeners.before.event_exited["dapui_config"] = function()
                 dapui.close()
             end
+            dap.listeners.before.disconnect["dapui_config"] = function()
+                dapui.close()
+            end
         end
     },
 
@@ -591,14 +585,6 @@ return {
         end
     },
 
-    --
-    -- {
-    --     'ldelossa/nvim-dap-projects',
-    --     dependencies = {
-    --         'mfussenegger/nvim-dap',
-    --     }
-    -- },
-
     -- TODO: Check this plugin runs with debug dap or vimspector
     -- Nvim IDE layout
     -- {
@@ -608,12 +594,6 @@ return {
     --         require("user.plugins.ide")
     --     end
     -- },
-
-    -- TODO: More investigation for debugging
-    -- {
-    --     'puremourning/vimspector',
-    --     event = "VeryLazy",
-    -- }
 
     {
         "nvim-neorg/neorg",
@@ -633,24 +613,4 @@ return {
             },
         },
     },
-
-    {
-        'stevearc/aerial.nvim',
-        opts = {},
-        -- Optional dependencies
-        dependencies = {
-            "nvim-treesitter/nvim-treesitter",
-            "nvim-tree/nvim-web-devicons"
-        },
-    },
-
-    -- {
-    --     'Bekaboo/dropbar.nvim',
-    --     event = "BufRead",
-    --     config = function()
-    --         require("user.plugins.dropbar")
-    --     end,
-    -- },
 }
-
--- Nguyen Quang Hung Tran Vinh Nghi

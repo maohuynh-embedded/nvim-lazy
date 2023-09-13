@@ -32,12 +32,8 @@ local options = {
 
     rainbow = {
         enable = true,
-        -- Which query to use for finding delimiters
-        -- query = 'rainbow-parens',
-        -- Highlight the entire buffer all at once
-        -- strategy = require 'ts-rainbow.strategy.global',
-
-        extended_mode = true,
+        -- extended_mode = true,
+        highlight_middle = true,
         max_file_lines = nil,
         colors = {
             '#458588',

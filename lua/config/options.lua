@@ -13,6 +13,10 @@ local options = {
     expandtab = true,
     list = true,
 
+    -- Fold
+    -- foldmethod = "expr",
+    -- foldexpr = "nvim_treesitter#foldexpr()",
+
     -- Disable backup
     backup = false,
     wb = false,
@@ -54,7 +58,7 @@ local options = {
     sidescrolloff = 10, -- minimal number of screen lines to keep left and right of the cursor.
 
     -- Color and font
-    -- termguicolors = true,
+    termguicolors = true,
     guifont       = "CaskaydiaCove Nerd Font Propo:h13.5",
     wildmenu      = false,
     synmaxcol     = 200,

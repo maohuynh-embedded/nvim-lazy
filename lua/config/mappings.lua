@@ -96,7 +96,7 @@ M.general = {
         ["N"]          = { "<cmd>set hlsearch<CR>N", "previou search" },
 
         -- Source file and save file
-        ["<C-s>"] = {
+        ["<C-s>"]      = {
             "<ESC>:w | silent lua require'notify'('Saving file  ', 'success', {title = 'System', timeout = 1000})<cr>",
             "Save file in normal mode",
             opts = { silent = true },
@@ -195,9 +195,7 @@ M.bufferline = {
 
         -- Close buffer
         ["<space><Tab>"]  = {
-            function ()
-                require('bufdelete').bufdelete(0, true)
-            end,
+            "<cmd>bd<CR>",
             "Close current buffer"
         },
         ["<space>a<Tab>"] = { "<cmd>BufferLineCloseOthers<CR>", "Close all but keep current or pinned" },
@@ -247,7 +245,7 @@ M.nvimtree = {
         -- toggle nvimtree
         ["<F4>"] = { "<cmd>NvimTreeToggle<CR>", "toggle nvimtree" },
         -- focus nvimtree
-        ["<F5>"] = { "<cmd>NvimTreeFocus<CR>", "focus nvimtree" },
+        -- ["<F5>"] = { "<cmd>NvimTreeFocus<CR>", "focus nvimtree" },
     },
 }
 
@@ -697,23 +695,6 @@ M.treesitter = {
     },
 }
 
--- TODO: investigate to use vimspector or dapui
---
--- M.vimspector = {
---     n = {
---         ["<F1>"] = { "<cmd>call vimspector#Launch()<CR>", "Launch" },
---         ["<F2>"] = { "<cmd>call vimspector#Reset()<CR>", "Reset" },
---         ["<F8>"] = { "<cmd>call vimspector#Continue()<CR>", "Continue" },
---         ["<F6>"] = { "<cmd>call vimspector#ToggleBreakpoint()<CR>", "ToggleBreakpoint" },
---         ["<F7>"] = { "<cmd>call vimspector#ClearBreakpoints()<CR>", "ClearBreakpoints" },
---
---         ["<F3>"] = { "<Plug>VimspectorRestart", "restart" },
---         ["<F9>"] = { "<Plug>VimspectorStepOut", "stepout" },
---         ["<F10>"] = { "<Plug>VimspectorStepInto", "step into" },
---         ["<F11>"] = { "<Plug>VimspectorStepOver", "step over" },
---     },
--- }
-
 M.spider = {
     n = {
         ["w"] = {
@@ -809,23 +790,6 @@ M.replace = {
     }
 }
 
--- M.commentbox = {
---     n = {
---         ["<leader>bb"] = { "<Cmd>lua require('comment-box').lbox()<CR>", "left box" },
---         ["<leader>bc"] = { "<Cmd>lua require('comment-box').accbox()<CR>", "centered box" },
---         ["<leader>bl"] = { "<Cmd>lua require('comment-box').cline()<CR>", "centered line" },
---     },
---
---     i = {
---         ["<M-b>"] = { "<Cmd>lua require('comment-box').cline()<CR>", "centered line" }
---     },
---
---     v = {
---         ["<leader>bb"] = { "<Cmd>lua require('comment-box').lbox()<CR>", "left box" },
---         ["<leader>bc"] = { "<Cmd>lua require('comment-box').accbox()<CR>", "centered box" },
---     },
--- }
-
 M.muren = {
     n = {
         ["<leader>mr"] = { "<cmd>MurenToggle<CR>", "Replace word" },
@@ -835,29 +799,26 @@ M.muren = {
     },
 }
 
--- M.dropbar = {
---     plugin = true,
---     n = {
---         ["<space>ww"] = {
---             function()
---                 require("dropbar.api").pick()
---             end,
---             "pick winbar element",
---             opts = { silent = true }
---         },
---     }
--- }
-
 M.dap = {
     plugin = true,
     n = {
-        ["<leader>db"] = {
-            "<cmd>DapToggleBreakpoint<CR>",
-            "Add breakpoint at line",
+        ["<leader>db"] = { "<cmd>DapToggleBreakpoint<CR>", "Add breakpoint at line" },
+        ["<leader>dr"] = { "<cmd>DapContinue<CR>", "Start or continue the debugger" },
+        ["<F5>"] = { "<cmd>DapStepInto<CR>", "Step into" },
+        ["<F6>"] = { "<cmd>DapStepOver<CR>", "Step Over" },
+        ["<F7>"] = { "<cmd>DapStepOut<CR>", "Step Out" },
+        ["<F8>"] = { "<cmd>DapContinue<CR>", "Start or continue the debugger" },
+        ["C-<F2>"] = {
+            function()
+                require("dapui").close()
+            end,
+            "Close debugger"
         },
-        ["<leader>dr"] = {
-            "<cmd>DapContinue<CR>",
-            "Start or continue the debugger",
+        ["<F2>"] = {
+            function()
+                require("dapui").eval()
+            end,
+            "Start or continue the debugger"
         },
     }
 }
