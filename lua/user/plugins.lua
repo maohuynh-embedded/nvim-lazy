@@ -347,7 +347,7 @@ return {
         'HiPhish/rainbow-delimiters.nvim',
         event = "VeryLazy",
         dependencies = { 'nvim-treesitter/nvim-treesitter' },
-        config = function ()
+        config = function()
             require("user.plugins.rainbow")
         end
     },
@@ -559,21 +559,7 @@ return {
             'mfussenegger/nvim-dap',
         },
         config = function()
-            -- require("user.plugins.dapui")
-            local dap, dapui = require("dap"), require("dapui")
-            dapui.setup()
-            dap.listeners.after.event_initialized["dapui_config"] = function()
-                dapui.open()
-            end
-            dap.listeners.before.event_terminated["dapui_config"] = function()
-                dapui.close()
-            end
-            dap.listeners.before.event_exited["dapui_config"] = function()
-                dapui.close()
-            end
-            dap.listeners.before.disconnect["dapui_config"] = function()
-                dapui.close()
-            end
+            require("user.plugins.dapui")
         end
     },
 
