@@ -195,7 +195,7 @@ M.bufferline = {
 
         -- Close buffer
         ["<space><Tab>"]  = {
-            "<cmd>bd<CR>",
+            "<cmd>bdelete!<CR>",
             "Close current buffer"
         },
         ["<space>a<Tab>"] = { "<cmd>BufferLineCloseOthers<CR>", "Close all but keep current or pinned" },
