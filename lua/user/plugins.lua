@@ -65,6 +65,12 @@ return {
         end
     },
 
+    -- Buffer delete
+    {
+        'famiu/bufdelete.nvim',
+        event = "VeryLazy",
+    },
+
     -- Tab explorer
     {
         'matbme/JABS.nvim',

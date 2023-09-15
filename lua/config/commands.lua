@@ -98,12 +98,28 @@ autocmd("TextYankPost", {
 })
 
 -- Update rainbow
-autocmd("CmdlineLeave, CmdlineChanged, CmdlineEnter, InsertLeave, InsertChange", {
-    pattern = "*",
-    command = "TSToggle rainbow | TSToggle rainbow",
-})
+-- autocmd("CmdlineLeave, CmdlineChanged, CmdlineEnter, InsertLeave, InsertChange", {
+--     pattern = "*",
+--     command = "TSToggle rainbow | TSToggle rainbow",
+-- })
 
 -- autocmd("BufRead", {
 --     pattern = "*",
 --     command = "call repeat#set('\\<Plug>MyWonderfulMap', v:count)",
 -- })
+local alpha_on_empty = autogrp("alpha_on_empty", { clear = true })
+autocmd("User", {
+    pattern = "BDeletePost*",
+    group = alpha_on_empty,
+    callback = function(event)
+        local fallback_name = vim.api.nvim_buf_get_name(event.buf)
+        local fallback_ft = vim.api.nvim_buf_get_option(event.buf, "filetype")
+        local fallback_on_empty = fallback_name == "" and fallback_ft == ""
+
+        if fallback_on_empty then
+            -- require("neo-tree").close_all()
+            vim.cmd("Alpha")
+            vim.cmd(event.buf .. "bwipeout")
+        end
+    end,
+})

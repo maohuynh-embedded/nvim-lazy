@@ -195,12 +195,14 @@ M.bufferline = {
 
         -- Close buffer
         ["<space><Tab>"]  = {
-            "<cmd>bdelete!<CR>",
+            function (bufnum)
+                require('bufdelete').bufdelete(bufnum, true)
+            end,
             "Close current buffer"
         },
         ["<space>a<Tab>"] = { "<cmd>BufferLineCloseOthers<CR>", "Close all but keep current or pinned" },
-        ["<space>h<Tab>"] = { "<cmd>BufferLineCloseLeft<CR>", "Close all but keep current or pinned" },
-        ["<space>l<Tab>"] = { "<cmd>BufferLineCloseRight<CR>", "Close all but keep current or pinned" },
+        -- ["<space><Tab>"] = { "<cmd>BufferLineCloseLeft<CR>", "Close all but keep current or pinned" },
+        -- ["<space><Tab>"] = { "<cmd>BufferLineCloseRight<CR>", "Close all but keep current or pinned" },
     },
 }
 
@@ -804,17 +806,12 @@ M.dap = {
     n = {
         ["<leader>db"] = { "<cmd>DapToggleBreakpoint<CR>", "Add breakpoint at line" },
         ["<leader>dr"] = { "<cmd>DapContinue<CR>", "Start or continue the debugger" },
-        ["<F5>"] = { "<cmd>DapStepInto<CR>", "Step into" },
-        ["<F6>"] = { "<cmd>DapStepOver<CR>", "Step Over" },
-        ["<F7>"] = { "<cmd>DapStepOut<CR>", "Step Out" },
-        ["<F8>"] = { "<cmd>DapContinue<CR>", "Start or continue the debugger" },
-        ["C-<F2>"] = {
-            function()
-                require("dapui").close()
-            end,
-            "Close debugger"
-        },
-        ["<F2>"] = {
+        ["<F5>"]       = { "<cmd>DapStepInto<CR>", "Step into" },
+        ["<F6>"]       = { "<cmd>DapStepOver<CR>", "Step Over" },
+        ["<F7>"]       = { "<cmd>DapStepOut<CR>", "Step Out" },
+        ["<F8>"]       = { "<cmd>DapContinue<CR>", "Start or continue the debugger" },
+        ["<C-F2>"]     = {"<cmd>DapTerminate", "Terminate debugger"},
+        ["<F3>"]       = {
             function()
                 require("dapui").eval()
             end,
