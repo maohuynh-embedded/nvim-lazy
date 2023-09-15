@@ -483,8 +483,7 @@ return {
     --     end,
     -- },
 
-    -- BUG: Neovide haven't supported for this plugin
-    -- NOTE: This plugin can be supportted for neovide
+    -- NOTE: This plugin can be supportted for neovide with multigrid mode
     -- Show message popup, LSP progress, popup commandline
     -- {
     --     'folke/noice.nvim',
