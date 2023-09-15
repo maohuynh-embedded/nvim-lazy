@@ -15,17 +15,11 @@ M.general = {
         ["<C-BS>"] = { "<C-o>b<C-o>dw", "Delete by Ctrl Backspace" },
         ["<C-Del>"] = { "<C-o>dw", "Delete by Ctrl Backspace" },
 
-        -- Save file
         ["<C-s>"] = {
-            "<ESC>:w | silent lua require'notify'('Saving file ....', 'success', {title = 'System', timeout = 1000})<cr>a",
+            "<ESC>:w<CR>",
             "Save file in insert mode",
             opts = { silent = true },
         },
-        -- ["<C-s>"] = {
-        --     "<ESC>:w<CR>",
-        --     "Save file in insert mode",
-        --     opts = { silent = true },
-        -- },
 
         -- go to  beginning and end
         ["<C-h>"] = { "<ESC>^i", "beginning of line" },
@@ -95,20 +89,14 @@ M.general = {
         ["n"]          = { "<cmd>set hlsearch<CR>n", "next search" },
         ["N"]          = { "<cmd>set hlsearch<CR>N", "previou search" },
 
-        -- Source file and save file
         ["<C-s>"]      = {
-            "<ESC>:w | silent lua require'notify'('Saving file  ', 'success', {title = 'System', timeout = 1000})<cr>",
-            "Save file in normal mode",
+            "<ESC>:w<CR>",
+            "Save file in insert mode",
             opts = { silent = true },
         },
-        -- ["<C-s>"]      = {
-        --     "<ESC>:w<CR>",
-        --     "Save file in insert mode",
-        --     opts = { silent = true },
-        -- },
 
         ["<leader>s"]  = {
-            "<ESC>:w<CR>:source% | silent lua require'notify'('Reload successfull ', 'success', {title = 'System', timeout = 1000})<cr>",
+            "<ESC>:w<CR>:source%<CR>",
             "Save file and source file in normal mode",
             opts = { silent = true },
         },
@@ -201,6 +189,7 @@ M.bufferline = {
             "Close current buffer"
         },
         ["<space>a<Tab>"] = { "<cmd>BufferLineCloseOthers<CR>", "Close all but keep current or pinned" },
+        -- NOTE: It should be changed another keymap
         -- ["<space><Tab>"] = { "<cmd>BufferLineCloseLeft<CR>", "Close all but keep current or pinned" },
         -- ["<space><Tab>"] = { "<cmd>BufferLineCloseRight<CR>", "Close all but keep current or pinned" },
     },
@@ -246,8 +235,6 @@ M.nvimtree = {
     n = {
         -- toggle nvimtree
         ["<F4>"] = { "<cmd>NvimTreeToggle<CR>", "toggle nvimtree" },
-        -- focus nvimtree
-        -- ["<F5>"] = { "<cmd>NvimTreeFocus<CR>", "focus nvimtree" },
     },
 }
 
@@ -804,7 +791,7 @@ M.muren = {
 M.dap = {
     plugin = true,
     n = {
-        ["<leader>db"] = { "<cmd>DapToggleBreakpoint<CR>", "Add breakpoint at line" },
+        -- ["<leader>db"] = { "<cmd>DapToggleBreakpoint<CR>", "Add breakpoint at line" },
         ["<leader>dr"] = { "<cmd>DapContinue<CR>", "Start or continue the debugger" },
         ["<F5>"]       = { "<cmd>DapStepInto<CR>", "Step into" },
         ["<F6>"]       = { "<cmd>DapStepOver<CR>", "Step Over" },
@@ -816,6 +803,25 @@ M.dap = {
                 require("dapui").eval()
             end,
             "Start or continue the debugger"
+        },
+        ["<leader>db"] = {
+            function ()
+                require('persistent-breakpoints.api').toggle_breakpoint()
+            end,
+            "Add breakpoint at line"
+        },
+        ["<leader>dcb"] = {
+            function ()
+                require('persistent-breakpoints.api').clear_all_breakpoints()
+            end,
+            "Clear all breakpoints"
+        },
+        -- INFO: Using mouse to toggle breakpoint
+        ["<2-LeftMouse>"] = {
+            function ()
+                require('persistent-breakpoints.api').toggle_breakpoint()
+            end,
+            "Add breakpoint at line by double click"
         },
     }
 }

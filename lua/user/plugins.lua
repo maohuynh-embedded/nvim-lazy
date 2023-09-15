@@ -464,14 +464,14 @@ return {
     },
 
     -- Display lsp progress loading
-    {
-        "j-hui/fidget.nvim", -- Display LSP status messages in a floating window
-        tag = "legacy",
-        event = "VeryLazy",
-        config = function()
-            require("user.plugins.fidget")
-        end
-    },
+    -- {
+    --     "j-hui/fidget.nvim", -- Display LSP status messages in a floating window
+    --     tag = "legacy",
+    --     event = "VeryLazy",
+    --     config = function()
+    --         require("user.plugins.fidget")
+    --     end
+    -- },
 
     -- NOTE: Drop snow in dashboard
     -- This plugin is being disabled because of decreasing performance
@@ -485,16 +485,16 @@ return {
 
     -- NOTE: This plugin can be supportted for neovide with multigrid mode
     -- Show message popup, LSP progress, popup commandline
-    -- {
-    --     'folke/noice.nvim',
-    --     dependencies = {
-    --         "MunifTanjim/nui.nvim",
-    --         "rcarriga/nvim-notify",
-    --     },
-    --     config = function()
-    --         require("user.plugins.noice")
-    --     end,
-    -- },
+    {
+        'folke/noice.nvim',
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+            "rcarriga/nvim-notify",
+        },
+        config = function()
+            require("user.plugins.noice")
+        end,
+    },
 
     -- load luasnips + cmp related in insert mode only
     {
@@ -576,6 +576,17 @@ return {
         end
     },
 
+    {
+        'Weissle/persistent-breakpoints.nvim',
+        event = "VeryLazy",
+        dependencies = {
+            'mfussenegger/nvim-dap',
+        },
+        config = function ()
+            require("user.plugins.persistent")
+        end
+    },
+
     -- TODO: Check this plugin runs with debug dap or vimspector
     -- Nvim IDE layout
     -- {
@@ -592,9 +603,9 @@ return {
         dependencies = { "nvim-lua/plenary.nvim" },
         opts = {
             load = {
-                ["core.defaults"] = {},  -- Loads default behaviour
+                ["core.defaults"] = {}, -- Loads default behaviour
                 ["core.concealer"] = {}, -- Adds pretty icons to your documents
-                ["core.dirman"] = {      -- Manages Neorg workspaces
+                ["core.dirman"] = { -- Manages Neorg workspaces
                     config = {
                         workspaces = {
                             notes = "~/notes",
