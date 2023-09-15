@@ -1,25 +1,28 @@
 return {
-    -- Icon source (need to be placed at the end) --------------
+
+    -- Icon source (need to be placed at the end)
     {
-        -- 'ryanoasis/vim-devicons',
         'nvim-tree/nvim-web-devicons',
     },
+
+    -- Start up screen
     {
-        -- Start up screen
         'goolord/alpha-nvim',
         config = function()
             require("user.plugins.alpha")
         end,
     },
+
+    -- Boost startup time
     {
-        -- Boost startup time
         'lewis6991/impatient.nvim',
         config = function()
             require("user.plugins.impatient")
         end,
     },
+
+    -- Colorscheme manager
     {
-        -- Colorscheme manager
         'folke/tokyonight.nvim',
         config = function()
             require("user.plugins.tokyonight")
@@ -55,6 +58,7 @@ return {
         end,
     },
 
+    -- Manage buffer
     {
         'akinsho/bufferline.nvim',
         version = "*",
@@ -99,6 +103,7 @@ return {
         end,
     },
 
+    -- Notify
     {
         'rcarriga/nvim-notify',
         event = "VeryLazy",
@@ -107,8 +112,8 @@ return {
         end
     },
 
+    -- Smooth scrolling
     {
-        -- Smooth scrolling
         'karb94/neoscroll.nvim',
         event = "VeryLazy",
         config = function()
@@ -334,6 +339,7 @@ return {
         end,
     },
 
+    -- Syntax aware text-objects, select, move, swap,
     {
         'nvim-treesitter/nvim-treesitter-textobjects',
         event = 'VeryLazy',
@@ -343,12 +349,7 @@ return {
         end
     },
 
-    -- Bracket color
-    -- {
-    --     'lincheney/nvim-ts-rainbow',
-    --     event = "VeryLazy",
-    --     dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    -- },
+    -- Bracket rainbow color
     {
         'HiPhish/rainbow-delimiters.nvim',
         event = "VeryLazy",
@@ -544,8 +545,7 @@ return {
         dependencies = "cmp_luasnip",
     },
 
-    -- FIX: Investigate to usage plugin debug with UI
-    -- Debug
+    -- Mason DAP to quickly install and custom config for debugger
     {
         'jay-babu/mason-nvim-dap.nvim',
         dependencies = {
@@ -557,6 +557,7 @@ return {
         end,
     },
 
+    -- DAP UI to supply UI for debugging
     {
         'rcarriga/nvim-dap-ui',
         event = "VeryLazy",
@@ -568,14 +569,18 @@ return {
         end
     },
 
+    -- DAP for debugger
     {
         'mfussenegger/nvim-dap',
         config = function(_, _)
             require("core.utils").load_mappings("dap")
+            -- INFO: The config for debugger is able to set manually
+            -- If you use this config, you will disable mason DAP to avoid duplicate debugger settings
             -- require("user.plugins.dap_config.c")
         end
     },
 
+    -- Store breakpoints after terminating debug progress
     {
         'Weissle/persistent-breakpoints.nvim',
         event = "VeryLazy",
@@ -587,8 +592,7 @@ return {
         end
     },
 
-    -- TODO: Check this plugin runs with debug dap or vimspector
-    -- Nvim IDE layout
+    -- TODO: Nvim IDE layout
     -- {
     --     'ldelossa/nvim-ide',
     --     event = "VeryLazy",
