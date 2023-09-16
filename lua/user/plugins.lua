@@ -409,6 +409,7 @@ return {
         end,
     },
 
+    -- Trouble to display error in the source code
     {
         'folke/trouble.nvim',
         cmd = "TroubleToggle",
@@ -450,6 +451,7 @@ return {
             require("user.plugins.neodev")
         end
     },
+
     -- LSP Saga
     {
         'glepnir/lspsaga.nvim',
@@ -587,8 +589,20 @@ return {
         dependencies = {
             'mfussenegger/nvim-dap',
         },
-        config = function ()
+        config = function()
             require("user.plugins.persistent")
+        end
+    },
+
+    -- Virtul text for debbuging
+    {
+        'theHamsta/nvim-dap-virtual-text',
+        event = "VeryLazy",
+        dependencies = {
+            'mfussenegger/nvim-dap',
+        },
+        config = function()
+            require("user.plugins.dapvirtualtext")
         end
     },
 
@@ -607,9 +621,9 @@ return {
         dependencies = { "nvim-lua/plenary.nvim" },
         opts = {
             load = {
-                ["core.defaults"] = {}, -- Loads default behaviour
+                ["core.defaults"] = {},  -- Loads default behaviour
                 ["core.concealer"] = {}, -- Adds pretty icons to your documents
-                ["core.dirman"] = { -- Manages Neorg workspaces
+                ["core.dirman"] = {      -- Manages Neorg workspaces
                     config = {
                         workspaces = {
                             notes = "~/notes",

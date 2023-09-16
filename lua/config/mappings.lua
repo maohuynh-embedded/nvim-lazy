@@ -4,57 +4,44 @@ M.general = {
         -- Quick normal map
         ["jk"] = { "<ESC>", "escape vim" },
         ["kj"] = { "<ESC>", "escape vim" },
-
         -- Wrap text
         ["<A-r>"] = { "<C-o><cmd>set wrap!<CR>", "Enable wrap text" },
-
         -- Paste
         ["<C-v>"] = { "<C-R>*", "Set paste as Win OS" },
-
         -- Delete
         ["<C-BS>"] = { "<C-o>b<C-o>dw", "Delete by Ctrl Backspace" },
         ["<C-Del>"] = { "<C-o>dw", "Delete by Ctrl Backspace" },
-
         ["<C-s>"] = {
             "<ESC>:w<CR>",
             "Save file in insert mode",
             opts = { silent = true },
         },
-
         -- go to  beginning and end
         ["<C-h>"] = { "<ESC>^i", "beginning of line" },
         ["<C-l>"] = { "<End>", "end of line" },
-
         -- move word
         ["<C-w>"] = { "<C-\\><C-O>w", "move words forward" },
         ["<C-b>"] = { "<C-\\><C-O>b", "move words backward" },
         ["<C-e>"] = { "<C-\\><C-O>e<C-O><Right>", "forword to end of word" },
         ["<C-z>"] = { "<Left><C-\\><C-O>ge<Right>", "backward to end of word" },
-
         -- New line
         -- TODO: Add insert new line abow cursor
         ["<C-o>"] = { "<C-\\><C-O>o", "insert new line below cursor" },
-
         -- navigate within insert mode
         ["<A-h>"] = { "<Left>", "move left" },
         ["<A-l>"] = { "<Right>", "move right" },
         ["<A-j>"] = { "<Down>", "move down" },
         ["<A-k>"] = { "<Up>", "move up" },
-
         -- line relative numbers
         ["<F12>"] = { "<C-o><cmd>set relativenumber!<CR>", "toggle line relative number" },
     },
-
     n = {
         ["<ESC>"]      = { "<cmd> noh <CR>", "no highlight" },
-
         -- Change argument wrapping
         ["<leader>ar"] = { "<cmd>ArgWrap<CR>", "Change argument wrapping" },
-
         -- Set cursor move begin and end line
         ["<S-h>"]      = { "^", "cursor left" },
         ["<S-l>"]      = { "$", "cursor right" },
-
         -- switch between windows
         ["<C-h>"]      = { "<C-w>h", "window left" },
         ["<C-l>"]      = { "<C-w>l", "window right" },
@@ -62,45 +49,35 @@ M.general = {
         ["<space>l"]   = { "<C-w>l", "window right" },
         ["<space>j"]   = { "<C-w>j", "window down" },
         ["<space>k"]   = { "<C-w>k", "window up" },
-
         -- Copy all
         ["<C-c>"]      = { "<cmd> %y+ <CR>", "copy whole file" },
-
         -- line relative numbers
         ["<F12>"]      = { "<cmd>set relativenumber!<CR>", "toggle line relative number" },
-
         -- Wrap text
         ["<A-r>"]      = { "<cmd>set wrap!<CR>", "Enable wrap text" },
-
         -- Delete
         ["<C-BS>"]     = { "bdw", "Delete by Ctrl Backspace" },
-
         -- Insert blank line
         ["<space>o"]   = { "o<ESC>", "Insert blow blank line" },
         ["<space>O"]   = { "O<ESC>", "Insert abow blank line" },
-
         -- Manage to split window
         ["<leader>co"] = { "<C-W>o<CR>", "Close all split window" },
         ["<leader>vs"] = { "<cmd>vs<CR>", "Veritical split window" },
         ["<leader>hs"] = { "<cmd>hs<CR>", "Horizontal split window" },
         ["<leader>cs"] = { "<cmd>close<CR>", "Horizontal split window" },
-
         -- Unhightlight after search
         ["n"]          = { "<cmd>set hlsearch<CR>n", "next search" },
         ["N"]          = { "<cmd>set hlsearch<CR>N", "previou search" },
-
         ["<C-s>"]      = {
             "<ESC>:w<CR>",
             "Save file in insert mode",
             opts = { silent = true },
         },
-
         ["<leader>s"]  = {
             "<ESC>:w<CR>:source%<CR>",
             "Save file and source file in normal mode",
             opts = { silent = true },
         },
-
         -- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
         -- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
         -- empty mode is same as using <cmd> :map
@@ -110,7 +87,6 @@ M.general = {
         ["<Up>"]       = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
         ["<Down>"]     = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
     },
-
     v = {
         ["//"]       = { "\"fy/\\V<C-R>f<CR>", "Search a visual word", opts = { silent = true } },
         ["<"]        = { "<gv", "easier moving code block right" },
@@ -121,30 +97,24 @@ M.general = {
         ["<space>f"] = { "<cmd>lua require'lsp-range-format'.format()<CR>", "format range" },
         ["y"]        = { "mcy`c", "copy not move cursor" },
     },
-
     x = {
         ["j"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
         ["k"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
         -- Don't copy the replaced text after pasting in visual mode
         -- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
         ["p"] = { 'p:let @+=@0<CR>:let @"=@0<CR>', opts = { silent = true } },
-
         -- Unhightlight after search
         ["n"] = { "<cmd>set hlsearch<CR>n", "next search" },
         ["N"] = { "<cmd>set hlsearch<CR>N", "previou search" },
-
         ["<C-BS>"] = { "bdw", "Delete by Ctrl Backspace" },
-
         -- Set cursor move begin and end line
         ["<S-h>"] = { "^", "cursor left" },
         ["<S-l>"] = { "$", "cursor right" },
     },
-
     o = {
         ["<S-h>"] = { "^", "cursor left" },
         ["<S-l>"] = { "$", "cursor right" },
     },
-
     c = {
         ["<C-v>"] = { "<C-R>*", "Set paste as Win OS in command line" },
     },
@@ -162,7 +132,6 @@ M.bufferline = {
         -- Move to previous/next
         ["<A-.>"]         = { "<cmd>BufferLineCycleNext<CR>", "Next Buffer" },
         ["<A-,>"]         = { "<cmd>BufferLineCyclePrev<CR>", "Previous Buffer" },
-
         -- Go to buffer in position
         ["<A-1>"]         = { "<cmd>BufferLineGoToBuffer 1<CR>", "Goto buffer 1" },
         ["<A-2>"]         = { "<cmd>BufferLineGoToBuffer 2<CR>", "Goto buffer 2" },
@@ -173,17 +142,14 @@ M.bufferline = {
         ["<A-7>"]         = { "<cmd>BufferLineGoToBuffer 7<CR>", "Goto buffer 7" },
         ["<A-8>"]         = { "<cmd>BufferLineGoToBuffer 8<CR>", "Goto buffer 8" },
         ["<A-9>"]         = { "<cmd>BufferLineGoToBuffer 9<CR>", "Goto buffer 9" },
-
         -- Re-order to previous/next
         ["<space>."]      = { "<cmd>BufferLineMoveNext<CR>", "Next Buffer" },
         ["<space>,"]      = { "<cmd>BufferLineMovePrev<CR>", "Previous Buffer" },
-
         -- Pin/unpin buffer
         ["<space>p"]      = { "<cmd>BufferLineTogglePin<CR>", "Pin/Unpin buffer" },
-
         -- Close buffer
         ["<space><Tab>"]  = {
-            function (bufnum)
+            function(bufnum)
                 require('bufdelete').bufdelete(bufnum, true)
             end,
             "Close current buffer"
@@ -202,14 +168,12 @@ M.move = {
         ["<A-h>"] = { ":MoveHChar(-1)<CR>", "Move line left", opts = { silent = true } },
         ["<A-l>"] = { ":MoveHChar(1)<CR>", "Move line right", opts = { silent = true } },
     },
-
     v = {
         ["<A-j>"] = { ":MoveBlock(1)<CR>", "Move block line down", opts = { silent = true } },
         ["<A-k>"] = { ":MoveBlock(-1)<CR>", "Move blockline up", opts = { silent = true } },
         ["<A-h>"] = { ":MoveHBlock(-1)<CR>", "Move blockline left", opts = { silent = true } },
         ["<A-l>"] = { ":MoveHBlock(1)<CR>", "Move blockline right", opts = { silent = true } },
     }
-
 }
 
 M.fontsize = {
@@ -265,14 +229,12 @@ M.lspconfig = {
             end,
             "lsp declaration",
         },
-
         ["gd"] = {
             function()
                 vim.lsp.buf.definition()
             end,
             "lsp definition",
         },
-
         -- ["K"] = {
         --     function()
         --         vim.lsp.buf.hover()
@@ -286,28 +248,24 @@ M.lspconfig = {
             end,
             "lsp implementation",
         },
-
         ["<leader>ls"] = {
             function()
                 vim.lsp.buf.signature_help()
             end,
             "lsp signature_help",
         },
-
         ["gt"] = {
             function()
                 vim.lsp.buf.type_definition()
             end,
             "lsp definition type",
         },
-
         ["<leader>ra"] = {
             function()
                 vim.lsp.buf.rename()
             end,
             "lsp rename",
         },
-
         -- ["<leader>ca"] = {
         --   function()
         --     vim.lsp.buf.code_action()
@@ -321,56 +279,48 @@ M.lspconfig = {
             end,
             "lsp references",
         },
-
         ["<leader>f"] = {
             function()
                 vim.diagnostic.open_float()
             end,
             "floating diagnostic",
         },
-
         ["[d"] = {
             function()
                 vim.diagnostic.goto_prev()
             end,
             "goto prev",
         },
-
         ["d]"] = {
             function()
                 vim.diagnostic.goto_next()
             end,
             "goto_next",
         },
-
         ["<leader>q"] = {
             function()
                 vim.diagnostic.setloclist()
             end,
             "diagnostic setloclist",
         },
-
         ["<leader>fm"] = {
             function()
                 vim.lsp.buf.format { async = true }
             end,
             "lsp formatting",
         },
-
         ["<leader>wa"] = {
             function()
                 vim.lsp.buf.add_workspace_folder()
             end,
             "add workspace folder",
         },
-
         ["<leader>wr"] = {
             function()
                 vim.lsp.buf.remove_workspace_folder()
             end,
             "remove workspace folder",
         },
-
         ["<leader>wl"] = {
             function()
                 print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
@@ -378,7 +328,6 @@ M.lspconfig = {
             "list workspace folders",
         },
     },
-
     x = {
         ["<space>f"] = {
             ":lua require'lsp-range-format'.format()<ESC>",
@@ -401,24 +350,20 @@ M.telescope = {
         ["<leader>fb"]     = { "<cmd> Telescope file_browser <CR>", "File on directory" },
         ["<leader>fh"]     = { "<cmd> Telescope highlights <CR>", "File on directory" },
         ["<leader>f<Tab>"] = { "<cmd> Telescope buffers <CR>", "find buffers" },
-
         -- git
         -- ["<leader>cm"] = { "<cmd> Telescope git_commits <CR>", "git commits" },
         -- ["<leader>st"] = { "<cmd> Telescope git_status <CR>", "git status" },
 
         -- pick a hidden term
         ["<leader>pt"]     = { "<cmd> Telescope terms <CR>", "pick hidden term" },
-
         -- theme switcher
         ["<leader>th"]     = { "<cmd> Telescope themes <CR>", "nvchad themes" },
-
         -- command
         ["<leader>cm"]     = {
             function()
                 require('telescope.builtin').commands(require('telescope.themes').get_dropdown())
             end,
         }
-
     },
 }
 
@@ -436,7 +381,6 @@ M.lspsaga = {
         ["<leader>ca"] = { "<cmd>Lspsaga code_action<CR>", "lsp code_action" },
         ["<leader>o"]  = { "<cmd>Lspsaga outline<CR>", "Lspsaga outline" },
     },
-
     v = {
         ["<leader>ca"] = { "<cmd>Lspsaga code_action<CR>", "lsp code_action" },
     }
@@ -464,7 +408,6 @@ M.gitsigns = {
             "Jump to next hunk",
             opts = { expr = true },
         },
-
         ["[h"] = {
             function()
                 if vim.wo.diff then
@@ -478,7 +421,6 @@ M.gitsigns = {
             "Jump to prev hunk",
             opts = { expr = true },
         },
-
         -- Actions
         ["<leader>rh"] = {
             function()
@@ -486,21 +428,18 @@ M.gitsigns = {
             end,
             "Reset hunk",
         },
-
         ["<leader>ph"] = {
             function()
                 require("gitsigns").preview_hunk()
             end,
             "Preview hunk",
         },
-
         ["<leader>gb"] = {
             function()
                 package.loaded.gitsigns.blame_line()
             end,
             "Blame line",
         },
-
         ["<leader>gd"] = {
             function()
                 require("gitsigns").toggle_deleted()
@@ -519,7 +458,6 @@ M.floaterm = {
         ["<leader>tt"] = { "<cmd>FloatermToggle<CR>", "toggle terminal" },
         ["<leader>ts"] = { "<cmd>FloatermShow<CR>", "show terminal" },
     },
-
     t = {
         ["<leader>to"] = { "<C-\\><C-n><cmd>FloatermNew bash.exe<CR>", "open new terminal" },
         ["<leader>tk"] = { "<C-\\><C-n><cmd>FloatermKill<CR>:FloatermPrev<cr>", "kill current terminal" },
@@ -545,7 +483,6 @@ M.align = {
             end,
         }
     },
-
     x = {
         ["<leader>aa"] = {
             function()
@@ -662,7 +599,6 @@ M.iconpicker = {
         ["<leader>ip"] = { "<cmd>IconPickerNormal<CR>", "Icon picker in normal mode" },
         ["<leader>ii"] = { "<cmd>IconPickerInsert<CR>", " Yank the selected icon into register" },
     },
-
     i = {
         ["<A-i>"] = { "<cmd>IconPickerInsert<CR>", "Icon picker in insert mode" },
     }
@@ -737,7 +673,6 @@ M.spider = {
             " spider ge"
         },
     },
-
     x = {
         ["w"] = {
             function()
@@ -764,7 +699,6 @@ M.spider = {
             " spider ge"
         },
     }
-
 }
 
 M.replace = {
@@ -772,7 +706,6 @@ M.replace = {
         ["<leader>rw"] = { "<cmd>EasyReplaceWord<CR>", "Replace word" },
         ["<leader>rc"] = { "<cmd>EasyReplaceCword<CR>", "Replace cursor word" },
     },
-
     x = {
         ["<leader>rw"] = { "<cmd>EasyReplaceWordInVisual<CR>", "Replace word" },
         ["<leader>rc"] = { "<cmd>EasyReplaceCwordInVisual<CR>", "Replace cursor word" },
@@ -792,36 +725,42 @@ M.dap = {
     plugin = true,
     n = {
         -- ["<leader>db"] = { "<cmd>DapToggleBreakpoint<CR>", "Add breakpoint at line" },
-        ["<leader>dr"] = { "<cmd>DapContinue<CR>", "Start or continue the debugger" },
-        ["<F5>"]       = { "<cmd>DapStepInto<CR>", "Step into" },
-        ["<F6>"]       = { "<cmd>DapStepOver<CR>", "Step Over" },
-        ["<F7>"]       = { "<cmd>DapStepOut<CR>", "Step Out" },
-        ["<F8>"]       = { "<cmd>DapContinue<CR>", "Start or continue the debugger" },
-        ["<C-F2>"]     = {"<cmd>DapTerminate", "Terminate debugger"},
-        ["<F3>"]       = {
+        ["<leader>dr"]    = { "<cmd>DapContinue<CR>", "Start or continue the debugger" },
+        ["<F5>"]          = { "<cmd>DapStepInto<CR>", "Step into" },
+        ["<F6>"]          = { "<cmd>DapStepOver<CR>", "Step Over" },
+        ["<F7>"]          = { "<cmd>DapStepOut<CR>", "Step Out" },
+        ["<F8>"]          = { "<cmd>DapContinue<CR>", "Start or continue the debugger" },
+        ["<C-F2>"]        = { "<cmd>DapTerminate<CR>", "Terminate debugger" },
+        ["<F3>"]          = {
             function()
                 require("dapui").eval()
             end,
             "Start or continue the debugger"
         },
-        ["<leader>db"] = {
-            function ()
+        ["<leader>db"]    = {
+            function()
                 require('persistent-breakpoints.api').toggle_breakpoint()
             end,
             "Add breakpoint at line"
         },
-        ["<leader>dcb"] = {
-            function ()
-                require('persistent-breakpoints.api').clear_all_breakpoints()
-            end,
-            "Clear all breakpoints"
-        },
         -- INFO: Using mouse to toggle breakpoint
         ["<2-LeftMouse>"] = {
-            function ()
+            function()
                 require('persistent-breakpoints.api').toggle_breakpoint()
             end,
             "Add breakpoint at line by double click"
+        },
+        ["<leader>dcb"]   = {
+            function()
+                require('persistent-breakpoints.api').set_conditional_breakpoint(vim.fn.input(' CONDITION    '))
+            end,
+            "Condition breakpoint"
+        },
+        ["<leader>ddb"]   = {
+            function()
+                require('persistent-breakpoints.api').clear_all_breakpoints()
+            end,
+            "Clear all breakpoints"
         },
     }
 }

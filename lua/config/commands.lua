@@ -81,7 +81,7 @@ autocmd("FileType", {
     callback = function()
         -- store current statusline value and use that
         local old_laststatus = vim.opt.laststatus
-        vim.api.nvim_create_autocmd("BufUnload", {
+        autocmd("BufUnload", {
             buffer = 0,
             callback = function()
                 vim.opt.laststatus = old_laststatus
@@ -120,7 +120,6 @@ autocmd("User", {
             -- require("neo-tree").close_all()
             vim.cmd("Alpha")
             vim.cmd(event.buf .. "bwipeout")
-            pcall(require, "lualine")
         end
     end,
 })

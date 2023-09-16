@@ -1,4 +1,9 @@
-require('persistent-breakpoints').setup {
+local present, persistent = pcall(require, "persistent-breakpoints")
+if not present then
+    return
+end
+
+local options = {
     save_dir = vim.fn.stdpath('data') .. '/nvim_checkpoints',
     -- when to load the breakpoints? "BufReadPost" is recommanded.
     load_breakpoints_event = "BufReadPost",
@@ -10,3 +15,5 @@ require('persistent-breakpoints').setup {
     --- @param line integer the line the breakpoint was set on
     on_load_breakpoint = nil,
 }
+
+persistent.setup(options)

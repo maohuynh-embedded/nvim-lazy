@@ -1,5 +1,4 @@
 local present, lspconfig = pcall(require, "lspconfig")
-
 if not present then
     return
 end
@@ -59,7 +58,6 @@ local servers = {
     "bashls",
     "vimls",
     "lua_ls",
-    "diagnosticls",
 }
 
 local lsp_flags = {

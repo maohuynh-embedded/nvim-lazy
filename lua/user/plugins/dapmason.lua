@@ -3,7 +3,7 @@ if not status_ok then
     return
 end
 
-local option = {
+local options = {
     ensure_installed = {
         "cppdbg",
     },
@@ -14,7 +14,6 @@ local option = {
             -- Keep original functionality
             require('mason-nvim-dap').default_setup(config)
         end,
-
         cppdbg = function(config)
             config.adapters = {
                 id = 'cppdbg',
@@ -34,6 +33,13 @@ local option = {
                     end,
                     cwd = '${workspaceFolder}',
                     stopAtEntry = false,
+                    setupCommands = {
+                        {
+                            description = 'enable pretty printing',
+                            text = '-enable-pretty-printing',
+                            ignoreFailures = true
+                        },
+                    }
                 },
 
                 -- {
@@ -86,4 +92,4 @@ local option = {
     }
 }
 
-masondap.setup(option)
+masondap.setup(options)

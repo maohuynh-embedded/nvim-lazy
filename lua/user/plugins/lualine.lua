@@ -175,7 +175,7 @@ lualine.setup {
         lualine_b = { branch, filename, diff, diagnostics },
         lualine_c = {},
         lualine_x = {}, --lsp_progress
-        lualine_y = { lsp_status, spaces, 'location' },
+        lualine_y = { 'searchcount', lsp_status, spaces, 'location' },
         lualine_z = { progress }
     },
     inactive_sections = {

@@ -1,4 +1,9 @@
-require("dapui").setup({
+local status_ok, dapui = pcall(require, "dapui")
+if not status_ok then
+    return
+end
+
+local options = {
     controls = {
         element = "repl",
         enabled = true,
@@ -67,9 +72,12 @@ require("dapui").setup({
         indent = 1,
         max_value_lines = 100
     }
-})
+}
 
-local dap, dapui = require("dap"), require("dapui")
+-- Load config
+dapui.setup(options)
+
+local dap = require("dap")
 dapui.setup()
 dap.listeners.after.event_initialized["dapui_config"] = function()
     dapui.open()

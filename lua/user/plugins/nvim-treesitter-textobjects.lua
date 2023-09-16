@@ -1,3 +1,8 @@
+local status_ok, textobjects = pcall(require, "nvim-treesitter.configs")
+if not status_ok then
+    return
+end
+
 -- build in text objects.
 -- @block.inner
 -- @block.outer
@@ -18,7 +23,7 @@
 -- @parameter.outer
 -- @scopename.inner
 -- @statement.outer
-require 'nvim-treesitter.configs'.setup {
+local options = {
     textobjects = {
         select = {
             enable = true,
@@ -91,3 +96,5 @@ require 'nvim-treesitter.configs'.setup {
         },
     }
 }
+
+textobjects.setup(options)
