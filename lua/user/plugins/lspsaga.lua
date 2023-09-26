@@ -98,7 +98,7 @@ saga.setup({
         detail = true,
         auto_close = true,
         close_after_jump = false,
-        max_height = 0.5,
+        max_height = 0.7,
         left_width = 0.25,
         keys = {
             toggle_or_jump = 'o',
