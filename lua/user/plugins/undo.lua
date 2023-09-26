@@ -3,7 +3,7 @@ if not status_ok then
     return
 end
 
-undo.setup {
+local options = {
     hlgroup = 'HighlightUndo',
     duration = 300,
     keymaps = {
@@ -11,3 +11,5 @@ undo.setup {
         { 'n', '<C-r>', 'redo', {} },
     }
 }
+
+undo.setup(options)

@@ -339,6 +339,16 @@ return {
         end,
     },
 
+    {
+        "sustech-data/wildfire.nvim",
+        event = "VeryLazy",
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+        config = function()
+            -- require("wildfire").setup()
+            require("user.plugins.wildfire")
+        end,
+    },
+
     -- Syntax aware text-objects, select, move, swap,
     {
         'nvim-treesitter/nvim-treesitter-textobjects',
