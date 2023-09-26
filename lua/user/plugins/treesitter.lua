@@ -9,17 +9,6 @@ if not status_ok then
 end
 
 local options = {
-    -- ensure_installed = {
-    --   "lua",
-    --   "c",
-    --   "cpp",
-    --   "cmake",
-    --   "python",
-    --   "yaml",
-    --   "json",
-    --   "bash"
-    -- },
-
     highlight = {
         enable = true,
         use_languagetree = true,
@@ -36,6 +25,28 @@ local options = {
 }
 
 treesitter.setup(options)
-install.compilers = { "x86_64-w64-mingw32-clang" }
+
+if vim.fn.has("win32") == 0 then
+---@diagnostic disable-next-line: missing-fields
+    treesitter.setup {
+        sync_install = false,
+        auto_install = true,
+        ignore_install = { "javascript" },
+        ensure_installed = {
+            "lua",
+            "c",
+            "cpp",
+            "cmake",
+            "python",
+            "yaml",
+            "json",
+            "bash",
+            "markdown",
+            "markdown_inline",
+            "make",
+        }
+    }
+    install.compilers = { "x86_64-w64-mingw32-clang" }
+end
 
 vim.api.nvim_set_hl(0, "@punctuation.bracket", { link = "" })
