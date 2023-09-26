@@ -504,16 +504,23 @@ return {
         'rafamadriz/friendly-snippets',
         event = "VeryLazy",
     },
+
     {
         'hrsh7th/nvim-cmp',
-        dependencies = "friendly-snippets",
+        dependencies = {
+            "friendly-snippets",
+            'doxnit/cmp-luasnip-choice',
+        },
         config = function()
             require("user.plugins.cmp")
         end,
     },
     {
         'L3MON4D3/LuaSnip',
-        dependencies = { "friendly-snippets", "nvim-cmp" },
+        dependencies = {
+            "friendly-snippets",
+            "nvim-cmp"
+        },
         config = function()
             require("user.plugins.luasnip")
         end,

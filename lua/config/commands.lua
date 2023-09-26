@@ -53,6 +53,7 @@ autocmd("BufReadPost", {
         if mark[1] > 0 and mark[1] <= lcount then
             pcall(vim.api.nvim_win_set_cursor, 0, mark)
         end
+        vim.opt.laststatus = 3
     end,
 })
 
@@ -97,16 +98,6 @@ autocmd("TextYankPost", {
     group = vim.api.nvim_create_augroup("YankHighlight", { clear = true }),
 })
 
--- Update rainbow
--- autocmd("CmdlineLeave, CmdlineChanged, CmdlineEnter, InsertLeave, InsertChange", {
---     pattern = "*",
---     command = "TSToggle rainbow | TSToggle rainbow",
--- })
-
--- autocmd("BufRead", {
---     pattern = "*",
---     command = "call repeat#set('\\<Plug>MyWonderfulMap', v:count)",
--- })
 local alpha_on_empty = autogrp("alpha_on_empty", { clear = true })
 autocmd("User", {
     pattern = "BDeletePost*",
