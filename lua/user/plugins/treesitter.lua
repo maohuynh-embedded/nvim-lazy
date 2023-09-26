@@ -30,54 +30,12 @@ local options = {
         enable = true,
     },
 
-    rainbow = {
-        enable = true,
-        -- extended_mode = true,
-        highlight_middle = true,
-        max_file_lines = nil,
-        colors = {
-            '#458588',
-            '#b16286',
-            '#cc241d',
-            '#d65d0e',
-            '#458588',
-            '#b16286',
-            '#cc241d',
-            '#d65d0e',
-            '#458588',
-            '#b16286',
-            '#cc241d',
-            '#d65d0e',
-            '#458588',
-            '#b16286',
-            '#cc241d',
-            '#d65d0e',
-        },
-        termcolors = {
-            'brown',
-            'Darkblue',
-            'darkgray',
-            'darkgreen',
-            'darkcyan',
-            'darkred',
-            'darkmagenta',
-            'brown',
-            'gray',
-            'black',
-            'darkmagenta',
-            'Darkblue',
-            'darkgreen',
-            'darkcyan',
-            'darkred',
-            'red',
-        },
-    },
     matchup = {
         enable = true,
     },
 }
 
 treesitter.setup(options)
-install.compilers = { "x86_64-w64-mingw32-clang"}
+install.compilers = { "x86_64-w64-mingw32-clang" }
 
 vim.api.nvim_set_hl(0, "@punctuation.bracket", { link = "" })

@@ -48,7 +48,7 @@ local options = {
     window = {
         completion = {
             scrollbar = false,
-            max_width = 40,
+            max_width = 30,
             max_height = 25,
             border = border("LspSagaHoverBorder"),
             winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
@@ -79,7 +79,7 @@ local options = {
             if _.source.name == "vsnip" or _.source.name == "nvim_lsp" or _.source.name == "luasnip" then
                 vim_item.dup = duplicates[_.source.name] or 0
             end
-            local maxwidth = 40
+            local maxwidth = 30
             vim_item.abbr = string.sub(vim_item.abbr, 1, maxwidth)
             return vim_item
         end,
@@ -134,7 +134,17 @@ local options = {
         { name = "luasnip", priority = 9, max_item_count = 10, option = { show_autosnippets = true } },
         { name = "luasnip_choice", priority = 9 },
         { name = "nvim_lsp", priority = 8, max_item_count = 10 },
-        { name = "buffer", priority = 7, keyword_length = 2, max_item_count = 10 },
+        { name = "buffer", priority = 7, keyword_length = 2, max_item_count = 10,
+            option = {
+                get_bufnrs = function()
+                    local buf = vim.api.nvim_get_current_buf()
+                    local byte_size = vim.api.nvim_buf_get_offset(buf, vim.api.nvim_buf_line_count(buf))
+                    if byte_size > 1024 * 1024 then -- 1 Megabyte max
+                        return {}
+                    end
+                    return { buf }
+                end
+            } },
         { name = "path", priority = 6 },
         { name = "nvim_lua" },
         { name = "nvim_lsp_signature_help" },
