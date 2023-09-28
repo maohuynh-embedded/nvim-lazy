@@ -131,10 +131,14 @@ local options = {
         end, { "i", "s" }),
     },
     sources = {
-        { name = "luasnip", priority = 9, max_item_count = 10, option = { show_autosnippets = true } },
+        { name = "luasnip",        priority = 9, max_item_count = 10, option = { show_autosnippets = true } },
         { name = "luasnip_choice", priority = 9 },
-        { name = "nvim_lsp", priority = 8, max_item_count = 10 },
-        { name = "buffer", priority = 7, keyword_length = 2, max_item_count = 10,
+        { name = "nvim_lsp",       priority = 8, max_item_count = 10 },
+        {
+            name = "buffer",
+            priority = 7,
+            keyword_length = 2,
+            max_item_count = 10,
             option = {
                 get_bufnrs = function()
                     local buf = vim.api.nvim_get_current_buf()
@@ -144,8 +148,9 @@ local options = {
                     end
                     return { buf }
                 end
-            } },
-        { name = "path", priority = 6 },
+            }
+        },
+        { name = "path",                   priority = 6 },
         { name = "nvim_lua" },
         { name = "nvim_lsp_signature_help" },
     },
@@ -157,7 +162,7 @@ cmp.setup.cmdline(':', {
     mapping = require("cmp").mapping.preset.cmdline(),
     sources = require("cmp").config.sources({
         { name = 'cmdline', priority = 3 },
-        { name = 'path', priority = 2 },
+        { name = 'path',    priority = 2 },
         {
             name = 'cmdline_history',
             priority = 1,
@@ -187,5 +192,12 @@ cmp.setup.cmdline({ '/', '?' }, {
     })
 })
 
-
 require('cmp_luasnip_choice').setup({ auto_open = true });
+
+-- cmp.mapping(function()
+--     if cmp.get_active_entry() then
+--         cmp.confirm()
+--     else
+--         require 'ultimate-autopair.maps.cr'.cmpnewline()
+--     end
+-- end)
