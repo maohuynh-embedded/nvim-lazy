@@ -404,6 +404,7 @@ return {
     -- Indent blank line
     {
         'lukas-reineke/indent-blankline.nvim',
+        tag = "v2.20.8",
         event  = "BufRead",
         config = function()
             require("user.plugins.blankline")

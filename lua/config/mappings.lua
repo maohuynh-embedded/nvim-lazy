@@ -743,13 +743,14 @@ M.dap = {
             end,
             "Add breakpoint at line"
         },
+        -- BUG: This feature should be disabled because of being conflicted to use icon DAP debugg
         -- INFO: Using mouse to toggle breakpoint
-        ["<2-LeftMouse>"] = {
-            function()
-                require('persistent-breakpoints.api').toggle_breakpoint()
-            end,
-            "Add breakpoint at line by double click"
-        },
+        -- ["<2-LeftMouse>"] = {
+        --     function()
+        --         require('persistent-breakpoints.api').toggle_breakpoint()
+        --     end,
+        --     "Add breakpoint at line by double click"
+        -- },
         ["<leader>dcb"]   = {
             function()
                 require('persistent-breakpoints.api').set_conditional_breakpoint(vim.fn.input(' CONDITION    '))

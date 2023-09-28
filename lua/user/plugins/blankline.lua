@@ -26,3 +26,25 @@ local options = {
 
 blankline.setup(options)
 
+
+-- local present, blankline = pcall(require, "ibl")
+-- if not present then
+--     return
+-- end
+--
+-- local options = {
+--     indent = {
+--         char = "│",
+--         -- highlight = { "Grey "}
+--     },
+--     whitespace = {
+--         remove_blankline_trail = false,
+--     },
+--     scope = {
+--         enabled = true,
+--         show_start = false,
+--         highlight = { "RainbowDelimiterViolet" }
+--     },
+-- }
+--
+-- blankline.setup(options)
