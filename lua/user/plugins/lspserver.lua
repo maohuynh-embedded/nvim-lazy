@@ -89,7 +89,7 @@ for _, lsp in ipairs(servers) do
                 plugins = {
                     pyflakes = { enabled = false },
                     pylint = { enabled = false },
-                    pycodestyle = { enabled = true },
+                    pycodestyle = { enabled = false },
                 }
             }
         },

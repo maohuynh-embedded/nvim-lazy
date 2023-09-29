@@ -25,7 +25,7 @@ local options = {
             }
             config.configurations = {
                 {
-                    name = "Launch file",
+                    name = "Launch file CPPDGB",
                     type = "cppdbg",
                     request = "launch",
                     program = function()
@@ -37,7 +37,7 @@ local options = {
                         {
                             description = 'enable pretty printing',
                             text = '-enable-pretty-printing',
-                            ignoreFailures = true
+                            ignoreFailures = false
                         },
                     }
                 },
@@ -57,38 +57,22 @@ local options = {
             masondap.default_setup(config)
         end,
         --
-        -- codelldb = function(config)
-        --     config.configurations = {
-        --         {
-        --             name = 'LLDB: Launch file',
-        --             type = 'codelldb',
-        --             request = 'launch',
-        --             program = function()
-        --                 return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '\\', 'file')
-        --             end,
-        --             cwd = '${workspaceFolder}',
-        --             stopOnEntry = false,
-        --             args = {},
-        --         },
-        --
-        --         {
-        --             name = 'LLDB: Launch remote test',
-        --             type = 'codelldb',
-        --             request = 'launch',
-        --             program = function()
-        --                 return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '\\', 'file')
-        --             end,
-        --             cwd = '${workspaceFolder}',
-        --             stopOnEntry = false,
-        --             args = {},
-        --             windows = {
-        --                 MIMode = 'gdb',
-        --                 miDebuggerPath = 'C:\\Renesas\\rcar-xos\\v3.8.0\\tools\\toolchains\\mingw64\\bin\\gdb.exe',
-        --             }
-        --         },
-        --     }
-        --     masondap.default_setup(config)
-        -- end,
+        codelldb = function(config)
+            config.configurations = {
+                {
+                    name = 'LLDB: Launch file',
+                    type = 'codelldb',
+                    request = 'launch',
+                    program = function()
+                        return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '\\', 'file')
+                    end,
+                    cwd = '${workspaceFolder}',
+                    stopOnEntry = false,
+                    args = {},
+                },
+            }
+            masondap.default_setup(config)
+        end,
     }
 }
 
