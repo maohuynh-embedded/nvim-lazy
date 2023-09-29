@@ -81,7 +81,7 @@ for _, lsp in ipairs(servers) do
             Lua = {
                 diagnostics = {
                     -- Get the language server to recognize the `vim` global
-                    globals = { "vim" },
+                    -- globals = { "vim" },
                     virtual_text = false,
                 },
             },

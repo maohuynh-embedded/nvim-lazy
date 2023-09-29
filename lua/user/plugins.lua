@@ -161,24 +161,22 @@ return {
     -- NOTE: Check the new plugin to automate pair
     -- Auto pair
     -- https://github.com/altermo/ultimate-autopair.nvim
-    {
-        'windwp/nvim-autopairs',
-        config = function()
-            require("user.plugins.autopairs")
-        end,
-        event = { "InsertEnter" },
-    },
-
     -- {
-    --     'altermo/ultimate-autopair.nvim',
-    --     event = { 'InsertEnter', 'CmdlineEnter' },
-    --     branch = 'v0.6',
+    --     'windwp/nvim-autopairs',
     --     config = function()
-    --         require('ultimate-autopair').setup({
-    --             --Config goes here
-    --         })
+    --         require("user.plugins.autopairs")
     --     end,
+    --     event = { "InsertEnter" },
     -- },
+
+    {
+        'altermo/ultimate-autopair.nvim',
+        event = { 'InsertEnter', 'CmdlineEnter' },
+        branch = 'v0.6',
+        config = function()
+            require("user.plugins.ultimate_autopair")
+        end,
+        },
 
     -- Quick move
     {
@@ -657,9 +655,9 @@ return {
         dependencies = { "nvim-lua/plenary.nvim" },
         opts = {
             load = {
-                ["core.defaults"] = {},  -- Loads default behaviour
+                ["core.defaults"] = {}, -- Loads default behaviour
                 ["core.concealer"] = {}, -- Adds pretty icons to your documents
-                ["core.dirman"] = {      -- Manages Neorg workspaces
+                ["core.dirman"] = { -- Manages Neorg workspaces
                     config = {
                         workspaces = {
                             notes = "~/notes",

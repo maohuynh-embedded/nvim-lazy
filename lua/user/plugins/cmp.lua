@@ -194,10 +194,10 @@ cmp.setup.cmdline({ '/', '?' }, {
 
 require('cmp_luasnip_choice').setup({ auto_open = true });
 
--- cmp.mapping(function()
---     if cmp.get_active_entry() then
---         cmp.confirm()
---     else
---         require 'ultimate-autopair.maps.cr'.cmpnewline()
---     end
--- end)
+cmp.mapping(function()
+    if cmp.get_active_entry() then
+        cmp.confirm()
+    else
+        require 'ultimate-autopair.maps.cr'.cmpnewline()
+    end
+end)
