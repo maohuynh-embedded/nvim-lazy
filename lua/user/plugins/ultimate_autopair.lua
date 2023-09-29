@@ -18,8 +18,8 @@ local options = {
     --enable/disable multiline
     bs = {                -- *ultimate-autopair-map-backspace-config*
         enable = true,
-        map = '<\\>',     --string or table
-        cmap = '<\\>',    --string or table
+        map = '<BS>',     --string or table
+        cmap = '<BS>',    --string or table
         overjumps = true,
         --(|foo) > bs > |foo
         space = true,    --false, true or 'balance'
@@ -39,7 +39,7 @@ local options = {
     cr = {               -- *ultimate-autopair-map-newline-config*
         enable = true,
         map = '<cr>',    --string or table
-        autoclose = false,
+        autoclose = true,
         --(| > cr > (\n|\n)
         conf = { cond = function(fn) return not fn.in_lisp() end },
         --contains extension config
@@ -87,7 +87,7 @@ local options = {
         --then an `e` will not be inserted
         no_filter_nodes = { 'string', 'raw_string' },
         --which nodes to skip for tsnode filtering
-        faster = false,
+        faster = true,
         --only enables jump over pair, goto end/next line
         --useful for the situation of:
         --{|}M.foo('bar') > {M.foo('bar')|}
@@ -116,7 +116,7 @@ local options = {
         --contains extension config
         multi = false,
         --use multiple configs (|ultimate-autopair-map-multi-config|)
-        hopout = false,
+        hopout = true,
         -- (|) > tabout > ()|
         do_nothing_if_fail = true,
         --add a module so that if close fails
