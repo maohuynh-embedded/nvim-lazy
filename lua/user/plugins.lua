@@ -169,6 +169,17 @@ return {
         event = { "InsertEnter" },
     },
 
+    -- {
+    --     'altermo/ultimate-autopair.nvim',
+    --     event = { 'InsertEnter', 'CmdlineEnter' },
+    --     branch = 'v0.6',
+    --     config = function()
+    --         require('ultimate-autopair').setup({
+    --             --Config goes here
+    --         })
+    --     end,
+    -- },
+
     -- Quick move
     {
         'fedepujol/move.nvim',
@@ -339,6 +350,13 @@ return {
         end,
     },
 
+    -- End certain structures automatically
+    {
+        "RRethy/nvim-treesitter-endwise",
+        event = "VeryLazy",
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+    },
+
     {
         "sustech-data/wildfire.nvim",
         event = "VeryLazy",
@@ -404,6 +422,7 @@ return {
     -- Indent blank line
     {
         'lukas-reineke/indent-blankline.nvim',
+        tag    = "v2.20.8",
         event  = "BufRead",
         config = function()
             require("user.plugins.blankline")

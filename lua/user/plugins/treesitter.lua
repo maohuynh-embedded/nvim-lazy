@@ -14,20 +14,15 @@ local options = {
         use_languagetree = true,
         additional_vim_regex_highlighting = true,
     },
-
-    indent = {
-        enable = true,
-    },
-
-    matchup = {
-        enable = true,
-    },
+    indent  = { enable = true },
+    matchup = { enable = true },
+    endwise = { enable = true },
 }
 
 treesitter.setup(options)
 
 if vim.fn.has("win32") == 0 then
----@diagnostic disable-next-line: missing-fields
+    ---@diagnostic disable-next-line: missing-fields
     treesitter.setup {
         sync_install = false,
         auto_install = true,
