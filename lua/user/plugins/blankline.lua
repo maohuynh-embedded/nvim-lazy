@@ -33,17 +33,48 @@ blankline.setup(options)
 -- end
 --
 -- local options = {
+--     enabled = true,
 --     indent = {
 --         char = "│",
---         -- highlight = { "Grey "}
+--         highlight = "IblIndent",
+--         smart_indent_cap = true,
 --     },
 --     whitespace = {
---         remove_blankline_trail = false,
+--         highlight = "IblWhitespace",
+--         remove_blankline_trail = true,
 --     },
 --     scope = {
+--         char = "│",
 --         enabled = true,
 --         show_start = false,
---         highlight = { "RainbowDelimiterViolet" }
+--         show_end = false,
+--         injected_languages = true,
+--         highlight = "IblScope",
+--         exclude = {
+--             language = {},
+--         },
+--     },
+--     exclude = {
+--         filetypes = {
+--             "lspinfo",
+--             "packer",
+--             "checkhealth",
+--             "help",
+--             "man",
+--             "gitcommit",
+--             "TelescopePrompt",
+--             "TelescopeResults",
+--             "Trouble",
+--             "lazy",
+--         },
+--         buftypes = {
+--             "terminal",
+--             "nofile",
+--             "quickfix",
+--             "prompt",
+--             "alpha",
+--             "dashboard",
+--         },
 --     },
 -- }
 --

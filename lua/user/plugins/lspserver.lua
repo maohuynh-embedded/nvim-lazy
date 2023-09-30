@@ -16,7 +16,7 @@ lspSymbol("Info", "")
 lspSymbol("Hint", "")
 lspSymbol("Warn", "")
 
-capabilities.offsetEncoding = { "utf-16" }
+capabilities.offsetEncoding = { "utf-8" }
 
 vim.diagnostic.config {
     virtual_text = {
@@ -26,6 +26,15 @@ vim.diagnostic.config {
     signs = true,
     underline = true,
     update_in_insert = false,
+    severity_sort = false,
+    float = {
+        focusable = false,
+        style = "minimal",
+        border = "rounded",
+        source = "always",
+        header = "",
+        prefix = "",
+    },
 }
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
@@ -62,7 +71,7 @@ local servers = {
 
 local lsp_flags = {
     -- This is the default in Nvim 0.7+
-    debounce_text_changes = 150,
+    debounce_text_changes = 100,
 }
 
 
@@ -87,6 +96,7 @@ for _, lsp in ipairs(servers) do
             },
             pylsp = {
                 plugins = {
+                    black = { enabled = true },
                     pyflakes = { enabled = false },
                     pylint = { enabled = false },
                     pycodestyle = { enabled = false },

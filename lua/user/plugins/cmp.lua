@@ -201,3 +201,4 @@ cmp.mapping(function()
         require 'ultimate-autopair.maps.cr'.cmpnewline()
     end
 end)
+
