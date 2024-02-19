@@ -10,6 +10,7 @@ local options = {
         "D:\\FSP\\fsp-rx-ra-test",
         "D:\\FSP\\peaks",
         "D:\\CodeTest\\TestC",
+        "D:\\FSP\\wikijs",
         "~\\AppData\\Local\\nvim"
     },
     -- Path to store history and sessions
@@ -30,6 +31,7 @@ local options = {
             "gitrebase",
             "qf",
             "toggleterm",
+            "alpha",
         },
     },
 }
