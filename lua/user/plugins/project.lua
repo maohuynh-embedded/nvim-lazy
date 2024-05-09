@@ -3,16 +3,26 @@ if not status_ok then
     return
 end
 
-local options = {
-    -- Project directories
-    projects = {
+local project_dir
+if vim.fn.has("win32") == 1 then
+    project_dir = {
         "D:\\FSP\\fsp-rx-v",
         "D:\\FSP\\fsp-rx-ra-test",
         "D:\\FSP\\peaks",
         "D:\\CodeTest\\TestC",
         "D:\\FSP\\wikijs",
         "~\\AppData\\Local\\nvim"
-    },
+    }
+else
+    project_dir = {
+        "~/workspace_rx/fsp-rx/",
+        "~/data2/hungnguyen/neovim/nvim-lazy/"
+    }
+end
+
+local options = {
+    -- Project directories
+    projects = project_dir,
     -- Path to store history and sessions
     datapath = vim.fn.stdpath("data"), -- ~/.local/share/nvim/
     -- Load the most recent session on startup if not in the project directory
