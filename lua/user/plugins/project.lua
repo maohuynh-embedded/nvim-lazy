@@ -9,6 +9,7 @@ if vim.fn.has("win32") == 1 then
         "D:\\FSP\\fsp-rx-v",
         "D:\\FSP\\fsp-rx-ra-test",
         "D:\\FSP\\peaks",
+        "D:\\FSP\\wikijs",
         "D:\\CodeTest\\TestC",
         "~\\AppData\\Local\\nvim"
     }
