@@ -2,9 +2,9 @@
 
 <h1 align="center">
     <img src="https://raw.githubusercontent.com/neovim/neovim.github.io/master/logos/neovim-logo-300x87.png" alt="Neovim"><br>
-    <a href="https://dotfyle.com/hungnguyen1503/nvim-lazy-lua-user"><img src="https://dotfyle.com/hungnguyen1503/nvim-lazy-lua-user/badges/plugins?style=social" /></a>
-    <a href="https://dotfyle.com/hungnguyen1503/nvim-lazy-lua-user"><img src="https://dotfyle.com/hungnguyen1503/nvim-lazy-lua-user/badges/leaderkey?style=social" /></a>
-    <a href="https://dotfyle.com/hungnguyen1503/nvim-lazy-lua-user"><img src="https://dotfyle.com/hungnguyen1503/nvim-lazy-lua-user/badges/plugin-manager?style=social" /></a>
+    <a href="https://dotfyle.com/maohuynh-embedded/nvim-lazy-lua-user"><img src="https://dotfyle.com/maohuynh-embedded/nvim-lazy-lua-user/badges/plugins?style=social" /></a>
+    <a href="https://dotfyle.com/maohuynh-embedded/nvim-lazy-lua-user"><img src="https://dotfyle.com/maohuynh-embedded/nvim-lazy-lua-user/badges/leaderkey?style=social" /></a>
+    <a href="https://dotfyle.com/maohuynh-embedded/nvim-lazy-lua-user"><img src="https://dotfyle.com/maohuynh-embedded/nvim-lazy-lua-user/badges/plugin-manager?style=social" /></a>
 </h1>
 
 
@@ -16,12 +16,12 @@
 Clone the repository and install the plugins:
 
 ```sh
-git clone git@github.com:hungnguyen1503/nvim-lazy ~/.config/hungnguyen1503/nvim-lazy
-NVIM_APPNAME=hungnguyen1503/nvim-lazy/lua/user nvim --headless +"Lazy! sync" +qa
+git clone git@github.com:maohuynh-embedded/nvim-lazy ~/.config/maohuynh-embedded/nvim-lazy
+NVIM_APPNAME=maohuynh-embedded/nvim-lazy/lua/user nvim --headless +"Lazy! sync" +qa
 ```
 
 ```sh
-NVIM_APPNAME=hungnguyen1503/nvim-lazy/lua/user nvim
+NVIM_APPNAME=maohuynh-embedded/nvim-lazy/lua/user nvim
 ```
 ## 💅 Support applications
 - 🌅 **Ripgrep**
