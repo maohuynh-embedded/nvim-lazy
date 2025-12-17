@@ -1,6 +1,7 @@
 local autocmd = vim.api.nvim_create_autocmd
 local autogrp = vim.api.nvim_create_augroup
 local _general = autogrp("_general", { clear = true })
+local group = vim.api.nvim_create_augroup('autosave', {})
 
 --
 --[[ ========= Command for settings nvim =========]]
@@ -19,6 +20,13 @@ autocmd({ "CursorHold" },
         command = "set nohlsearch",
     }
 )
+
+if vim.fn.has("win32") == 0 then
+    autocmd("BufWritePre", {
+        pattern = "*",
+        command = "setlocal fileformat=unix",
+    })
+end
 
 -- go to last loc when opening a buffer
 -- autocmd("BufReadPost", {
@@ -71,7 +79,7 @@ autocmd("FileType", {
     pattern = "*",
     callback = function()
         local filetype = vim.bo.filetype
-        if filetype == 'c' or filetype == 'h'then
+        if filetype == 'c' or filetype == 'h' then
             vim.opt.spell = true
         else
             vim.opt.spell = false
@@ -95,7 +103,6 @@ autocmd("User", {
         local fallback_on_empty = fallback_name == "" and fallback_ft == ""
 
         if fallback_on_empty then
-            require("neo-tree").close_all()
             vim.cmd("Alpha")
             vim.cmd(event.buf .. "bwipeout")
             vim.opt.spell = false
@@ -103,6 +110,20 @@ autocmd("User", {
         end
     end,
 })
+
+autocmd('User', {
+    pattern = 'AutoSaveWritePost',
+    group = group,
+    callback = function(opts)
+        if opts.data.saved_buffer ~= nil then
+            local filename = vim.api.nvim_buf_get_name(opts.data.saved_buffer)
+            print('AutoSave: saved ' .. filename .. ' at ' .. vim.fn.strftime('%H:%M:%S'))
+        end
+    end,
+})
+
+vim.api.nvim_set_hl(0, "@keyword.directive.define.c", { fg = "#ff966c", bold = true }) -- Change this color as needed
+vim.api.nvim_set_hl(0, "@keyword.directive.c", { fg = "#ff966c", bold = true })        -- Change this color as needed
 
 vim.fn.sign_define('DapBreakpoint', { text = ' ', texthl = 'DapBreakpoint' })
 vim.fn.sign_define('DapBreakpointCondition', { text = ' ', texthl = 'DapBreakpoint' })

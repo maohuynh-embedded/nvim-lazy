@@ -74,6 +74,7 @@ return {
 
     {
         'Bekaboo/dropbar.nvim',
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
             require("user.plugins.dropbar")
         end,
@@ -99,7 +100,7 @@ return {
     -- Tab explorer
     {
         'matbme/JABS.nvim',
-        event = "VeryLazy",
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
             require("user.plugins.jabs")
         end,
@@ -108,7 +109,7 @@ return {
     {
         -- Git icon
         'lewis6991/gitsigns.nvim',
-        event = "VeryLazy",
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
             require("user.plugins.gitsigns")
         end,
@@ -124,6 +125,7 @@ return {
 
     {
         'gbprod/yanky.nvim',
+        event = { "BufReadPre", "BufNewFile" },
         dependencies = "kkharji/sqlite.lua",
         config = function()
             require("user.plugins.yanky")
@@ -143,7 +145,7 @@ return {
     -- Notify
     {
         'rcarriga/nvim-notify',
-        event = "VeryLazy",
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
             require("user.plugins.notify")
         end
@@ -175,7 +177,7 @@ return {
     -- Quick edit parentheses
     {
         'kylechui/nvim-surround',
-        event = "InsertEnter",
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
             require("user.plugins.surround")
         end,
@@ -184,7 +186,7 @@ return {
     -- Tab tree to enhance navigation within code by leveraging the power of Treesitter
     {
         'roobert/tabtree.nvim',
-        event = "VeryLazy",
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
             require("user.plugins.tabtree")
         end,
@@ -193,10 +195,7 @@ return {
     -- Tabout
     {
         'abecodes/tabout.nvim',
-        event = {
-            "InsertEnter",
-            "VeryLazy"
-        },
+        event = { "BufReadPre", "BufNewFile", "InsertEnter" },
         dependencies = {
             "nvim-treesitter",
             "nvim-cmp",
@@ -209,7 +208,7 @@ return {
     -- Auto pair
     {
         'windwp/nvim-autopairs',
-        event = { 'InsertEnter', 'CmdlineEnter' },
+        event = { "BufReadPre", "BufNewFile", "InsertEnter" },
         config = function()
             require("user.plugins.autopairs")
         end,
@@ -218,7 +217,7 @@ return {
     -- Improve auto pair
     {
         'altermo/ultimate-autopair.nvim',
-        event = { 'InsertEnter', 'CmdlineEnter' },
+        event = { "BufReadPre", "BufNewFile", "InsertEnter" },
         branch = 'v0.6',
         config = function()
             require("user.plugins.ultimate_autopair")
@@ -228,7 +227,7 @@ return {
     -- Quick move
     {
         'fedepujol/move.nvim',
-        event = "VeryLazy",
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
             require("user.plugins.move")
         end
@@ -236,33 +235,58 @@ return {
 
     {
         "chrisgrieser/nvim-spider",
+        event = { "BufReadPre", "BufNewFile" },
         event = "VeryLazy",
         config = function()
             require('user.plugins.spider')
         end
     },
 
-    {
-        "smoka7/multicursors.nvim",
-        event = "VeryLazy",
-        dependencies = {
-            'smoka7/hydra.nvim',
-        },
-        opts = {},
-        cmd = { 'MCstart', 'MCvisual', 'MCclear', 'MCpattern', 'MCvisualPattern', 'MCunderCursor' },
-        keys = {
-            {
-                mode = { 'x', 'n' },
-                '<Leader>m',
-                '<cmd>MCstart<CR>',
-                desc = 'Create a selection for selected text or word under the cursor',
-            },
-        },
-    },
+    -- NOTE: This plugin will be alternative by brenton-leighton/multiple-cursors.nvim
+    -- {
+    --     "smoka7/multicursors.nvim",
+    --     event = "VeryLazy",
+    --     dependencies = {
+    --         'smoka7/hydra.nvim',
+    --     },
+    --     opts = {},
+    --     cmd = { 'MCstart', 'MCvisual', 'MCclear', 'MCpattern', 'MCvisualPattern', 'MCunderCursor' },
+    --     keys = {
+    --         {
+    --             mode = { 'x', 'n' },
+    --             '<Leader>m',
+    --             '<cmd>MCstart<CR>',
+    --             desc = 'Create a selection for selected text or word under the cursor',
+    --         },
+    --     },
+    -- },
+    -- {
+    --     "brenton-leighton/multiple-cursors.nvim",
+    --     version = "*", -- Use the latest tagged version
+    --     opts = {}, -- This causes the plugin setup function to be called
+    --     keys = {
+    --         -- { "<C-j>",         "<Cmd>MultipleCursorsAddDown<CR>",          mode = { "n", "x" },    desc = "Add cursor and move down" },
+    --         -- { "<C-k>",         "<Cmd>MultipleCursorsAddUp<CR>",            mode = { "n", "x" },    desc = "Add cursor and move up" },
+    --
+    --         { "<C-Up>",        "<Cmd>MultipleCursorsAddUp<CR>",            mode = { "n", "i", "x" }, desc = "Add cursor and move up" },
+    --         { "<C-Down>",      "<Cmd>MultipleCursorsAddDown<CR>",          mode = { "n", "i", "x" }, desc = "Add cursor and move down" },
+    --
+    --         { "<C-LeftMouse>", "<Cmd>MultipleCursorsMouseAddDelete<CR>",   mode = { "n", "i" },    desc = "Add or remove cursor" },
+    --
+    --         { "<leader>a",     "<Cmd>MultipleCursorsAddMatches<CR>",       mode = { "n", "x" },    desc = "Add cursors to cword" },
+    --         { "<leader>A",     "<Cmd>MultipleCursorsAddMatchesV<CR>",      mode = { "n", "x" },    desc = "Add cursors to cword in previous area" },
+    --
+    --         { "<leader>dn",     "<Cmd>MultipleCursorsAddJumpNextMatch<CR>", mode = { "n", "x" },    desc = "Add cursor and jump to next cword" },
+    --         { "<leader>D",     "<Cmd>MultipleCursorsJumpNextMatch<CR>",    mode = { "n", "x" },    desc = "Jump to next cword" },
+    --
+    --         { "<leader>l",     "<Cmd>MultipleCursorsLock<CR>",             mode = { "n", "x" },    desc = "Lock virtual cursors" },
+    --     },
+    -- },
+
     -- Quick scope move word
     {
         'phaazon/hop.nvim',
-        event = "VeryLazy",
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
             require("hop").setup {}
         end
@@ -271,7 +295,7 @@ return {
     -- Quick move with flash
     {
         "folke/flash.nvim",
-        event = "VeryLazy",
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
             require('user.plugins.flash')
         end,
@@ -285,7 +309,7 @@ return {
 
     {
         'tzachar/highlight-undo.nvim',
-        event = "VeryLazy",
+        keys = { { "u" }, { "<C-r>" } },
         config = function()
             require("user.plugins.undo")
         end
@@ -294,7 +318,7 @@ return {
     -- Quick comment
     {
         'numToStr/Comment.nvim',
-        event = "VeryLazy",
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
             require("user.plugins.comment")
         end,
@@ -303,7 +327,7 @@ return {
     -- Duplicate
     {
         "hinell/duplicate.nvim",
-        event = "VeryLazy",
+        event = { "BufReadPre", "BufNewFile" },
         setup = function()
             vim.g["duplicate-nvim-config"] = {
                 visual = {
@@ -365,7 +389,6 @@ return {
     -- Float terminal
     {
         'voldikss/vim-floaterm',
-        event = "VeryLazy",
         commit = 'bcaeabf89a92a924031d471395054d84bd88ce2f',
         cmd = {
             "FloatermToggle",
@@ -388,6 +411,7 @@ return {
     -- Code highlight
     {
         'nvim-treesitter/nvim-treesitter',
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
             require("user.plugins.treesitter")
         end,
@@ -396,14 +420,14 @@ return {
     -- End certain structures automatically
     {
         "RRethy/nvim-treesitter-endwise",
-        event = "VeryLazy",
+        event = { "BufReadPre", "BufNewFile" },
         dependencies = { "nvim-treesitter/nvim-treesitter" },
     },
 
     -- Auto tag for html, xml, ....
     {
         "windwp/nvim-ts-autotag",
-        event = "VeryLazy",
+        ft = { "hmtl", "xml" },
         dependencies = { "nvim-treesitter/nvim-treesitter" },
         config = function()
             require('nvim-ts-autotag').setup()
@@ -412,7 +436,7 @@ return {
 
     {
         "sustech-data/wildfire.nvim",
-        event = "VeryLazy",
+        event = { "BufReadPre", "BufNewFile" },
         dependencies = { "nvim-treesitter/nvim-treesitter" },
         config = function()
             require("user.plugins.wildfire")
@@ -429,7 +453,7 @@ return {
     -- Bracket rainbow color
     {
         'HiPhish/rainbow-delimiters.nvim',
-        event = "VeryLazy",
+        event = { "BufReadPre", "BufNewFile" },
         dependencies = { 'nvim-treesitter/nvim-treesitter' },
         config = function()
             require("user.plugins.rainbow")
@@ -439,7 +463,7 @@ return {
     -- Auto save the project
     {
         'okuuva/auto-save.nvim',
-        event = "VeryLazy",
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
             require("user.plugins.autosave")
         end
@@ -462,13 +486,13 @@ return {
     {
         'Vonr/align.nvim',
         branch = "v2",
-        event = "VeryLazy",
+        event = { "BufReadPre", "BufNewFile" },
     },
 
     -- Quick highlight word
     {
         'RRethy/vim-illuminate',
-        event = "VeryLazy",
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
             require("user.plugins.illuminate")
         end
@@ -486,7 +510,7 @@ return {
     -- Indent blank line
     {
         'lukas-reineke/indent-blankline.nvim',
-        event  = "BufRead",
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
             require("user.plugins.blankline")
         end
@@ -494,7 +518,7 @@ return {
 
     {
         'vidocqh/auto-indent.nvim',
-        event = { "VeryLazy" },
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
             require("user.plugins.autoindent")
         end
@@ -503,7 +527,7 @@ return {
     -- Todo comment
     {
         'folke/todo-comments.nvim',
-        event = "VeryLazy",
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
             require("user.plugins.todo")
         end,
@@ -512,7 +536,7 @@ return {
     -- Trouble to display error in the source code
     {
         'folke/trouble.nvim',
-        cmd = "TroubleToggle",
+        event = { "BufReadPre", "BufNewFile" },
         dependencies = "nvim-tree/nvim-web-devicons",
         config = function()
             require("user.plugins.trouble")
@@ -531,6 +555,7 @@ return {
     -- LSP config manager
     {
         'neovim/nvim-lspconfig',
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
             require("user.plugins.lspconfig")
             require("user.plugins.lspserver")
@@ -540,7 +565,7 @@ return {
     -- NULL-ls
     {
         'Djancyp/lsp-range-format',
-        event = "VeryLazy",
+        event = { "BufReadPre", "BufNewFile" },
     },
 
     -- LSP Neodev
@@ -556,11 +581,17 @@ return {
             },
         },
     },
-    { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
+
+    {
+        "Bilal2453/luvit-meta",
+        event = { "BufReadPre", "BufNewFile" },
+        lazy = true
+    }, -- optional `vim.uv` typings
 
     -- LSP Saga
     {
         'nvimdev/lspsaga.nvim',
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
             require("user.plugins.lspsaga")
         end,
@@ -574,7 +605,7 @@ return {
     -- Lsp outline
     {
         "hedyhli/outline.nvim",
-        event = "VeryLazy",
+        event = { "BufReadPre", "BufNewFile" },
         cmd = { "Outline", "OutlineOpen" },
         config = function()
             require("user.plugins.outline")
@@ -585,7 +616,7 @@ return {
     {
         "j-hui/fidget.nvim", -- Display LSP status messages in a floating window
         tag = "legacy",
-        event = "VeryLazy",
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
             require("user.plugins.fidget")
         end
@@ -595,7 +626,6 @@ return {
     -- Show message popup, LSP progress, popup commandline
     {
         'folke/noice.nvim',
-        tag = "v4.4.7",
         dependencies = {
             "MunifTanjim/nui.nvim",
             "rcarriga/nvim-notify",
@@ -625,13 +655,13 @@ return {
     -- Tabnine
     -- INFO: This plugin will use a significant performance.
     -- We should condsider this plugin if your device doesn't have enough RAM.
-    {
-        'tzachar/cmp-tabnine',
-        event = "VeryLazy",
-        -- INFO: The build configuration shall be installed manually on Windows
-        -- build = './install.sh',
-        dependencies = 'hrsh7th/nvim-cmp',
-    },
+    -- {
+    --     'tzachar/cmp-tabnine',
+    --     event = "VeryLazy",
+    --     -- INFO: The build configuration shall be installed manually on Windows
+    --     -- build = './install.sh',
+    --     dependencies = 'hrsh7th/nvim-cmp',
+    -- },
 
     {
         'L3MON4D3/LuaSnip',
@@ -674,7 +704,7 @@ return {
 
     {
         "ray-x/lsp_signature.nvim",
-        event = "VeryLazy",
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
             require("user.plugins.lspsignature")
         end
@@ -727,7 +757,7 @@ return {
     -- Virtual text for debbuging
     {
         'theHamsta/nvim-dap-virtual-text',
-        event = "VeryLazy",
+        ft = { "c", "cpp", "python" },
         dependencies = {
             'mfussenegger/nvim-dap',
         },
@@ -751,7 +781,7 @@ return {
 
     {
         "andrewferrier/debugprint.nvim",
-        event = "VeryLazy",
+        event = { "BufReadPre", "BufNewFile" },
         dependencies = {
             "echasnovski/mini.nvim",          -- Needed to enable :ToggleCommentDebugPrints for NeoVim <= 0.9
             "nvim-treesitter/nvim-treesitter" -- Needed to enable treesitter for NeoVim 0.8
@@ -764,7 +794,7 @@ return {
     -- Escape without getting delay when typing in insert mode
     {
         "max397574/better-escape.nvim",
-        event = "VeryLazy",
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
             require("user.plugins.escape")
         end,
@@ -773,7 +803,7 @@ return {
     -- Last position
     {
         "mrcjkb/nvim-lastplace",
-        event = "VeryLazy",
+        event = { "BufReadPre", "BufNewFile" },
         init = function()
             vim.g.nvim_lastplace = {
                 ignore_buftype = { 'quickfix', 'nofile', 'help' },
@@ -784,18 +814,8 @@ return {
     },
 
     {
-        'notomo/gesture.nvim',
-        init = function()
-            if vim.fn.has("win32") == 1 then
-                -- Don't use this plugin in Window OS
-            else
-                require("user.plugins.gesture")
-            end
-        end
-    },
-
-    {
         "nvim-pack/nvim-spectre",
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
             require("user.plugins.spectre")
         end,
@@ -803,31 +823,15 @@ return {
 
     {
         "ravibrock/spellwarn.nvim",
-        event = "VeryLazy",
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
             require("user.plugins.spellwarn")
         end,
     },
 
-    -- {
-    --     "harrisoncramer/gitlab.nvim",
-    --     event = "VeryLazy",
-    --     dependencies = {
-    --         "MunifTanjim/nui.nvim",
-    --         "nvim-lua/plenary.nvim",
-    --         "folke/tokyonight.nvim",
-    --         "sindrets/diffview.nvim",
-    --         "stevearc/dressing.nvim", -- Recommended but not required. Better UI for pickers.
-    --         "nvim-tree/nvim-web-devicons" -- Recommended but not required. Icons in discussion tree.
-    --     },
-    --     build = function() require("gitlab.server").build(true) end, -- Builds the Go binary
-    --     config = function()
-    --         require("user.plugins.gitlab")
-    --     end,
-    -- },
-
     {
         "gbprod/stay-in-place.nvim",
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
             require("stay-in-place").setup()
         end,
@@ -844,51 +848,37 @@ return {
     -- TODO: This plugin is being used default configuration. I will check and add config soon.
     {
         'Kicamon/markdown-table-mode.nvim',
-        event = "VeryLazy",
         ft = "markdown", -- If you decide to lazy-load anyway
         config = function()
-            require('markdown-table-mode').setup()
+            require('markdown-table-mode').setup({
+                filetype = {
+                    '*.md',
+                },
+                options = {
+                    insert = true,              -- when typing "|"
+                    insert_leave = true,        -- when leaving insert
+                    pad_separator_line = false, -- add space in separator line
+                    alig_style = 'default',     -- default, left, center, right
+                },
+            })
         end
     },
 
     -- TODO: This plugin is being used default configuration. I will config them soon.
     {
         "OXY2DEV/markview.nvim",
-        lazy = false,    -- Recommended
         ft = "markdown", -- If you decide to lazy-load anyway
-        dependencies = {
-            -- You will not need this if you installed the
-            -- parsers manually
-            -- Or if the parsers are in your $RUNTIMEPATH
-            "nvim-treesitter/nvim-treesitter",
-
-            "nvim-tree/nvim-web-devicons"
-        },
         config = function()
-            require("markview").setup({
-                modes = { "n", "i", "no", "c" },
-                hybrid_modes = { "i" },
+            require("user.plugins.markview")
+        end
+    },
 
-                -- This is nice to have
-                callbacks = {
-                    on_enable = function(_, win)
-                        vim.wo[win].conceallevel = 2;
-                        vim.wo[win].concealcursor = "nc";
-                    end
-                }
-            })
+    -- This plugin can be used to read and execute the command in the vscode json file
+    {
+        'stevearc/overseer.nvim',
+        event = { "BufReadPre", "BufNewFile" },
+        config = function()
+            require("user.plugins.overseer")
         end
     }
-
-    -- {
-    --     'stevearc/overseer.nvim',
-    --     config = function()
-    --         require('overseer').setup()
-    --     end
-    -- }
-
-    -- TODO: Disabled tempolarily because there is a issue related nui-components plugin 
-    -- {
-    --     dir = vim.fn.stdpath("data") .. "/nui-components",
-    -- }
 }

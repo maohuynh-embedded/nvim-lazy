@@ -14,8 +14,6 @@ table.insert(vimgrep_arguments, "!**/.git/*")
 local options = {
     defaults = {
         vimgrep_arguments = vimgrep_arguments,
-        -- wrap_results = "true",
-        shorten_path = true,
         prompt_prefix = " ",
         selection_caret = " ",
         entry_prefix = "  ",
@@ -23,29 +21,45 @@ local options = {
         selection_strategy = "reset",
         sorting_strategy = "ascending",
         layout_strategy = "horizontal",
+        hidden = true,
         file_ignore_patterns = { "node_modules", ".docker", ".git" },
         layout_config = {
+            center = {
+                prompt_position = "top",
+                scroll_speed = 5,
+            },
             horizontal = {
                 prompt_position = "top",
-                preview_width = 0.55,
-                results_width = 0.8,
+                preview_width = 0.4,
+                results_width = 0.6,
+                scroll_speed = 5,
             },
             vertical = {
+                prompt_position = "top",
                 mirror = false,
+                scroll_speed = 5,
             },
-            width = 0.90,
+            width = 0.95,
             height = 0.90,
             preview_cutoff = 120,
         },
+        pickers = {
+            find_files = {
+                find_command = { "fd", "--type", "f", "--strip-cwd-prefix", "--hidden", "--follow" }
+            },
+        },
         file_sorter = require("telescope.sorters").get_fuzzy_file,
         generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
-        path_display = { "tail" },
+        path_display = { "absolute" },
         winblend = 0,
         border = {},
         borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
         color_devicons = true,
         -- set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
         set_env = nil,
+        preview = {
+            treesitter = true,
+        },
         file_previewer = require("telescope.previewers").vim_buffer_cat.new,
         grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
         qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
@@ -55,11 +69,15 @@ local options = {
             n = {
                 ["<C-j>"] = require("telescope.actions").move_selection_next,
                 ["<C-k>"] = require("telescope.actions").move_selection_previous,
+                ['<C-h>'] = require('telescope.actions').preview_scrolling_left,
+                ['<C-l>'] = require('telescope.actions').preview_scrolling_right,
                 ["q"] = require("telescope.actions").close,
             },
             i = {
                 ["<C-j>"] = require("telescope.actions").move_selection_next,
                 ["<C-k>"] = require("telescope.actions").move_selection_previous,
+                ['<C-h>'] = require('telescope.actions').preview_scrolling_left,
+                ['<C-l>'] = require('telescope.actions').preview_scrolling_right,
                 ["<C-q>"] = require("telescope.actions").close,
             },
         },
@@ -72,13 +90,6 @@ local options = {
                 preview_width = 0.55
             },
         },
-        -- project = {
-        --     display_type = "full",
-        --     theme = 'dropdown',
-        --     order_by = "asc",
-        --     search_by = "title",
-        --     sync_with_nvim_tree = false, -- default false
-        -- },
         menu = {
             Sessions = {
                 items = {
@@ -107,12 +118,12 @@ local options = {
         },
     },
 
-    extensions_list = { "notify", --[[ "project", ]] "file_browser", "ui-select", "menu", "dap", "fzf" },
+    extensions_list = { "notify", "file_browser", "ui-select", "menu", "dap", "fzf" },
 }
 
 telescope.setup(options)
 
--- load extensions
+-- Load extensions
 pcall(function()
     for _, ext in ipairs(options.extensions_list) do
         telescope.load_extension(ext)

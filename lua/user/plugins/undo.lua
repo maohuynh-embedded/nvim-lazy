@@ -4,12 +4,25 @@ if not status_ok then
 end
 
 local options = {
-    hlgroup = 'HighlightUndo',
     duration = 300,
     keymaps = {
-        { 'n', 'u',     'undo', {} },
-        { 'n', '<C-r>', 'redo', {} },
-    }
+        undo = {
+            desc = "undo",
+            hlgroup = 'HighlightUndo',
+            mode = 'n',
+            lhs = 'u',
+            rhs = nil,
+            opts = {},
+        },
+        redo = {
+            desc = "redo",
+            hlgroup = 'HighlightUndo',
+            mode = 'n',
+            lhs = '<C-r>',
+            rhs = nil,
+            opts = {},
+        },
+    },
 }
 
 undo.setup(options)
