@@ -16,13 +16,21 @@
 Clone the repository and install the plugins:
 
 ```sh
-git clone git@github.com:maohuynh-embedded/nvim-lazy ~/.config/maohuynh-embedded/nvim-lazy
-NVIM_APPNAME=maohuynh-embedded/nvim-lazy/lua/user nvim --headless +"Lazy! sync" +qa
+git clone https://github.com/maohuynh-embedded/nvim-lazy.git ~/.config/<your-config-name>
+NVIM_APPNAME=<your-config-name>/lua/user nvim --headless +"Lazy! sync" +qa
 ```
 
 ```sh
-NVIM_APPNAME=maohuynh-embedded/nvim-lazy/lua/user nvim
+NVIM_APPNAME=<your-config-name>/lua/user nvim
 ```
+
+Note: replace `<your-config-name>` with the folder name under `~/.config` where you cloned this repo (e.g. `nvim-lazy` or `my-neovim-config`).
+
+## Choosing <your-config-name>
+
+- Global config (recommended for a single-user setup): use `nvim-lazy` under `~/.config/nvim-lazy`. Pros: one place to update; Cons: shared across all projects.
+- Per-project config: use something like `my-neovim-config` inside each repo (or as `.nvim` submodule). Pros: isolated per project; Cons: you must set `NVIM_APPNAME` per project.
+- Team/company config: pick a team name (e.g., `company-nvim`) to standardize across developers. Pros: consistent setup; Cons: contributors need to set aliases or environment variables.
 ## 💅 Support applications
 - 🌅 **Ripgrep**
 - 🔍 **Lazygit**
